@@ -1,1 +1,79 @@
-dir.html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="description" content="Sauce for Zwift™ Official Mods"/>
+
+        <title>Sauce for Zwift™ - Official Mods</title>
+
+        <link id="favicon" rel="shortcut icon" href="images/favicon.png"/>
+
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <style >
+            .warn {
+                color: #844;
+                font-size: 0.5em;
+            }
+
+            #nav {
+                font-size: 2em;
+                color: #ff4400e0;
+            }
+
+            section {
+                margin-top: 1em;
+            }
+
+            .directory {
+                display: flex;
+                flex-direction: column;
+                font-size: 1.6em;
+            }
+
+            .directory .mod {
+                padding: 0.5em;
+                display: flex;
+                align-items: center;
+            }
+
+            .mod > * {
+                margin-right: 0.4em;
+            }
+
+            .mod a {
+                display: block;
+            }
+
+            .mod .meta {
+                opacity: 0.7;
+                font-size: 0.7em;
+            }
+        </style>
+
+        <script type="module" src="src/index.mjs"></script>
+    </head>
+
+    <body id="top">
+        <header id="nav">
+            <nav>
+                <div>
+                    <a class="anchor logo" href="index.html"><img class="branding" src="images/logo_horiz_320x120.png"/></a>
+                </div>
+                <div>
+                    Sauce for Zwift™ Mods<br/>
+                    <small class="warn"><b>3rd Party WARNING:</b> This software is written by 3rd parties. Use at your own risk.</small>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h1>Available Sauce Mods:</h1>
+                <div class="directory"></div>
+            </section>
+        </main>
+    </body>
+</html>
