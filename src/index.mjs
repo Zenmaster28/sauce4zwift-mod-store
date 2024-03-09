@@ -7,9 +7,9 @@ function render() {
             <header>
                 <div class="author">
                     <a class="author-avatar" href="${x.authorURL}"><img src="${x.authorAvatarURL}"/></a>
-                    <a class="author-name" href="${x.authorURL}"><img src="${x.authorName}"/></a>
+                    <a class="author-name" href="${x.authorURL}">${x.authorName}</a>
                 </div>
-                <div class="Updated">${x.releases[0].published.toLocaleDateString()}</div>
+                <div class="Updated">Updated: ${x.releases[0].published.toLocaleDateString()}</div>
             </header>
             <main>
                 <section class="left">
@@ -28,7 +28,7 @@ function render() {
             </main>
             <footer>
                 <div class="created">Created: ${x.created.toLocaleDateString()}</div>
-                <div calss="tags">${x.tags.map(t => `<div class="tag">${t}</div>`).join('')}</div>
+                <div class="tags">${x.tags.map(t => `<div class="tag">${t}</div>`).join('')}</div>
             </footer>
         </div>
     `).join('\n');

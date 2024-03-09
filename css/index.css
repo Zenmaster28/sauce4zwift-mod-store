@@ -1,0 +1,57 @@
+.warn {
+    color: #844;
+    font-size: 0.5em;
+}
+
+* {
+    border: 1px solid black;
+}
+
+.mod .tags {
+    display: flex;
+}
+
+.mod .tags .tag {
+    font-size: 0.88em;
+    text-transform: uppercase;
+    border-radius: 0.28em;
+    padding: 0.12em 0.6em;
+    background-image: linear-gradient(135deg, #333, #666);
+    color: white;
+    margin: 0.15em;
+}
+
+.mod header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.mod header .author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mod header .author-avatar img {
+    width: 4em;
+}
+
+.mod main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mod main section.left {
+    min-width: 300px;
+    flex: 1 1 auto;
+}
+
+.mod a.install {
+    display: flex;
+}
+
+.mod main section.right {
+    flex: 0 0 300px;
+    display: flex;
+}
