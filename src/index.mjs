@@ -113,7 +113,7 @@ async function parseGithubRelease(entry) {
         releases: releases.map(x => {
             console.log(x);
             return {
-                url: x.trustedAsset.url,
+                url: x.trustedAsset.browser_download_url,
                 name: x.name,
                 notes: x.body,
                 version: x.tag_name,
