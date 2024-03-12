@@ -3,19 +3,31 @@
     font-size: 0.5em;
 }
 
+a {
+    color: blue;
+}
+
 * {
-    border: 1px solid black;
+/*    border: 1px solid #000a;*/
 }
 
 @keyframes swing {
     from {
-        rotate: 10deg;
+        rotate: -30deg;
+        translate: 0 0;
+    }
+    25% {
+        translate: 10px -15px;
     }
     50% {
         rotate: -10deg;
     }
+    75% {
+        translate: 5px 10px;
+    }
     to {
-        rotate: 10deg;
+        rotate: -30deg;
+        translate: 0 0;
     }
 }
 
@@ -26,13 +38,14 @@ header#intro {
         display: flex;
 
         a.logo {
-            height: 300px;
+            height: 200px;
             display: block;
-            padding: 0 20%;
+            padding: 0 50px 0 20px;
         }
 
         img.logo {
             height: 100%;
+            perspective: 100px;
             animation: 5s infinite ease-in-out swing;
         }
     }
@@ -44,6 +57,10 @@ body > main {
 
 
 .mod {
+    border: 1px solid black;
+    margin: 1em;
+    padding: 1em;
+
     &:not(.installed) {
         .installed-only {
             display: none;
@@ -54,45 +71,120 @@ body > main {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1em;
 
-        .author {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .name {
+            font-size: 2em;
+            padding-right: 0.2em;
         }
+    }
 
-        .author-avatar img {
-            width: 4em;
+    .filler {
+        flex: 1 0;
+    }
+
+    footer {
+        margin-top: 1em;
+        padding-top: 1em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #0003;
+    }
+
+    .mod-logo {
+        width: 10em;
+        height: 10em;
+        object-fit: contain;
+    }
+
+    .author {
+        display: flex;
+        align-items: center;
+    }
+
+    .author-avatar {
+        display: block;
+        border-radius: 50vh;
+        overflow: hidden;
+        width: 3em;
+        height: 3em;
+        margin-right: 0.5em;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+            min-height: 100%;
+        }
+    }
+
+    .meta {
+        padding: 0.1em 0.2em;
+        font-size: 0.88em;
+        font-weight: 300;
+
+        &:not(:last-child)::after {
+            font-weight: 200;
+            opacity: 0.3;
+            content: ' | ';
         }
     }
 
     .tags {
         display: flex;
+        flex: 1 0 auto;
+        justify-content: center;
+    }
 
-        .tag {
-            font-size: 0.88em;
-            text-transform: uppercase;
-            border-radius: 0.28em;
-            padding: 0.12em 0.6em;
-            background-image: linear-gradient(135deg, #333, #666);
-            color: white;
-            margin: 0.15em;
-        }
+    .tag {
+        --color: #36c;
+        font-size: 0.88em;
+        text-transform: uppercase;
+        border-radius: 0.28em;
+        padding: 0.12em 0.6em;
+        background-image: linear-gradient(135deg, color-mix(in srgb, var(--color), black 30%), var(--color));
+        color: white;
+        margin: 0.15em;
+    }
+
+    .installed.tag {
+        --color: #4c5;
     }
 
     main {
         display: flex;
         flex-wrap: wrap;
+        border-top: 1px solid #0003;
 
         section.left {
-            min-width: 300px;
-            flex: 1 1 auto;
+            flex: 0 0 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         section.right {
-            flex: 0 0 300px;
+            min-width: 300px;
+            flex: 1 1;
             display: flex;
+            flex-direction: column;
         }
+    }
+
+    .release, .desc {
+        padding: 0.5em;
+        font-size: 1.2em;
+    }
+
+    .notes {
+        margin-left: 1em;
+        padding: 0.5em;
+        white-space: pre-wrap;
+        max-height: 10em;
+        overflow: auto;
+        /*font-family: monospace;*/ /*Use a monospace font when were done playing around with the funny style*/
     }
 
     a.install {

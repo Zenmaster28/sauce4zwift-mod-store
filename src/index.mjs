@@ -5,30 +5,39 @@ function render() {
     document.querySelector('.directory').innerHTML = mods.map(x => `
         <div class="mod" data-id="${x.id}">
             <header>
-                <div class="author">
-                    <a class="author-avatar" href="${x.authorURL}"><img src="${x.authorAvatarURL}"/></a>
-                    <a class="author-name" href="${x.authorURL}">${x.authorName}</a>
-                </div>
-                <div class="Updated">Updated: ${x.releases[0].published.toLocaleDateString()}</div>
+                <a download class="install name" href="${x.releases[0].url}">${x.name}</a>
+                <div class="tag installed-only installed">installed</div>
+                <div class="filler"></div>
+                <div class="meta" title="Community Stars">${x.stars} ⭐</div>
+                <div class="meta">${x.releases[0].version}</div>
+                <div class="meta">Updated: ${x.releases[0].published.toLocaleDateString()}</div>
             </header>
             <main>
                 <section class="left">
                     <a download class="install" href="${x.releases[0].url}">
-                        <img class="logo" src="${x.logoURL}"/>
-                        <div class="name">${x.name}</div>
-                        <div class="desc">${x.description}</div>
+                        <img class="mod-logo" src="${x.logoURL}"/>
                     </a>
                 </section>
                 <section class="right">
-                    <div class="meta">${x.stars} ⭐</div>
-                    <div class="meta">${x.releases[0].version}</div>
-                    <div class="meta">${x.installCount} installs</div>
-                    <div class="meta">${Math.round(x.releases[0].size / 1024)}KB</div>
+                    <div class="desc">${x.description}</div>
+                    <div class="release">
+                        <b>Release notes:</b><br/>
+                        <div class="notes">${x.releases[0].notes}</div>
+                    </div>
                 </section>
             </main>
             <footer>
-                <div class="created">Created: ${x.created.toLocaleDateString()}</div>
+                <div class="author">
+                    <a class="author-avatar" href="${x.authorURL}"><img src="${x.authorAvatarURL}"/></a>
+                    <div>
+                        <small>Author:</small><br/>
+                        <a class="author-name" href="${x.authorURL}">${x.authorName}</a>
+                    </div>
+                </div>
                 <div class="tags">${x.tags.map(t => `<div class="tag">${t}</div>`).join('')}</div>
+                <div class="meta">${Math.round(x.releases[0].size / 1024)}KB</div>
+                <div class="meta">${x.installCount} installs</div>
+                <div class="meta">Created: ${x.created.toLocaleDateString()}</div>
             </footer>
         </div>
     `).join('\n');
@@ -89,6 +98,7 @@ async function parseGithubRelease(entry) {
         return;
     }
     return {
+        id: entry.id,
         name: repo.name,
         description: repo.description,
         homeURL: repo.homepage || repo.html_url,
@@ -101,7 +111,9 @@ async function parseGithubRelease(entry) {
         authorAvatarURL: author.avatar_url,
         installCount: releases.reduce((agg, x) => agg + x.trustedAsset.download_count, 0),
         releases: releases.map(x => {
+            console.log(x);
             return {
+                url: x.trustedAsset.url,
                 name: x.name,
                 notes: x.body,
                 version: x.tag_name,

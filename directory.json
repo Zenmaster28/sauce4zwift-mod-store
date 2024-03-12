@@ -1,8 +1,7 @@
 [{
     "type": "github",
     "org": "mayfield",
-    "id": "s4z-wolf3d-mod",
-    "idcorrect": "b7a17692-cbcb-493a-827f-c84a64f14af1",
+    "id": "b7a17692-cbcb-493a-827f-c84a64f14af1",
     "repo": "s4z-wolf3d-mod",
     "logoURL": "https://raw.githubusercontent.com/mayfield/s4z-wolf3d-mod/main/pages/images/favicon.png",
     "releases": [{
