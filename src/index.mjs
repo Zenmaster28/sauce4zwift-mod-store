@@ -3,7 +3,7 @@ const mods = [];
 
 function render() {
     document.querySelector('.directory').innerHTML = mods.map(x => `
-        <div class="mod">
+        <div class="mod" data-id="${x.id}">
             <header>
                 <div class="author">
                     <a class="author-avatar" href="${x.authorURL}"><img src="${x.authorAvatarURL}"/></a>
@@ -46,10 +46,15 @@ async function fetchJSON(...args) {
 }
 
 
+async function fetchGH(urn) {
+    return await fetchJSON(`/swproxy/gh/${urn.replace(/^\//, '')}`);
+}
+
+
 const githubUsers = new Map();
 async function getGithubUser(id) {
     if (!githubUsers.has(id)) {
-        githubUsers.set(id, fetchJSON(`https://api.github.com/users/${id}`));
+        githubUsers.set(id, fetchGH(`/users/${id}`));
     }
     return await githubUsers.get(id);
 }
@@ -59,7 +64,7 @@ const githubRepos = new Map();
 async function getGithubRepo(org, repo) {
     const key = `${org}/${repo}`;
     if (!githubRepos.has(key)) {
-        githubRepos.set(key, fetchJSON(`https://api.github.com/repos/${key}`));
+        githubRepos.set(key, fetchGH(`repos/${key}`));
     }
     return await githubRepos.get(key);
 }
@@ -70,7 +75,7 @@ async function parseGithubRelease(entry) {
         getGithubRepo(entry.org, entry.repo),
         getGithubUser(entry.org),
         Promise.all(entry.releases.map(async x => {
-            const rel = await fetchJSON(`https://api.github.com/repos/${entry.org}/${entry.repo}/releases/${x.id}`);
+            const rel = await fetchGH(`/repos/${entry.org}/${entry.repo}/releases/${x.id}`);
             const trustedAsset = rel.assets.find(xx => xx.id === x.assetId);
             if (!trustedAsset) {
                 console.warn("Trusted asset not found:", x, entry);
@@ -119,7 +124,7 @@ async function probeLocalSauceMods() {
             if (!resp.ok) {
                 throw new Error('nope');
             }
-            return await resp.json();
+            return (await resp.json()).filter(x => x.enabled);
         } catch(e) {
             return new Promise(() => void 0); // hang
         }
@@ -128,6 +133,7 @@ async function probeLocalSauceMods() {
 
 
 async function main() {
+    const reg = await navigator.serviceWorker.register('/sw.mjs', {scope: './'});
     const dir = await fetchJSON('/directory.json');
     for (const entry of dir) {
         if (entry.type === 'github') {
@@ -146,8 +152,13 @@ async function main() {
     }
     render();
     probeLocalSauceMods().then(installed => {
-        console.log(installed);
-        debugger;
+        console.debug({installed});
+        for (const x of installed) {
+            const el = document.querySelector(`.mod[data-id="${x.id}"]`);
+            if (el) {
+                el.classList.add('installed');
+            }
+        }
     });
 }
 

@@ -7,51 +7,95 @@
     border: 1px solid black;
 }
 
-.mod .tags {
-    display: flex;
+@keyframes swing {
+    from {
+        rotate: 10deg;
+    }
+    50% {
+        rotate: -10deg;
+    }
+    to {
+        rotate: 10deg;
+    }
 }
 
-.mod .tags .tag {
-    font-size: 0.88em;
-    text-transform: uppercase;
-    border-radius: 0.28em;
-    padding: 0.12em 0.6em;
-    background-image: linear-gradient(135deg, #333, #666);
-    color: white;
-    margin: 0.15em;
+header#intro {
+    font-size: 4em;
+
+    nav {
+        display: flex;
+
+        a.logo {
+            height: 300px;
+            display: block;
+            padding: 0 20%;
+        }
+
+        img.logo {
+            height: 100%;
+            animation: 5s infinite ease-in-out swing;
+        }
+    }
 }
 
-.mod header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+body > main {
+    margin-top: 2em;
 }
 
-.mod header .author {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.mod header .author-avatar img {
-    width: 4em;
-}
+.mod {
+    &:not(.installed) {
+        .installed-only {
+            display: none;
+        }
+    }
 
-.mod main {
-    display: flex;
-    flex-wrap: wrap;
-}
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
 
-.mod main section.left {
-    min-width: 300px;
-    flex: 1 1 auto;
-}
+        .author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.mod a.install {
-    display: flex;
-}
+        .author-avatar img {
+            width: 4em;
+        }
+    }
 
-.mod main section.right {
-    flex: 0 0 300px;
-    display: flex;
+    .tags {
+        display: flex;
+
+        .tag {
+            font-size: 0.88em;
+            text-transform: uppercase;
+            border-radius: 0.28em;
+            padding: 0.12em 0.6em;
+            background-image: linear-gradient(135deg, #333, #666);
+            color: white;
+            margin: 0.15em;
+        }
+    }
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+
+        section.left {
+            min-width: 300px;
+            flex: 1 1 auto;
+        }
+
+        section.right {
+            flex: 0 0 300px;
+            display: flex;
+        }
+    }
+
+    a.install {
+        display: flex;
+    }
 }
