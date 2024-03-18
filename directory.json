@@ -7,5 +7,21 @@
     "releases": [{
         "id": 145384817,
         "assetId": 155706162
+    }, {
+        "id": 145384817,
+        "assetId": 155706162,
+        "minVersion": "1.1"
+    }, {
+        "id": 145384817,
+        "assetId": 155706162,
+        "minVersion": "1.x"
+    }, {
+        "id": 145384817,
+        "assetId": 155706162,
+        "minVersion": "1.1.5"
+    }, {
+        "id": 145384817,
+        "assetId": 155706162,
+        "minVersion": "1.2"
     }]
 }]
