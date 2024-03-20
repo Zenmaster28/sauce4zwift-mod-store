@@ -175,17 +175,13 @@ async function main() {
         if (!modId) {
             return;
         }
-    debugger;
         if (ev.target.closest('a.install-remove .install')) {
             const entry = dir.find(x => x.id === modId);
             if (self.isElectron && self.electron) {
                 await electron.ipcInvoke('rpc', 'installPackedMod', entry);
                 alert("did it");
             } else {
-                const resp = await fetch(`${localSauceURL}/api/rpc/v1/installPackedMod`, {
-                    method: 'POST',
-                    body: JSON.stringify(entry),
-                });
+                const resp = await fetch(`${localSauceURL}/api/rpc/v1/installPackedMod/${modId}`);
                 if (!resp.ok) {
                     throw new Error('install error: ' + await resp.text());
                 }
