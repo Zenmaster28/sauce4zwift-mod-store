@@ -56,6 +56,13 @@ body > main {
 }
 
 
+html:not(.has-connection) {
+    .has-connection-only {
+        display: none;
+    }
+}
+
+
 .mod {
     border: 1px solid black;
     margin: 1em;
@@ -63,6 +70,11 @@ body > main {
 
     &:not(.installed) {
         .installed-only {
+            display: none;
+        }
+    }
+    &.installed {
+        .not-installed-only {
             display: none;
         }
     }
@@ -75,6 +87,8 @@ body > main {
         margin-bottom: 1em;
 
         .name {
+            display: flex;
+            align-items: center;
             font-size: 2em;
             padding-right: 0.2em;
         }
@@ -133,13 +147,14 @@ body > main {
     }
 
     .tags {
-        display: flex;
+        display: inline-flex;
         flex: 1 0 auto;
         justify-content: center;
     }
 
     .tag {
         --color: #36c;
+        display: inline-flex;
         font-size: 0.88em;
         text-transform: uppercase;
         border-radius: 0.28em;
@@ -149,8 +164,32 @@ body > main {
         margin: 0.15em;
     }
 
-    .installed.tag {
+    .install-remove {
+        margin-left: 0.5em;
+        font-size: 0.6em;
+        text-decoration: none;
+
+        .tag {
+            border: 3px double black;
+            outline: 3px double black;
+            outline-offset: 2px;
+        }
+    }
+
+    a:hover .tag {
+        box-shadow: 1px 1px 4px 0 #0004;
+    }
+
+    a:active .tag {
+        box-shadow: 1px 1px 4px 0 #0004 inset;
+    }
+
+    .install.tag {
         --color: #4c5;
+    }
+
+    .remove.tag {
+        --color: #c45;
     }
 
     main {
@@ -185,9 +224,5 @@ body > main {
         max-height: 10em;
         overflow: auto;
         /*font-family: monospace;*/ /*Use a monospace font when were done playing around with the funny style*/
-    }
-
-    a.install {
-        display: flex;
     }
 }

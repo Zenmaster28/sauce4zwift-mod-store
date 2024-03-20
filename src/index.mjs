@@ -1,12 +1,18 @@
 const mods = [];
+let localSauceURL;
 
 
 function render() {
     document.querySelector('.directory').innerHTML = mods.map(x => `
         <div class="mod" data-id="${x.id}">
             <header>
-                <a download class="install name" href="${x.releases[0].url}">${x.name}</a>
-                <div class="tag installed-only installed">installed</div>
+                <div class="name">
+                    ${x.name}
+                    <a class="install-remove has-connection-only" href="javascript:void(0);">
+                        <div class="tag not-installed-only install">install</div>
+                        <div class="tag installed-only remove">remove</div>
+                    </a>
+                </div>
                 <div class="filler"></div>
                 <div class="meta" title="Community Stars">${x.stars} ⭐</div>
                 <div class="meta">${x.releases[0].version}</div>
@@ -14,9 +20,7 @@ function render() {
             </header>
             <main>
                 <section class="left">
-                    <a download class="install" href="${x.releases[0].url}">
-                        <img class="mod-logo" src="${x.logoURL}"/>
-                    </a>
+                    <img class="mod-logo" src="${x.logoURL}"/>
                 </section>
                 <section class="right">
                     <div class="desc">${x.description}</div>
@@ -127,14 +131,17 @@ async function parseGithubRelease(entry) {
 
 async function probeLocalSauceMods() {
     const urls = [
-        'http://localhost:1080/api/mods/v1',
-        'http://127.0.0.1:1080/api/mods/v1',
+        'http://localhost:1080',
+        'http://127.0.0.1:1080',
     ];
     return await Promise.race(urls.map(async url => {
         try {
-            const resp = await fetch(url);
+            const resp = await fetch(`${url}/api/mods/v1`);
             if (!resp.ok) {
                 throw new Error('nope');
+            }
+            if (!localSauceURL) {
+                localSauceURL = url;
             }
             return (await resp.json()).filter(x => x.enabled);
         } catch(e) {
@@ -163,15 +170,49 @@ async function main() {
         }
     }
     render();
-    probeLocalSauceMods().then(installed => {
-        console.debug({installed});
-        for (const x of installed) {
-            const el = document.querySelector(`.mod[data-id="${x.id}"]`);
-            if (el) {
-                el.classList.add('installed');
+    document.documentElement.addEventListener('click', async ev => {
+        const modId = ev.target.closest('.mod[data-id]').dataset.id;
+        if (!modId) {
+            return;
+        }
+    debugger;
+        if (ev.target.closest('a.install-remove .install')) {
+            const entry = dir.find(x => x.id === modId);
+            if (self.isElectron && self.electron) {
+                await electron.ipcInvoke('rpc', 'installPackedMod', entry);
+                alert("did it");
+            } else {
+                const resp = await fetch(`${localSauceURL}/api/rpc/v1/installPackedMod`, {
+                    method: 'POST',
+                    body: JSON.stringify(entry),
+                });
+                if (!resp.ok) {
+                    throw new Error('install error: ' + await resp.text());
+                }
+                alert("did it");
             }
+        } else if (ev.target.closest('a.install-remove .remove')) {
+            debugger;
         }
     });
+    if (self.isElectron && self.electron && self.electron.ipcInvoke) {
+        document.documentElement.classList.add('has-connection');
+        electron.ipcInvoke('rpc', 'getAvailableMods').then(x => {
+            debugger;
+        });
+    } else {
+        probeLocalSauceMods().then(installed => {
+            document.documentElement.classList.add('has-connection');
+            console.debug({installed});
+            for (const x of installed) {
+                const el = document.querySelector(`.mod[data-id="${x.id}"]`);
+                if (el) {
+                    el.classList.add('installed');
+                    el.querySelector('a.install').href = 'javascript:void(0);';
+                }
+            }
+        });
+    }
 }
 
 main();
