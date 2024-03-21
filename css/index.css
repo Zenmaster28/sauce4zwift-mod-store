@@ -1,6 +1,6 @@
 .warn {
     color: #844;
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
 
 a {
@@ -32,15 +32,52 @@ a {
 }
 
 header#intro {
-    font-size: 4em;
+    font-size: 1.5em;
 
     nav {
         display: flex;
+        flex-wrap: wrap;
+        border-style: groove;
+        border-width: 17px;
+        border-color: #ee3e0b90;
+        padding: 1em;
+
+        > .left {
+            flex: 0 0 auto;
+        }
+
+        > .right {
+            min-width: 320px;
+            flex: 1 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footnote {
+            font-size: 0.7em;
+            font-weight: 300;
+            text-align: right;
+            padding-top: 2em;
+            color: black;
+            opacity: 0.9;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+
+        h1 {
+            margin-top: 0;
+            padding-top: 0;
+            font-size: 2.5em;
+            font-weight: 100;
+        }
 
         a.logo {
-            height: 200px;
+            height: 240px;
             display: block;
-            padding: 0 50px 0 20px;
+            padding: 0 70px 0 20px;
         }
 
         img.logo {
@@ -88,6 +125,7 @@ html:not(.has-connection) {
 
         .name {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             font-size: 2em;
             padding-right: 0.2em;
@@ -111,6 +149,8 @@ html:not(.has-connection) {
     .mod-logo {
         width: 10em;
         height: 10em;
+        max-width: 100%;
+        max-height: 100%;
         object-fit: contain;
     }
 
@@ -136,7 +176,6 @@ html:not(.has-connection) {
 
     .meta {
         padding: 0.1em 0.2em;
-        font-size: 0.88em;
         font-weight: 300;
 
         &:not(:last-child)::after {
@@ -165,7 +204,7 @@ html:not(.has-connection) {
     }
 
     .install-remove {
-        margin-left: 0.5em;
+        margin-left: 0.8em;
         font-size: 0.6em;
         text-decoration: none;
 
@@ -198,10 +237,12 @@ html:not(.has-connection) {
         border-top: 1px solid #0003;
 
         section.left {
-            flex: 0 0 300px;
+            flex: 0 0 200px;;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 1em;
+            padding: 1em;
         }
 
         section.right {
@@ -221,8 +262,27 @@ html:not(.has-connection) {
         margin-left: 1em;
         padding: 0.5em;
         white-space: pre-wrap;
-        max-height: 10em;
+        max-height: 5em;
         overflow: auto;
         /*font-family: monospace;*/ /*Use a monospace font when were done playing around with the funny style*/
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .mod {
+        margin: 0;
+
+        header {
+            .name {
+                font-size: 1.5em;
+                flex: 1 0 100%;
+                justify-content: space-between;
+                margin-bottom: 0.5em;
+            }
+
+            .filler {
+                display: none;
+            }
+        }
     }
 }
