@@ -11,6 +11,15 @@ a {
 /*    border: 1px solid #000a;*/
 }
 
+body > footer {
+    font-size: 0.8em;
+    margin-top: 2em;
+    padding: 2em;
+    font-weight: 300;
+    color: #444;
+    text-align: center;
+}
+
 @keyframes swing {
     from {
         rotate: -30deg;
@@ -28,6 +37,72 @@ a {
     to {
         rotate: -30deg;
         translate: 0 0;
+    }
+}
+
+@keyframes working-visual {
+    from {
+        outline-width: 2px;
+        outline-offset: -2px;
+        rotate: 2deg;
+        --progress: 0;
+    }
+
+    5% {
+        outline-color: grey;
+        rotate: -1deg;
+    }
+
+    20% {
+        outline-color: red;
+        rotate: 2deg;
+    }
+
+    50% {
+        outline-width: 20px;
+        outline-offset: 20px;
+        outline-color: gold;
+        rotate: -2deg;
+        --progress: 1;
+    }
+
+    80% {
+        outline-color: green;
+        rotate: 2deg;
+    }
+
+    95% {
+        outline-color: blue;
+        rotate: 362deg;
+    }
+
+    to {
+        rotate: 1deg;
+        outline-width: 2px;
+        outline-offset: -2px;
+        --progress: 0;
+    }
+}
+
+.postit {
+    background: yellow;
+    margin: 0.5em;
+    color: black;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 8px 0 #0004;
+    padding: 1em;
+    padding-right: 2em;
+    line-height: 1.4;
+    font-size: 14px;
+    display: flex;
+    position: relative;
+    text-align: left;
+
+    &::after {
+        content: '📌';
+        top: 8px;
+        right: 8px;
+        position: absolute;
     }
 }
 
@@ -54,12 +129,11 @@ header#intro {
         }
 
         .footnote {
-            font-size: 0.7em;
+            font-size: 0.6em;
             font-weight: 300;
             text-align: right;
             padding-top: 2em;
-            color: black;
-            opacity: 0.9;
+            color: #555;
 
             a {
                 color: inherit;
@@ -99,6 +173,11 @@ html:not(.has-connection) {
     }
 }
 
+html.has-connection {
+    .no-connection-only {
+        display: none;
+    }
+}
 
 .mod {
     border: 1px solid black;
@@ -110,8 +189,21 @@ html:not(.has-connection) {
             display: none;
         }
     }
+
     &.installed {
         .not-installed-only {
+            display: none;
+        }
+    }
+
+    &:not(.restart-required) {
+        .restart-required-only {
+            display: none;
+        }
+    }
+
+    &.restart-required {
+        .no-restart-required-only {
             display: none;
         }
     }
@@ -201,17 +293,62 @@ html:not(.has-connection) {
         background-image: linear-gradient(135deg, color-mix(in srgb, var(--color), black 30%), var(--color));
         color: white;
         margin: 0.15em;
+        position: relative;
+
+        &.busy {
+            animation: 1.5s working-visual infinite linear;
+            pointer-events: none;
+            filter: saturate(0.5);
+            color: transparent;
+            min-width: 10ch;
+
+            &::before {
+                content: 'Science...';
+                color: white;
+                position: absolute;
+            }
+
+            &::after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                position: absolute;
+                pointer-events: none;
+                z-index: 1;
+                background-image:
+                    linear-gradient(to right,
+                        transparent calc(100% * var(--progress) - 2px),
+                        black calc(100% * var(--progress)),
+                        transparent calc(100% * var(--progress) + 2px)),
+                    linear-gradient(to bottom,
+                        transparent calc(100% * var(--progress) - 2px),
+                        black calc(100% * var(--progress)),
+                        transparent calc(100% * var(--progress) + 2px));
+            }
+        }
     }
 
-    .install-remove {
+    .install-remove,
+    .disconnected {
         margin-left: 0.8em;
         font-size: 0.6em;
         text-decoration: none;
 
-        .tag {
+        &.install-remove .tag {
             border: 3px double black;
             outline: 3px double black;
             outline-offset: 2px;
+            transition: 400ms outline;
+
+            &:hover {
+                outline-width: 10px;
+            }
+        }
+
+        &.disconnected .tag {
+            --color: grey;
         }
     }
 

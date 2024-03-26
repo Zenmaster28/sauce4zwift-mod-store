@@ -15,7 +15,7 @@ addEventListener("fetch", ev => {
             let resp = await cache.match(ev.request);
             if (resp) {
                 const ts = +resp.headers.get('x-sw-cache-ts');
-                if (!ts || Date.now() - ts < 600_000) {
+                if (!ts || Date.now() - ts < 3600_000) {
                     console.debug('ServiceWorker Proxy cache-hit', ev.request.url);
                     return resp;
                 }

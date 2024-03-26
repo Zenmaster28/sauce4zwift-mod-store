@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="src/gh-rel-tool.mjs" type="module"></script>
+        <style>
+            *, *::before, *::after {
+                box-sizing: border-box;
+            }
+
+            input {
+                width: 80ch;
+            }
+
+            * {
+                padding: 0.2em;
+            }
+
+            k, v {
+                line-height: 1.5;
+            }
+
+            k {
+                font-weight: 600;
+        
+            }
+
+            v {
+                font-variant: tabular-nums;
+            }
+
+            #output {
+                margin: 1em;
+                border: 2px solid #222;
+                border-radius: 0.3em;
+                padding: 1em;
+
+                &.error {
+                    border-color: red;
+                    border-width: 4px;
+                    white-space: pre-wrap;
+                }
+
+                .box {
+                    border-radius: 0.3em;
+                    margin: 1em;
+                    border: 1px solid #666;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div>Enter the github release URL:</div>
+        <div><input type="text" name="relurl" placeholder="e.g. https://github.com/SauceLLC/sauce4zwift-mod-example/releases/tag/v0.0.2"/></div>
+        <br/>
+        <br/>
+        <br/>
+        <div><b>Output:</b></div>
+        <div id="output"></div>
+    </body>
+</html>

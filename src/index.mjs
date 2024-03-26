@@ -1,6 +1,13 @@
+import * as net from './net.mjs';
+import * as github from './github.mjs';
+
 const mods = [];
-let localSauceURL;
-let localSauceElectron;
+
+
+async function minWait(ms, promise) {
+    await new Promise(r => setTimeout(r, ms));
+    return await promise;
+}
 
 
 function render() {
@@ -10,9 +17,13 @@ function render() {
                 <div class="name">
                     ${x.name}
                     <a class="install-remove has-connection-only" href="javascript:void(0);">
-                        <div class="tag not-installed-only install">install</div>
-                        <div class="tag installed-only remove">remove</div>
+                        <div class="tag no-restart-required-only not-installed-only install">install</div>
+                        <div class="tag no-restart-required-only installed-only remove">remove</div>
+                        <div class="tag restart-required-only restart">restart required</div>
                     </a>
+                    <div class="no-connection-only disconnected">
+                        <div class="tag">disconnected</div>
+                    </div>
                 </div>
                 <div class="filler"></div>
                 <div class="meta" title="Community Stars">${x.stars} ⭐</div>
@@ -49,148 +60,39 @@ function render() {
 }
 
 
-async function fetchJSON(...args) {
-    const resp = await fetch(...args);
-    if (resp.ok) {
-        return await resp.json();
-    } else {
-        console.error('Fetch error:', resp.status, await resp.text());
-        throw new Error('Fetch Error: ' + resp.status);
-    }
-}
-
-
-async function fetchGH(urn) {
-    return await fetchJSON(`/swproxy/gh/${urn.replace(/^\//, '')}`);
-}
-
-
-const githubUsers = new Map();
-async function getGithubUser(id) {
-    if (!githubUsers.has(id)) {
-        githubUsers.set(id, fetchGH(`/users/${id}`));
-    }
-    return await githubUsers.get(id);
-}
-
-
-const githubRepos = new Map();
-async function getGithubRepo(org, repo) {
-    const key = `${org}/${repo}`;
-    if (!githubRepos.has(key)) {
-        githubRepos.set(key, fetchGH(`repos/${key}`));
-    }
-    return await githubRepos.get(key);
-}
-
-
-async function parseGithubRelease(entry) {
-    const [repo, author, releases] = await Promise.all([
-        getGithubRepo(entry.org, entry.repo),
-        getGithubUser(entry.org),
-        Promise.all(entry.releases.map(async x => {
-            const rel = await fetchGH(`/repos/${entry.org}/${entry.repo}/releases/${x.id}`);
-            const trustedAsset = rel.assets.find(xx => xx.id === x.assetId);
-            if (!trustedAsset) {
-                console.warn("Trusted asset not found:", x, entry);
-            } else {
-                return {...rel, trustedAsset};
-            }
-        })).then(x => x.filter(xx => xx)),
-    ]);
-    console.log({repo, author, releases});
-    if (repo.disabled || repo.archived || !releases.length) {
-        return;
-    }
-    return {
-        id: entry.id,
-        name: repo.name,
-        description: repo.description,
-        homeURL: repo.homepage || repo.html_url,
-        logoURL: entry.logoURL,
-        stars: repo.stargazers_count,
-        tags: repo.topics,
-        created: new Date(repo.created_at),
-        authorName: author.name,
-        authorURL: author.html_url,
-        authorAvatarURL: author.avatar_url,
-        installCount: releases.reduce((agg, x) => agg + x.trustedAsset.download_count, 0),
-        releases: releases.map(x => {
-            console.log(x);
-            return {
-                url: x.trustedAsset.browser_download_url,
-                name: x.name,
-                notes: x.body,
-                version: x.tag_name,
-                published: new Date(x.published_at),
-                size: x.trustedAsset.size,
-            };
-        }),
-    };
-}
-
-
-async function probeLocalSauce() {
-    if (self.isElectron && self.electron && electron.ipcInvoke) {
-        localSauceElectron = true;
-        return;
-    }
-    const urls = [
-        'http://localhost:1080',
-        'http://127.0.0.1:1080',
-    ];
-    await Promise.race(urls.map(async url => {
-        try {
-            const resp = await fetch(`${url}/api/mods/v1`);
-            if (!resp.ok) {
-                throw new Error('nope');
-            }
-            await resp.json();
-            if (!localSauceURL) {
-                localSauceURL = url;
-            }
-        } catch(e) {
-            return new Promise(() => void 0); // hang
-        }
-    }));
-}
-
-
-async function basicRPC(cmd, ...args) {
-    let env;
-    if (localSauceElectron) {
-        env = JSON.parse(await electron.ipcInvoke('rpc', cmd, ...args));
-    } else if (localSauceURL) {
-        const resp = await fetch(`${localSauceURL}/api/rpc/v1/${cmd}`, {
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(args)
-        });
-        if (!resp.ok) {
-            throw new Error('rpc error: ' + await resp.text());
-        }
-        env = await resp.json();
-    }
-    if (env) {
-        if (!env.success) {
-            console.error('rpc error:', env.error.stack);
-            throw new Error(env.error.message);
-        }
-        return env.value;
-    }
-}
-
 
 async function main() {
-    const localProbe = probeLocalSauce();
-    const reg = await navigator.serviceWorker.register('/sw.mjs', {scope: './'});
-    const dir = await fetchJSON('/directory.json');
+    try {
+        navigator.serviceWorker.register('/sw.mjs', {scope: './'});
+        CSS.registerProperty({
+            name: "--progress",
+            syntax: "<number>",
+            inherits: true,
+            initialValue: 0,
+        });
+    } catch(e) {/*no-pragma*/}
+    const localProbe = net.probeLocalSauce();
+    const dir = await net.fetchJSON('/directory.json');
+    const q = new URLSearchParams(location.search);
+    if (q.get('preview')) {
+        let [org, repo, relId, assetId] = q.get('preview').split(',');
+        relId = Number(relId);
+        assetId = Number(assetId);
+        dir.unshift({
+            type: 'github',
+            org,
+            repo,
+            releases: [{
+                id: relId,
+                assetId,
+            }]
+        });
+    }
     for (const entry of dir) {
         if (entry.type === 'github') {
             try {
-                const m = await parseGithubRelease(entry);
+                const m = await github.parseGithubRelease(entry);
                 if (m) {
-                    console.warn(m);
                     mods.push(m);
                 }
             } catch(e) {
@@ -207,35 +109,77 @@ async function main() {
             return;
         }
         const modId = modIdEl.dataset.id;
-        if (ev.target.closest('a.install-remove .install')) {
+        let btn;
+        if ((btn = ev.target.closest('a.install-remove .install'))) {
             const entry = dir.find(x => x.id === modId);
-            await basicRPC('installPackedMod', modId);
-            alert("did it");
-        } else if (ev.target.closest('a.install-remove .remove')) {
-            await basicRPC('removePackedMod', modId);
-            alert("did it");
+            btn.classList.add('busy');
+            try {
+                await minWait(5000, net.basicRPC('installPackedMod', modId));
+            } catch(e) {
+                alert(e.stack);
+            } finally {
+                btn.classList.remove('busy');
+            }
+            await updateModStatus();
+        } else if ((btn = ev.target.closest('a.install-remove .remove'))) {
+            btn.classList.add('busy');
+            try {
+                await minWait(5000, net.basicRPC('removePackedMod', modId));
+            } catch(e) {
+                alert(e.stack);
+            } finally {
+                btn.classList.remove('busy');
+            }
+            await updateModStatus();
+        } else if ((btn = ev.target.closest('a.install-remove .restart'))) {
+            btn.classList.add('busy');
+            try {
+                await minWait(5000, net.basicRPC('restart'));
+            } catch(e) {
+                alert(e.stack);
+            } finally {
+                btn.classList.remove('busy');
+            }
+            await updateModStatus();
         }
     });
-    await probeLocalSauce;
-    const installed = await basicRPC('getAvailableMods');
-    if (installed) {
-        updateInstalledMods(installed);
+    await net.probeLocalSauce;
+    await updateModStatus();
+    setInterval(updateModStatus, 15000);
+}
+
+
+async function updateModStatus() {
+    if (document.querySelector('.busy')) {
+        return;
     }
+    const installed = await net.basicRPC('getAvailableMods');
+    if (installed) {
+        document.documentElement.classList.add('has-connection');
+    }
+    updateInstalledMods(installed || []);
 }
 
 
 function updateInstalledMods(installed) {
-    document.documentElement.classList.add('has-connection');
-    console.debug({installed});
+    for (const el of document.querySelectorAll(`.mod[data-id]`)) {
+        el.classList.remove('restart-required', 'installed');
+    }
     for (const x of installed) {
+        if (x.unpacked) {
+            continue;
+        }
         if (!x.enabled) {
             console.warn("Mod installed but disabled:", x.id);
             continue;
         }
         const el = document.querySelector(`.mod[data-id="${x.id}"]`);
         if (el) {
-            el.classList.add('installed');
-            //el.querySelector('a.install').href = 'javascript:void(0);';
+            if (x.restartRequired) {
+                el.classList.add('restart-required');
+            } else {
+                el.classList.add('installed');
+            }
         }
     }
 }
