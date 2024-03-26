@@ -24,4 +24,14 @@
         "assetId": 155706162,
         "minVersion": "1.2"
     }]
+}, {
+    "type": "github",
+    "org": "SauceLLC",
+    "id": "03ad7bb4-9739-4b61-91a7-359db44324f4",
+    "repo": "sauce4zwfit-mod-example",
+    "logoURL": "https://raw.githubusercontent.com/SauceLLC/sauce4zwift-mod-example/main/pages/images/neato.png",
+    "releases": [{
+        "id": 148389233,
+        "assetId": 158607142
+    }]
 }]
