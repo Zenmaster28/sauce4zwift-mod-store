@@ -1,7 +1,13 @@
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css/common.css"/>
+        <script src="https://unpkg.com/fflate@0.8.2"></script>
         <script src="src/gh-rel-tool.mjs" type="module"></script>
         <style>
+            html {
+                font: 14px monospace;
+            }
+
             *, *::before, *::after {
                 box-sizing: border-box;
             }
@@ -15,12 +21,12 @@
             }
 
             k, v {
-                line-height: 1.5;
+                display: inline-block;
             }
 
             k {
                 font-weight: 600;
-        
+                min-width: 14ch;
             }
 
             v {

@@ -22,7 +22,7 @@ export function fetchProxy(ns, fallback, urn) {
             try {
                 swReg = await navigator.serviceWorker.getRegistration();
             } catch (e) {/*no-pragma*/}
-            const url = swReg ? `/swproxy/${ns}/${urn}` : `${fallback}/${urn}`;
+            const url = swReg?.active ? `/swproxy/${ns}/${urn}` : `${fallback}/${urn}`;
             return await fetchJSON(url);
         })());
     }
