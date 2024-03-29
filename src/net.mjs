@@ -85,4 +85,44 @@ export async function probeLocalSauce() {
 }
 
 
+export async function getInstalls(id) {
+    try {
+        const installs = await fetchJSON(`https://mod-rank.sauce.llc/${id}-installs.json`);
+        return installs.count;
+    } catch(e) {
+        console.warn("Probably no installs yet:", e.message);
+        return 1;
+    }
+}
+
+
+export async function getRank(id) {
+    try {
+        const installs = await fetchJSON(`https://mod-rank.sauce.llc/${id}-rank.json`);
+        return installs.rank;
+    } catch(e) {
+        console.warn("Probably not ranked yet:", e.message);
+        return 1;
+    }
+}
+
+
+export async function upVote(id) {
+    return await fetchJSON(`https://mod-rank.sauce.llc/edit/${id}/rank`, {
+        method: 'POST',
+        body: JSON.stringify(1),
+        headers: {'content-type': 'application/json'}
+    });
+}
+
+
+export async function downVote(id) {
+    return await fetchJSON(`https://mod-rank.sauce.llc/edit/${id}/rank`, {
+        method: 'POST',
+        body: JSON.stringify(0),
+        headers: {'content-type': 'application/json'}
+    });
+}
+
+
 navigator.serviceWorker.register('/sw.mjs', {scope: './'});

@@ -48,13 +48,11 @@ export async function parseGithubRelease(entry) {
         description: repo.description,
         homeURL: repo.homepage || repo.html_url,
         logoURL: entry.logoURL || author.avatar_url,
-        stars: repo.stargazers_count,
         tags: repo.topics,
         created: new Date(repo.created_at),
         authorName: author.name,
         authorURL: author.html_url,
         authorAvatarURL: author.avatar_url,
-        installCount: releases.reduce((agg, x) => agg + x.trustedAsset.download_count, 0),
         releases: releases.map(x => {
             return {
                 url: x.trustedAsset.browser_download_url,

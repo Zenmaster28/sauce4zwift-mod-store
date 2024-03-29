@@ -238,6 +238,41 @@ html.has-connection {
         border-top: 1px solid #0003;
     }
 
+    .vote {
+        display: inline-flex;
+        flex-direction: column;
+        vertical-align: middle;
+
+        a {
+            font-size: 1.2em;
+            font-weight: 500;
+            cursor: pointer;
+            line-height: 0.6;
+            transition: 200ms -webkit-text-stroke, 200ms filter;
+            &[data-vote="up"] {
+                color: green;
+            }
+            &[data-vote="down"] {
+                color: red;
+            }
+
+            &:hover {
+                -webkit-text-stroke: 1px #000;
+                filter: drop-shadow(0 0 4px #000a);
+            }
+
+            &:active {
+                -webkit-text-stroke: 0px #000;
+                filter: brightness(0.5);
+            }
+
+            &.busy {
+                pointer-events: none;
+                opacity: 0.4;
+            }
+        }
+    }
+
     .mod-logo {
         width: 10em;
         height: 10em;
@@ -404,6 +439,7 @@ html.has-connection {
         /*font-family: monospace;*/ /*Use a monospace font when were done playing around with the funny style*/
     }
 }
+
 
 @media only screen and (max-width: 768px) {
     .mod {

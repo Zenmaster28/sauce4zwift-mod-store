@@ -2,6 +2,7 @@ import * as net from './net.mjs';
 import * as github from './github.mjs';
 
 const mods = [];
+const ranks = new Map();
 
 
 async function minWait(ms, promise) {
@@ -26,7 +27,13 @@ function render() {
                     </div>
                 </div>
                 <div class="filler"></div>
-                <div class="meta" title="Community Stars">${x.stars} ⭐</div>
+                <div class="meta" title="Community Ranking">
+                    <div class="no-restart-required-only NOinstalled-only vote">
+                        <a data-vote="up" title="Up vote">🠹</a>
+                        <a data-vote="down" title="Down vote">🠻</a>
+                    </div>
+                    <span class="rank-value">${ranks.get(x.id)?.rank ?? '-'}</span> ⭐
+                </div>
                 <div class="meta">${x.releases[0].version}</div>
                 <div class="meta">Updated: ${x.releases[0].published.toLocaleDateString()}</div>
             </header>
@@ -52,13 +59,25 @@ function render() {
                 </div>
                 <div class="tags">${x.tags.map(t => `<div class="tag">${t}</div>`).join('')}</div>
                 <div class="meta">${Math.round(x.releases[0].size / 1024)}KB</div>
-                <div class="meta">${x.installCount} installs</div>
+                <div class="meta"><span class="installs-value">${ranks.get(x.id)?.installs ?? '-'}</span> installs</div>
                 <div class="meta">Created: ${x.created.toLocaleDateString()}</div>
             </footer>
         </div>
     `).join('\n');
 }
 
+
+async function loadRankInfo(dir) {
+    await Promise.all(dir.map(async x => {
+        const [installs, rank] = await Promise.all([net.getInstalls(x.id), net.getRank(x.id)]);
+        ranks.set(x.id, {installs, rank});
+        const modEl = document.querySelector(`.directory .mod[data-id="${x.id}"]`);
+        if (modEl) {
+            modEl.querySelector('.installs-value').textContent = installs.toLocaleString();
+            modEl.querySelector('.rank-value').textContent = rank.toLocaleString();
+        }
+    }));
+}
 
 
 async function main() {
@@ -88,6 +107,7 @@ async function main() {
             }]
         });
     }
+    loadRankInfo(dir);
     for (const entry of dir) {
         if (entry.type === 'github') {
             try {
@@ -141,6 +161,20 @@ async function main() {
                 btn.classList.remove('busy');
             }
             await updateModStatus();
+        } else if ((btn = ev.target.closest('a[data-vote]'))) {
+            btn.classList.add('busy');
+            try {
+                let rank;
+                if (btn.dataset.vote === 'up') {
+                    rank = await net.upVote(modId);
+                } else if (btn.dataset.vote === 'down') {
+                    rank = await net.downVote(modId);
+                }
+                ranks.get(modId).rank = rank;
+            } finally {
+                btn.classList.remove('busy');
+            }
+            render();
         }
     });
     await net.probeLocalSauce;

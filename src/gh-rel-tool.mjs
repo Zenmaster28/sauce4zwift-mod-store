@@ -57,15 +57,19 @@ async function refreshUrl() {
                     </div>
 
                     <k>Example <code>directory.json</code> entry...</k>
-                    <pre class="box">${JSON.stringify({
+                    <pre class="box" style="font-size: 10px; overflow: auto;">${JSON.stringify({
+                        id: '<...UUID4 for your Mod (never changes)...>',
                         type: 'github',
                         org,
-                        id: '<...UUID4 (random) for your Mod (never changes)...>',
-                        id: '<...UUID4 (random) value for your mod, never changes...>',
-                        
-                    })</pre>
-    
-
+                        repo,
+                        logoURL: 'https://raw.githubusercontent.com/SauceLLC/sauce4zwift-mod-store/main/images/mod-template-image.webp',
+                        releases: [{
+                            id: rel.id,
+                            assetId: x.id,
+                            hash: x.hash,
+                            url: x.browser_download_url,
+                        }]
+                    }, null, 4)}</pre>
                     <a href="/index.html?preview=${org},${repo},${rel.id},${x.id}">Preview Page</a>
                 </div>
             `).join('')}
