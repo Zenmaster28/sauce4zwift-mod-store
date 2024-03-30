@@ -1,12 +1,20 @@
 
+const modRankUrl = 'https://mod-rank.sauce.llc';
 let localSauceURL;
 let localSauceElectron;
 
-export async function fetchJSON(...args) {
-    const resp = await fetch(...args);
+
+export async function fetchJSON(url, options={}) {
+    const resp = await fetch(url, options).catch(e => {
+        if (options.silent) {
+            return {ok: false};
+        } else {
+            throw e;
+        }
+    });
     if (resp.ok) {
         return await resp.json();
-    } else {
+    } else if (!options.silent) {
         console.error('Fetch error:', resp.status, await resp.text());
         throw new Error('Fetch Error: ' + resp.status);
     }
@@ -86,24 +94,12 @@ export async function probeLocalSauce() {
 
 
 export async function getInstalls(id) {
-    try {
-        const installs = await fetchJSON(`https://mod-rank.sauce.llc/${id}-installs.json`);
-        return installs.count;
-    } catch(e) {
-        console.warn("Probably no installs yet:", e.message);
-        return 1;
-    }
+    return (await fetchJSON(`https://mod-rank.sauce.llc/${id}-onlyinstalls.json`, {silent: true})) || 0;
 }
 
 
 export async function getRank(id) {
-    try {
-        const installs = await fetchJSON(`https://mod-rank.sauce.llc/${id}-rank.json`);
-        return installs.rank;
-    } catch(e) {
-        console.warn("Probably not ranked yet:", e.message);
-        return 1;
-    }
+    return (await fetchJSON(`https://mod-rank.sauce.llc/${id}-onlyrank.json`, {silent: true})) || 0;
 }
 
 

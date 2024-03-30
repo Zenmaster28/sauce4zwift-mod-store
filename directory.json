@@ -5,24 +5,10 @@
     "repo": "s4z-wolf3d-mod",
     "logoURL": "https://raw.githubusercontent.com/mayfield/s4z-wolf3d-mod/main/pages/images/favicon.png",
     "releases": [{
-        "id": 145384817,
-        "assetId": 155706162
-    }, {
+        "minVersion": "1.2",
         "id": 145384817,
         "assetId": 155706162,
-        "minVersion": "1.1"
-    }, {
-        "id": 145384817,
-        "assetId": 155706162,
-        "minVersion": "1.x"
-    }, {
-        "id": 145384817,
-        "assetId": 155706162,
-        "minVersion": "1.1.5"
-    }, {
-        "id": 145384817,
-        "assetId": 155706162,
-        "minVersion": "1.2"
+        "hash": "b9a6bebcc2f538a95dac1c067dbd6aa7010fe5c7d7574538f798f7ed42332f61"
     }]
 }, {
     "type": "github",

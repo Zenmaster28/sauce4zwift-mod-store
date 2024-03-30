@@ -67,7 +67,6 @@ async function refreshUrl() {
                             id: rel.id,
                             assetId: x.id,
                             hash: x.hash,
-                            url: x.browser_download_url,
                         }]
                     }, null, 4)}</pre>
                     <a href="/index.html?preview=${org},${repo},${rel.id},${x.id}">Preview Page</a>
