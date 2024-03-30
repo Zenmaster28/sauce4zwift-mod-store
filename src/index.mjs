@@ -134,7 +134,7 @@ async function main() {
             const entry = dir.find(x => x.id === modId);
             btn.classList.add('busy');
             try {
-                await minWait(5000, net.basicRPC('installPackedMod', modId));
+                await minWait(4000, net.basicRPC('installPackedMod', modId));
             } catch(e) {
                 alert(e.stack);
             } finally {
@@ -144,7 +144,7 @@ async function main() {
         } else if ((btn = ev.target.closest('a.install-remove .remove'))) {
             btn.classList.add('busy');
             try {
-                await minWait(5000, net.basicRPC('removePackedMod', modId));
+                await minWait(4000, net.basicRPC('removePackedMod', modId));
             } catch(e) {
                 alert(e.stack);
             } finally {
@@ -154,7 +154,7 @@ async function main() {
         } else if ((btn = ev.target.closest('a.install-remove .restart'))) {
             btn.classList.add('busy');
             try {
-                await minWait(5000, net.basicRPC('restart'));
+                await minWait(4000, net.basicRPC('restart'));
             } catch(e) {
                 alert(e.stack);
             } finally {
