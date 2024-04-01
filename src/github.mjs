@@ -56,10 +56,9 @@ export async function parseGithubRelease(entry) {
         releases: releases.map(x => {
             return {
                 url: x.trustedAsset.browser_download_url,
-                name: x.name,
                 notes: x.body,
                 version: x.tag_name,
-                published: new Date(x.published_at),
+                updated: new Date(x.published_at),
                 size: x.trustedAsset.size,
             };
         }),

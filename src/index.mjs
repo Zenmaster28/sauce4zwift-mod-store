@@ -1,5 +1,6 @@
 import * as net from './net.mjs';
 import * as github from './github.mjs';
+import * as selfhosted from './selfhosted.mjs';
 
 const mods = [];
 const ranks = new Map();
@@ -28,14 +29,14 @@ function render() {
                 </div>
                 <div class="filler"></div>
                 <div class="meta" title="Community Ranking">
-                    <div class="no-restart-required-only NOinstalled-only vote">
+                    <div class="no-restart-required-only installed-only vote">
                         <a data-vote="up" title="Up vote">🠹</a>
                         <a data-vote="down" title="Down vote">🠻</a>
                     </div>
                     <span class="rank-value">${ranks.get(x.id)?.rank ?? '-'}</span> ⭐
                 </div>
                 <div class="meta">${x.releases[0].version}</div>
-                <div class="meta">Updated: ${x.releases[0].published.toLocaleDateString()}</div>
+                <div class="meta">Updated: ${new Date(x.releases[0].updated).toLocaleDateString()}</div>
             </header>
             <main>
                 <section class="left">
@@ -57,10 +58,9 @@ function render() {
                         <a class="author-name" href="${x.authorURL}">${x.authorName}</a>
                     </div>
                 </div>
-                <div class="tags">${x.tags.map(t => `<div class="tag">${t}</div>`).join('')}</div>
-                <div class="meta">${Math.round(x.releases[0].size / 1024)}KB</div>
+                <div class="tags">${(x.tags || []).map(t => `<div class="tag">${t}</div>`).join('')}</div>
                 <div class="meta"><span class="installs-value">${ranks.get(x.id)?.installs ?? '-'}</span> installs</div>
-                <div class="meta">Created: ${x.created.toLocaleDateString()}</div>
+                <div class="meta">Created: ${new Date(x.created).toLocaleDateString()}</div>
             </footer>
         </div>
     `).join('\n');
@@ -94,32 +94,24 @@ async function main() {
     const dir = await net.fetchJSON('/directory.json');
     const q = new URLSearchParams(location.search);
     if (q.get('preview')) {
-        let [org, repo, relId, assetId] = q.get('preview').split(',');
-        relId = Number(relId);
-        assetId = Number(assetId);
-        dir.unshift({
-            type: 'github',
-            org,
-            repo,
-            releases: [{
-                id: relId,
-                assetId,
-            }]
-        });
+        dir.unshift(JSON.parse(q.get('preview')));
     }
     loadRankInfo(dir);
     for (const entry of dir) {
-        if (entry.type === 'github') {
-            try {
-                const m = await github.parseGithubRelease(entry);
-                if (m) {
-                    mods.push(m);
-                }
-            } catch(e) {
-                console.warn("Ignoring release fetch error:", e);
+        try {
+            let parsedMod;
+            if (entry.type === 'github') {
+                parsedMod = await github.parseGithubRelease(entry);
+            } else if (entry.type === 'selfhosted') {
+                parsedMod = await selfhosted.parseSelfHostedRelease(entry);
+            } else {
+                console.error("Unsupported source:", entry.type);
             }
-        } else {
-            console.error("Unsupported source:", entry.type);
+            if (parsedMod) {
+                mods.push(parsedMod);
+            }
+        } catch(e) {
+            console.warn("Ignoring release parse error:", e);
         }
     }
     render();
