@@ -5,6 +5,11 @@
 
 a {
     color: blue;
+
+    &[href=""] {
+        pointer-events: none;
+        color: inherit;
+    }
 }
 
 * {
@@ -407,14 +412,15 @@ html.has-connection {
         display: flex;
         flex-wrap: wrap;
         border-top: 1px solid #0003;
+        padding-top: 1em;
 
         section.left {
-            flex: 0 0 200px;;
+            flex: 0 0 auto;
+            width: 200px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 1em;
-            padding: 1em;
         }
 
         section.right {
@@ -425,18 +431,25 @@ html.has-connection {
         }
     }
 
-    .release, .desc {
-        padding: 0.5em;
-        font-size: 1.2em;
+    .mod-description {
+        padding: 0.5rem;
+        font-size: 1.3em;
     }
 
-    .notes {
-        margin-left: 1em;
-        padding: 0.5em;
-        white-space: pre-wrap;
-        max-height: 5em;
-        overflow: auto;
-        /*font-family: monospace;*/ /*Use a monospace font when were done playing around with the funny style*/
+    .release-info {
+        border-top: 1px solid #0003;
+        margin: 0.5rem 0.5rem 0;
+        padding-top: 0.5em;
+        font-size: 1em;
+
+        .notes {
+            margin-left: 1em;
+            padding: 0.5em;
+            white-space: pre-wrap;
+            max-height: 6rem;
+            overflow: auto;
+            /*font-family: monospace;*/ /*Use a monospace font when were done playing around with the funny style*/
+        }
     }
 }
 

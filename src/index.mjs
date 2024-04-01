@@ -11,59 +11,68 @@ async function minWait(ms, promise) {
     return await promise;
 }
 
+const greyPixelURL = 'data:image/png;base64,' +
+    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IA' +
+    'rs4c6QAAAA1JREFUGFdjaG9v/w8ABcMClRAD5ZYAAAAASUVORK5CYII=';
+
 
 function render() {
-    document.querySelector('.directory').innerHTML = mods.map(x => `
-        <div class="mod" data-id="${x.id}">
-            <header>
-                <div class="name">
-                    ${x.name}
-                    <a class="install-remove has-connection-only" href="javascript:void(0);">
-                        <div class="tag no-restart-required-only not-installed-only install">install</div>
-                        <div class="tag no-restart-required-only installed-only remove">remove</div>
-                        <div class="tag restart-required-only restart">restart required</div>
-                    </a>
-                    <div class="no-connection-only disconnected">
-                        <div class="tag">disconnected</div>
+    document.querySelector('.directory').innerHTML = mods.map(x => {
+        const newestRel = x.releases.sort((a, b) => a.updated - b.updated)[0];
+        return `
+            <div class="mod" data-id="${x.id}">
+                <header>
+                    <div class="name">
+                        ${x.name}
+                        <a class="install-remove has-connection-only" href="javascript:void(0);">
+                            <div class="tag no-restart-required-only not-installed-only install">install</div>
+                            <div class="tag no-restart-required-only installed-only remove">remove</div>
+                            <div class="tag restart-required-only restart">restart required</div>
+                        </a>
+                        <div class="no-connection-only disconnected">
+                            <div class="tag">disconnected</div>
+                        </div>
                     </div>
-                </div>
-                <div class="filler"></div>
-                <div class="meta" title="Community Ranking">
-                    <div class="no-restart-required-only installed-only vote">
-                        <a data-vote="up" title="Up vote">🠹</a>
-                        <a data-vote="down" title="Down vote">🠻</a>
+                    <div class="filler"></div>
+                    <div class="meta" title="Community Ranking">
+                        <div class="no-restart-required-only installed-only vote">
+                            <a data-vote="up" title="Up vote">🠹</a>
+                            <a data-vote="down" title="Down vote">🠻</a>
+                        </div>
+                        <span class="rank-value">${ranks.get(x.id)?.rank ?? '-'}</span> ⭐
                     </div>
-                    <span class="rank-value">${ranks.get(x.id)?.rank ?? '-'}</span> ⭐
-                </div>
-                <div class="meta">${x.releases[0].version}</div>
-                <div class="meta">Updated: ${new Date(x.releases[0].updated).toLocaleDateString()}</div>
-            </header>
-            <main>
-                <section class="left">
-                    <img class="mod-logo" src="${x.logoURL}"/>
-                </section>
-                <section class="right">
-                    <div class="desc">${x.description}</div>
-                    <div class="release">
-                        <b>Release notes:</b><br/>
-                        <div class="notes">${x.releases[0].notes}</div>
+                    <div class="meta">${newestRel.version}</div>
+                    <div class="meta">Updated: ${new Date(newestRel.updated).toLocaleDateString()}</div>
+                </header>
+                <main>
+                    <section class="left">
+                        <img class="mod-logo" src="${x.logoURL}"/>
+                    </section>
+                    <section class="right">
+                        <div class="mod-description">${x.description}</div>
+                        ${newestRel.notes ? `
+                            <div class="release-info">
+                                <b>Release notes:</b><br/>
+                                <div class="notes">${newestRel.notes}</div>
+                            </div>
+                        ` : ''}
+                    </section>
+                </main>
+                <footer>
+                    <div class="author">
+                        <a class="author-avatar" href="${x.authorURL || ''}"><img src="${x.authorAvatarURL || greyPixelURL}"/></a>
+                        <div>
+                            <small>Author:</small><br/>
+                            <a class="author-name" href="${x.authorURL || ''}">${x.authorName}</a>
+                        </div>
                     </div>
-                </section>
-            </main>
-            <footer>
-                <div class="author">
-                    <a class="author-avatar" href="${x.authorURL}"><img src="${x.authorAvatarURL}"/></a>
-                    <div>
-                        <small>Author:</small><br/>
-                        <a class="author-name" href="${x.authorURL}">${x.authorName}</a>
-                    </div>
-                </div>
-                <div class="tags">${(x.tags || []).map(t => `<div class="tag">${t}</div>`).join('')}</div>
-                <div class="meta"><span class="installs-value">${ranks.get(x.id)?.installs ?? '-'}</span> installs</div>
-                <div class="meta">Created: ${new Date(x.created).toLocaleDateString()}</div>
-            </footer>
-        </div>
-    `).join('\n');
+                    <div class="tags">${(x.tags || []).map(t => `<div class="tag">${t}</div>`).join('')}</div>
+                    <div class="meta"><span class="installs-value">${ranks.get(x.id)?.installs ?? '-'}</span> installs</div>
+                    <div class="meta">Created: ${new Date(x.created).toLocaleDateString()}</div>
+                </footer>
+            </div>
+        `;
+    }).join('\n');
 }
 
 

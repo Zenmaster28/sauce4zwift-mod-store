@@ -9,7 +9,6 @@ const mod = {
 
 
 function formToModObject() {
-    console.warn("form to obj", mod);
     const form = document.querySelector('form');
     const obj = mod;
     for (const input of form.querySelectorAll('input,textarea')) {
@@ -22,6 +21,8 @@ function formToModObject() {
         if (input.type === 'number') {
             value = Number(value);
         } else if (input.type === 'date') {
+            value = new Date(value).getTime();
+        } else if (input.type === 'datetime-local') {
             value = new Date(value).getTime();
         } else if (input.name === 'tags') {
             value = value ? value.split(',') : undefined;
@@ -38,23 +39,21 @@ async function refreshUrl() {
         output.innerHTML = 'Validating files...';
         await net.probeLocalSauce();
         const {hash, manifest} = await net.basicRPC('validatePackedMod', relUrlInput.value);
-        document.querySelector(`input[name="created"]`).value = new Date(1).toLocaleDateString('sv-SE');
-        document.querySelector(`input[name="updated"]`).value = new Date().toISOString().slice(0, -8);
-        mod.created = 1;
-        mod.updated = Date.now();
+        document.querySelector(`input[name="created"]`).value = new Date(0).toISOString().slice(0, 10);
+        document.querySelector(`input[name="updated"]`).value = new Date().toISOString().slice(0, 16);
         mod.releases[0].hash = hash;
         mod.releases[0].url = relUrlInput.value;
         console.log(manifest);
         for (const [key, value] of Object.entries(manifest)) {
             const input = document.querySelector(`[name="${key}"],[data-mod-key="${key}"]`);
             if (!input) {
-                console.warn(key);
                 continue;
             }
-            if (input.type === 'datetime' || input.type === 'date') {
-                input.value = new Date(value).toISOString();
+            if (input.type === 'datetime-local') {
+                input.value = new Date(value).toISOString().slice(0, -8);
+            } else if (input.type === 'date') {
+                input.value = new Date(value).toLocaleDateString('sv-SE');
             } else {
-                console.log(key, value);
                 input.value = value;
             }
         }
