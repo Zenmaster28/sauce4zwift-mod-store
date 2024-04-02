@@ -23,13 +23,13 @@
             "version": "0.0.1",
             "updated": 1712031240000,
             "hash": "a4c2da7db8cad3c38bf4cadd48aeeac208c3e8e49d890801db82f5d2878a4dc8",
-            "minVersion": 1
+            "minVersion": "1"
         }, {
             "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/refs/tags/v0.1.0.zip",
             "version": "0.0.2",
             "updated": 1712031240001,
             "hash": "a4c2da7db8cad3c38bf4cadd48aeeac208c3e8e49d890801db82f5d2878a4dc8",
-            "minVersion": 2
+            "minVersion": "2"
         }
     ],
     "id": "168b965a-c458-49ad-adc7-ee7e8e378ea2",
