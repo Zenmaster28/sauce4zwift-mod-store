@@ -1,23 +1,43 @@
 [{
-    "type": "github",
-    "org": "mayfield",
-    "id": "b7a17692-cbcb-493a-827f-c84a64f14af1",
-    "repo": "s4z-wolf3d-mod",
-    "logoURL": "https://raw.githubusercontent.com/mayfield/s4z-wolf3d-mod/main/pages/images/favicon.png",
-    "releases": [{
-        "minVersion": "1.2",
-        "id": 145384817,
-        "assetId": 155706162,
-        "hash": "b9a6bebcc2f538a95dac1c067dbd6aa7010fe5c7d7574538f798f7ed42332f61"
-    }]
+    "releases": [
+        {
+            "url": "https://github.com/BasWeg/dosenhuhn_s4z_mods/archive/refs/tags/0.1.4.zip",
+            "version": "0.1.4",
+            "updated": 1712020320000,
+            "hash": "d32ef0674108a391736d661404490075fa3386a8a0cda0f1a40cd968982edc97"
+        }
+    ],
+    "id": "9e03ab14-f6b7-4a63-8c84-02aef08647b4",
+    "name": "DosenHuhn MODs for S4Z",
+    "description": "A MOD collection for S4Z",
+    "logoURL": "https://mods.sauce.llc/images/missing-mod-logo.webp",
+    "homeURL": "https://github.com/BasWeg/dosenhuhn_s4z_mods",
+    "created": 1668902400000,
+    "authorName": "Bastian Wegener",
+    "authorAvatarURL": "https://avatars.githubusercontent.com/u/56368122",
+    "authorURL": "https://github.com/BasWeg"
 }, {
-    "type": "github",
-    "org": "SauceLLC",
-    "id": "03ad7bb4-9739-4b61-91a7-359db44324f4",
-    "repo": "sauce4zwift-mod-example",
-    "logoURL": "https://raw.githubusercontent.com/SauceLLC/sauce4zwift-mod-example/main/pages/images/neato.png",
-    "releases": [{
-        "id": 148389233,
-        "assetId": 158607142
-    }]
+    "releases": [
+        {
+            "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/refs/tags/v0.1.0.zip",
+            "version": "0.0.1",
+            "updated": 1712031240000,
+            "hash": "a4c2da7db8cad3c38bf4cadd48aeeac208c3e8e49d890801db82f5d2878a4dc8",
+            "minVersion": 1
+        }, {
+            "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/refs/tags/v0.1.0.zip",
+            "version": "0.0.2",
+            "updated": 1712031240001,
+            "hash": "a4c2da7db8cad3c38bf4cadd48aeeac208c3e8e49d890801db82f5d2878a4dc8",
+            "minVersion": 2
+        }
+    ],
+    "name": "Wolfenstein 3D Pain Face",
+    "description": "Show your level of pain with a Wolfenstein 3D inspired pain face.",
+    "logoURL": "https://raw.githubusercontent.com/mayfield/s4z-wolf3d-mod/main/pages/images/favicon.png",
+    "homeURL": "https://github.com/mayfield/s4z-wolf3d-mod",
+    "created": 1709769600000,
+    "authorName": "Justin Mayfield",
+    "authorAvatarURL": "https://avatars.githubusercontent.com/u/139316",
+    "authorURL": "https://github.com/mayfield"
 }]

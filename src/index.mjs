@@ -1,8 +1,6 @@
 import * as net from './net.mjs';
-import * as github from './github.mjs';
-import * as selfhosted from './selfhosted.mjs';
 
-const mods = [];
+const directory = [];
 const ranks = new Map();
 
 
@@ -17,7 +15,7 @@ const greyPixelURL = 'data:image/png;base64,' +
 
 
 function render() {
-    document.querySelector('.directory').innerHTML = mods.map(x => {
+    document.querySelector('.directory').innerHTML = directory.map(x => {
         const newestRel = x.releases.sort((a, b) => a.updated - b.updated)[0];
         return `
             <div class="mod" data-id="${x.id}">
@@ -76,8 +74,8 @@ function render() {
 }
 
 
-async function loadRankInfo(dir) {
-    await Promise.all(dir.map(async x => {
+async function loadRankInfo() {
+    await Promise.all(directory.map(async x => {
         const [installs, rank] = await Promise.all([net.getInstalls(x.id), net.getRank(x.id)]);
         ranks.set(x.id, {installs, rank});
         const modEl = document.querySelector(`.directory .mod[data-id="${x.id}"]`);
@@ -100,29 +98,12 @@ async function main() {
         });
     } catch(e) {/*no-pragma*/}
     const localProbe = net.probeLocalSauce();
-    const dir = await net.fetchJSON('/directory.json');
+    directory.push(...await net.fetchJSON('/directory.json'));
     const q = new URLSearchParams(location.search);
     if (q.get('preview')) {
-        dir.unshift(JSON.parse(q.get('preview')));
+        directory.unshift(JSON.parse(q.get('preview')));
     }
-    loadRankInfo(dir);
-    for (const entry of dir) {
-        try {
-            let parsedMod;
-            if (entry.type === 'github') {
-                parsedMod = await github.parseGithubRelease(entry);
-            } else if (entry.type === 'selfhosted') {
-                parsedMod = await selfhosted.parseSelfHostedRelease(entry);
-            } else {
-                console.error("Unsupported source:", entry.type);
-            }
-            if (parsedMod) {
-                mods.push(parsedMod);
-            }
-        } catch(e) {
-            console.warn("Ignoring release parse error:", e);
-        }
-    }
+    loadRankInfo();
     render();
     document.documentElement.addEventListener('click', async ev => {
         const modIdEl = ev.target.closest('.mod[data-id]');
@@ -132,7 +113,7 @@ async function main() {
         const modId = modIdEl.dataset.id;
         let btn;
         if ((btn = ev.target.closest('a.install-remove .install'))) {
-            const entry = dir.find(x => x.id === modId);
+            const entry = directory.find(x => x.id === modId);
             btn.classList.add('busy');
             try {
                 await minWait(4000, net.basicRPC('installPackedMod', modId));

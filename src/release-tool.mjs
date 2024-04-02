@@ -1,9 +1,7 @@
 import * as net from './net.mjs';
-import * as selfhosted from './selfhosted.mjs';
 
 let relUrlInput;
 const mod = {
-    type: 'selfhosted',
     releases: [{}],
 };
 
