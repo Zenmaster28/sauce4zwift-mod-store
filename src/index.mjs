@@ -122,7 +122,8 @@ async function main() {
             try {
                 await minWait(4000, net.basicRPC('installPackedMod', modId));
             } catch(e) {
-                alert(e.stack);
+                console.error(e);
+                alert(e.message);
             } finally {
                 btn.classList.remove('busy');
             }
@@ -132,7 +133,8 @@ async function main() {
             try {
                 await minWait(4000, net.basicRPC('removePackedMod', modId));
             } catch(e) {
-                alert(e.stack);
+                console.error(e);
+                alert(e.message);
             } finally {
                 btn.classList.remove('busy');
             }
@@ -142,7 +144,8 @@ async function main() {
             try {
                 await minWait(4000, net.basicRPC('restart'));
             } catch(e) {
-                alert(e.stack);
+                console.error(e);
+                alert(e.message);
             } finally {
                 btn.classList.remove('busy');
             }
