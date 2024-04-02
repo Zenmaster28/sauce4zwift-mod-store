@@ -65,6 +65,10 @@ function render() {
                         </div>
                     </div>
                     <div class="tags">${(x.tags || []).map(t => `<div class="tag">${t}</div>`).join('')}</div>
+                    ${x.homeURL ?
+                        `<div class="meta"><a external target="_blank" href="${x.homeURL}">Website</a></div>` :
+                        ''
+                    }
                     <div class="meta"><span class="installs-value">${ranks.get(x.id)?.installs ?? '-'}</span> installs</div>
                     <div class="meta">Created: ${new Date(x.created).toLocaleDateString()}</div>
                 </footer>
