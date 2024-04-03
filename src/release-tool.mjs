@@ -36,11 +36,12 @@ async function refreshUrl() {
     try {
         output.innerHTML = 'Validating files...';
         await net.probeLocalSauce();
-        const {hash, manifest} = await net.basicRPC('validatePackedMod', relUrlInput.value);
+        const {hash, manifest, size} = await net.basicRPC('validatePackedMod', relUrlInput.value);
         document.querySelector(`input[name="created"]`).value = new Date(0).toISOString().slice(0, 10);
         document.querySelector(`input[name="updated"]`).value = new Date().toISOString().slice(0, 16);
         mod.releases[0].hash = hash;
         mod.releases[0].url = relUrlInput.value;
+        mod.releases[0].size = size;
         console.log(manifest);
         for (const [key, value] of Object.entries(manifest)) {
             const input = document.querySelector(`[name="${key}"],[data-mod-key="${key}"]`);

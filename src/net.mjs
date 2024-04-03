@@ -21,23 +21,6 @@ export async function fetchJSON(url, options={}) {
 }
 
 
-const _ghCache = new Map();
-export function fetchProxy(ns, fallback, urn) {
-    if (!_ghCache.has(urn)) {
-        _ghCache.set(urn, (async () => {
-            // The SW just provides more caching to avoid rate limits. It's optional.
-            let swReg;
-            try {
-                swReg = await navigator.serviceWorker.getRegistration();
-            } catch (e) {/*no-pragma*/}
-            const url = swReg?.active ? `/swproxy/${ns}/${urn}` : `${fallback}/${urn}`;
-            return await fetchJSON(url);
-        })());
-    }
-    return _ghCache.get(urn);
-}
-
-
 export async function basicRPC(cmd, ...args) {
     let env;
     if (localSauceElectron) {

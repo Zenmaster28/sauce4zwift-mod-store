@@ -100,7 +100,6 @@ async function loadRankInfo() {
 
 async function main() {
     try {
-        navigator.serviceWorker.register('/sw.mjs', {scope: './'});
         CSS.registerProperty({
             name: "--progress",
             syntax: "<number>",
