@@ -35,7 +35,7 @@
     "tags": ["funny", "wolf3d", "retro"],
     "name": "Wolfenstein 3D Pain Face",
     "description": "Show your level of pain with a Wolfenstein 3D inspired pain face.",
-    "logoURL": "https://raw.githubusercontent.com/mayfield/s4z-wolf3d-mod/main/pages/images/favicon.png",
+    "logoURL": "https://github.com/mayfield/s4z-wolf3d-mod/raw/main/images/head-logo-anim.webp",
     "homeURL": "https://github.com/mayfield/s4z-wolf3d-mod",
     "created": 1709769600000,
     "authorName": "Justin Mayfield",
