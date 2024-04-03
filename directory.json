@@ -63,7 +63,7 @@
     ],
     "id": "f68f2566-a7ce-4e3f-b7ba-6195286680c3",
     "name": "O101 for S4Z",
-    "description": "Some racing MODs",
+    "description": "Some Racing MODs\n\n * O101 - Nearby Race: Similar to Zwift's default Zwifters Nearby, with added features specifically designed for racing.\n * O101 - Groups Race: A groups overview. See current speed, pulling power, max rank in group.\n * 0101 - Livedata: Displays simple metrics such as speed, power, draft, heart rate, cadence, and grade.\n * O101 - Overview: Provides information about the event or course being ridden, including segment data and a leaderboard.\n * 0101 - Panel: Overlay a white, black, or blue panel on the default Zwift UI (additional elements can be added on top).\n * O101 - Chase Challenge: Check Zwift Insider website for more details.",
     "logoURL": "https://raw.githubusercontent.com/Opperhoofd/o101/8415f30be645c543ed577ba5c01c79293b4e75d1/o101-logo.png",
     "homeURL": "https://github.com/O101",
     "created": 1682899200000,
