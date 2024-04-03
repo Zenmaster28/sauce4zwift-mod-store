@@ -4,7 +4,8 @@
             "url": "https://github.com/BasWeg/dosenhuhn_s4z_mods/archive/refs/tags/0.1.4.zip",
             "version": "0.1.4",
             "updated": 1712020320000,
-            "hash": "d32ef0674108a391736d661404490075fa3386a8a0cda0f1a40cd968982edc97"
+            "hash": "d32ef0674108a391736d661404490075fa3386a8a0cda0f1a40cd968982edc97",
+            "size": 485585
         }
     ],
     "id": "9e03ab14-f6b7-4a63-8c84-02aef08647b4",
@@ -19,16 +20,25 @@
     "releases": [
         {
             "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/refs/tags/v0.1.0.zip",
+            "version": "0.0.3",
+            "updated": 1712031240002,
+            "hash": "a4c2da7db8cad3c38bf4cadd48aeeac208c3e8e49d890801db82f5d2878a4dc8",
+            "minVersion": "1",
+            "size": 25053
+        }, {
+            "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/refs/tags/v0.1.0.zip",
             "version": "0.0.1",
             "updated": 1712031240000,
             "hash": "a4c2da7db8cad3c38bf4cadd48aeeac208c3e8e49d890801db82f5d2878a4dc8",
-            "minVersion": "1"
+            "minVersion": "1",
+            "size": 25053
         }, {
             "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/refs/tags/v0.1.0.zip",
             "version": "0.0.2",
             "updated": 1712031240001,
             "hash": "a4c2da7db8cad3c38bf4cadd48aeeac208c3e8e49d890801db82f5d2878a4dc8",
-            "minVersion": "2"
+            "minVersion": "1",
+            "size": 25053
         }
     ],
     "id": "168b965a-c458-49ad-adc7-ee7e8e378ea2",
@@ -47,7 +57,8 @@
             "url": "https://github.com/Opperhoofd/o101/releases/download/s4z-mods/o101_s4z_mods-latest.zip",
             "version": "1.1.11",
             "updated": 1712194440000,
-            "hash": "661c25edd7e0865de4ab8a26a0cf30c62a26cc3d55475b0876559c33a58bf365"
+            "hash": "661c25edd7e0865de4ab8a26a0cf30c62a26cc3d55475b0876559c33a58bf365",
+            "size": 225212
         }
     ],
     "id": "f68f2566-a7ce-4e3f-b7ba-6195286680c3",
@@ -64,12 +75,17 @@
             "url": "https://github.com/gazhay/sauce4clubLadder/releases/download/ProofOfConcept/sauce4clubLadder-ProofOfConcept.zip",
             "version": "0.0.4",
             "updated": 1712197320000,
-            "hash": "4c67814ffa67f4f0372157c29886dc5741c143957e24a53d7b2d8174bae83cb1"
+            "hash": "4c67814ffa67f4f0372157c29886dc5741c143957e24a53d7b2d8174bae83cb1",
+            "size": 834596
         }
     ],
+    "id": "56b0da29-adfa-40d8-90f1-82401a04face",
     "name": "Club Ladder Live",
     "description": "Proof-of-concept live score",
+    "logoURL": "https://ladder.cycleracing.club/img/logo-t.png",
     "homeURL": "https://ladder.cycleracing.club",
     "created": 1690156800000,
-    "authorName": "Gareth Hay"
+    "authorName": "Gareth Hay",
+    "authorURL": "https://github.com/gazhay",
+    "authorAvatarURL": "https://avatars.githubusercontent.com/u/871127"
 }]
