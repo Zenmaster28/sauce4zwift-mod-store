@@ -58,4 +58,18 @@
     "created": 1682899200000,
     "authorName": "Onno Aphinan",
     "authorAvatarURL": "https://avatars.githubusercontent.com/u/10154932"
+}, {
+    "releases": [
+        {
+            "url": "https://github.com/gazhay/sauce4clubLadder/releases/download/ProofOfConcept/sauce4clubLadder-ProofOfConcept.zip",
+            "version": "0.0.4",
+            "updated": 1712197320000,
+            "hash": "4c67814ffa67f4f0372157c29886dc5741c143957e24a53d7b2d8174bae83cb1"
+        }
+    ],
+    "name": "Club Ladder Live",
+    "description": "Proof-of-concept live score",
+    "homeURL": "https://ladder.cycleracing.club",
+    "created": 1690156800000,
+    "authorName": "Gareth Hay"
 }]
