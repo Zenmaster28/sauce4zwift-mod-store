@@ -1,4 +1,5 @@
 import * as net from './net.mjs';
+import {marked} from './marked.mjs';
 
 const directory = [];
 const ranks = new Map();
@@ -11,9 +12,14 @@ async function minWait(ms, promise) {
 }
 
 
+function md2html(raw) {
+    return marked.parse(raw);
+}
+
+
 function render() {
     document.querySelector('.directory').innerHTML = directory.map(x => {
-        const newestRel = x.releases.sort((a, b) => a.updated - b.updated)[0];
+        const newestRel = x.releases.sort((a, b) => b.updated - a.updated)[0];
         return `
             <div class="mod" data-id="${x.id}">
                 <header>
@@ -50,7 +56,7 @@ function render() {
                         <img class="mod-logo" src="${x.logoURL || 'https://mods.sauce.llc/images/missing-mod-logo.webp'}"/>
                     </section>
                     <section class="right">
-                        <div class="mod-description">${x.description}</div>
+                        <div class="mod-description">${md2html(x.description)}</div>
                         ${newestRel.notes ? `
                             <div class="release-info">
                                 <b>Release notes:</b><br/>
