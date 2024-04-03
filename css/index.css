@@ -184,6 +184,18 @@ html.has-connection {
     }
 }
 
+html.init {
+    .no-init-only {
+        display: none;
+    }
+}
+
+html:not(.init) {
+    .init-only {
+        display: none;
+    }
+}
+
 .mod {
     border: 1px solid black;
     margin: 1em;

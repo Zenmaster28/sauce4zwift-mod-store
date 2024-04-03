@@ -52,6 +52,8 @@ export async function basicRPC(cmd, ...args) {
             throw new Error('rpc error: ' + await resp.text());
         }
         env = await resp.json();
+    } else {
+        console.warn("No Sauce connection available");
     }
     if (env) {
         if (!env.success) {
@@ -67,15 +69,14 @@ export async function probeLocalSauce() {
     if (self.isElectron && self.electron && electron.ipcInvoke) {
         localSauceElectron = true;
         return;
+    } else if (localSauceURL) {
+        return;
     }
     const urls = [
-        'http://localhost:1080',
         'http://127.0.0.1:1080',
+        'http://localhost:1080',
     ];
-    let noConnTimeout = setTimeout(() => {
-        document.documentElement.classList.remove('has-connection');
-    }, 2000);
-    await Promise.race(urls.map(async url => {
+    for (const url of urls) {
         try {
             const resp = await fetch(`${url}/api/mods/v1`);
             if (!resp.ok) {
@@ -84,12 +85,10 @@ export async function probeLocalSauce() {
             await resp.json();
             if (!localSauceURL) {
                 localSauceURL = url;
+                break;
             }
-        } catch(e) {
-            return new Promise(() => void 0); // hang
-        }
-    }));
-    clearTimeout(noConnTimeout);
+        } catch(e) {}
+    }
 }
 
 

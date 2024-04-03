@@ -2,6 +2,7 @@ import * as net from './net.mjs';
 
 const directory = [];
 const ranks = new Map();
+let installed;
 
 
 async function minWait(ms, promise) {
@@ -27,7 +28,10 @@ function render() {
                             <div class="tag no-restart-required-only installed-only remove">remove</div>
                             <div class="tag restart-required-only restart">restart required</div>
                         </a>
-                        <div class="no-connection-only disconnected">
+                        <div class="init-only disconnected">
+                            <div class="tag">Looking for Sauce...</div>
+                        </div>
+                        <div class="no-init-only no-connection-only disconnected">
                             <div class="tag">disconnected</div>
                         </div>
                     </div>
@@ -75,6 +79,7 @@ function render() {
             </div>
         `;
     }).join('\n');
+    updateInstalledMods();
 }
 
 
@@ -101,14 +106,11 @@ async function main() {
             initialValue: 0,
         });
     } catch(e) {/*no-pragma*/}
-    const localProbe = net.probeLocalSauce();
-    directory.push(...await net.fetchJSON('/directory.json'));
     const q = new URLSearchParams(location.search);
     if (q.get('preview')) {
-        directory.unshift(JSON.parse(q.get('preview')));
+        directory.push(JSON.parse(q.get('preview')));
     }
-    loadRankInfo();
-    render();
+    directory.push(...await net.fetchJSON('/directory.json'));
     document.documentElement.addEventListener('click', async ev => {
         const modIdEl = ev.target.closest('.mod[data-id]');
         if (!modIdEl) {
@@ -166,9 +168,11 @@ async function main() {
             render();
         }
     });
-    await net.probeLocalSauce;
+    render();
+    loadRankInfo(); // bg okay
+    setTimeout(() => document.documentElement.classList.remove('init'), 2000);
     await updateModStatus();
-    setInterval(updateModStatus, 15000);
+    setInterval(updateModStatus, 5000);
 }
 
 
@@ -176,17 +180,28 @@ async function updateModStatus() {
     if (document.querySelector('.busy')) {
         return;
     }
-    const installed = await net.basicRPC('getAvailableMods');
+    await net.probeLocalSauce();
+    try {
+        installed = await net.basicRPC('getAvailableMods');
+    } catch(e) {
+        installed = undefined;
+    }
+    document.documentElement.classList.remove('init');
     if (installed) {
         document.documentElement.classList.add('has-connection');
+    } else {
+        document.documentElement.classList.remove('has-connection');
     }
-    updateInstalledMods(installed || []);
+    updateInstalledMods();
 }
 
 
-function updateInstalledMods(installed) {
+function updateInstalledMods() {
     for (const el of document.querySelectorAll(`.mod[data-id]`)) {
         el.classList.remove('restart-required', 'installed');
+    }
+    if (!installed) {
+        return;
     }
     for (const x of installed) {
         if (x.unpacked) {
