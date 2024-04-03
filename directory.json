@@ -42,4 +42,19 @@
     "authorName": "Justin Mayfield",
     "authorAvatarURL": "https://avatars.githubusercontent.com/u/139316",
     "authorURL": "https://github.com/mayfield"
+}, {
+    "releases": [
+        {
+            "url": "https://github.com/Opperhoofd/o101/releases/download/s4z-mods/o101_s4z_mods-latest.zip",
+            "version": "1.1.11",
+            "updated": 1712194440000,
+            "hash": "661c25edd7e0865de4ab8a26a0cf30c62a26cc3d55475b0876559c33a58bf365"
+        }
+    ],
+    "id": "f68f2566-a7ce-4e3f-b7ba-6195286680c3",
+    "name": "O101 for S4Z",
+    "description": "Some racing MODs",
+    "homeURL": "https://github.com/O101",
+    "created": 1682899200000,
+    "authorName": "Onno Aphinan"
 }]
