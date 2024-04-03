@@ -48,7 +48,7 @@ function render() {
                 </header>
                 <main>
                     <section class="left">
-                        <img class="mod-logo" src="${x.logoURL}"/>
+                        <img class="mod-logo" src="${x.logoURL || 'https://mods.sauce.llc/images/missing-mod-logo.webp'}"/>
                     </section>
                     <section class="right">
                         <div class="mod-description">${x.description}</div>
@@ -62,7 +62,9 @@ function render() {
                 </main>
                 <footer>
                     <div class="author">
-                        <a class="author-avatar" href="${x.authorURL || ''}"><img src="${x.authorAvatarURL || greyPixelURL}"/></a>
+                        ${x.authorAvatarURL ?
+                            `<a class="author-avatar" href="${x.authorURL || ''}"><img src="${x.authorAvatarURL}"/></a>` :
+                            ''}
                         <div>
                             <small>Author:</small><br/>
                             <a class="author-name" href="${x.authorURL || ''}">${x.authorName}</a>
@@ -168,8 +170,9 @@ async function main() {
             render();
         }
     });
+    await loadRankInfo(); // bg okay
+    directory.sort((a, b) => (ranks.get(b.id)?.installs || 0) - (ranks.get(a.id)?.installs || 0));
     render();
-    loadRankInfo(); // bg okay
     setTimeout(() => document.documentElement.classList.remove('init'), 2000);
     await updateModStatus();
     setInterval(updateModStatus, 5000);
