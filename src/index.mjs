@@ -10,10 +10,6 @@ async function minWait(ms, promise) {
     return await promise;
 }
 
-const greyPixelURL = 'data:image/png;base64,' +
-    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IA' +
-    'rs4c6QAAAA1JREFUGFdjaG9v/w8ABcMClRAD5ZYAAAAASUVORK5CYII=';
-
 
 function render() {
     document.querySelector('.directory').innerHTML = directory.map(x => {
@@ -44,6 +40,9 @@ function render() {
                         <span class="rank-value">${ranks.get(x.id)?.rank ?? '-'}</span> ⭐
                     </div>
                     <div class="meta">${newestRel.version}</div>
+                    ${newestRel.size ?
+                        `<div class="meta">${Math.round(newestRel.size / 1024)} KB</div>` :
+                        ''}
                     <div class="meta">Updated: ${new Date(newestRel.updated).toLocaleDateString()}</div>
                 </header>
                 <main>
