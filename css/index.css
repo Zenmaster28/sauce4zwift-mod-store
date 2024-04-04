@@ -447,6 +447,8 @@ html:not(.init) {
     .mod-description {
         padding: 0.5rem;
         font-size: 1.3em;
+        max-height: 10em;
+        overflow: auto;
     }
 
     .release-info {
