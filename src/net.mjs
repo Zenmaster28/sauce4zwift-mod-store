@@ -101,6 +101,3 @@ export async function downVote(id) {
         headers: {'content-type': 'application/json'}
     });
 }
-
-
-navigator.serviceWorker.register('/sw.mjs', {scope: './'});
