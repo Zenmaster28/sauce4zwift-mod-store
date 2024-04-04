@@ -88,4 +88,22 @@
     "authorName": "Gareth Hay",
     "authorURL": "https://github.com/gazhay",
     "authorAvatarURL": "https://avatars.githubusercontent.com/u/871127"
+}, {
+    "releases": [
+        {
+            "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/releases/download/v1.2.3/Zenmaster-s4z-mods-123.zip",
+            "version": "1.2.3",
+            "updated": 1712273700000,
+            "hash": "d2436f0fdb7a139cf9a8feebb59c3d9a2cd277c1a3a741a4275ef3dd67d8103b",
+            "size": 306009
+        }
+    ],
+    "id": "7a0c236a-e428-4357-9a15-58864616b830",
+    "name": "Zenmaster MODs for S4Z",
+    "description": "Arend's Mod Collection for S4Z",
+    "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
+    "created": 1703289600000,
+    "authorName": "Arend teRaa",
+    "authorURL": "https://github.com/Zenmaster28",
+    "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862"
 }]
