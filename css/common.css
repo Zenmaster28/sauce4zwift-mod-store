@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker');
 @import url('https://fonts.googleapis.com/css2?family=VT323');
+/*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono');*/
 
 html {
-    font-family: VT323, monospace;
+    font-family: VT323;
     font-size: 18px;
-
     background-color: white;
     color: black;
-
+    font-variant-ligatures: no-common-ligatures;
 }
 
 @media only screen and (min-width: 768px) {

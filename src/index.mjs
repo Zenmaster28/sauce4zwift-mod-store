@@ -23,8 +23,11 @@ function render() {
         return `
             <div class="mod" data-id="${x.id}">
                 <header>
-                    <div class="name">
-                        ${x.name}
+                    <div class="name">${x.name}</div>
+
+                    <div class="filler"></div>
+
+                    <div class="meta flex">
                         <a class="install-remove has-connection-only" href="javascript:void(0);">
                             <div class="tag no-restart-required-only not-installed-only install">install</div>
                             <div class="tag no-restart-required-only installed-only remove">remove</div>
@@ -37,7 +40,7 @@ function render() {
                             <div class="tag">disconnected</div>
                         </div>
                     </div>
-                    <div class="filler"></div>
+
                     <div class="meta" title="Community Ranking">
                         <div class="no-restart-required-only installed-only vote">
                             <a data-vote="up" title="Up vote">🠹</a>

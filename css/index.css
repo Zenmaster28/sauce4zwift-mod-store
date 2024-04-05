@@ -1,6 +1,7 @@
 .warn {
     color: #844;
     font-size: 0.8em;
+    padding: 0.2em 0;
 }
 
 a {
@@ -11,10 +12,6 @@ a {
         color: inherit;
         text-decoration: none;
     }
-}
-
-* {
-/*    border: 1px solid #000a;*/
 }
 
 body > footer {
@@ -91,18 +88,19 @@ body > footer {
 }
 
 .postit {
-    background: yellow;
-    margin: 0.5em;
+    background: #ffef00;
     color: black;
     border-radius: 0.5em;
     box-shadow: 2px 2px 8px 0 #0004;
-    padding: 1em;
+    padding: 0.6em 1em;
     padding-right: 2em;
     line-height: 1.4;
     font-size: 14px;
     display: flex;
     position: relative;
     text-align: left;
+    max-width: 30ch;
+    max-width: 80ch;
 
     &::after {
         content: '📌';
@@ -119,9 +117,10 @@ header#intro {
         display: flex;
         flex-wrap: wrap;
         border-style: groove;
-        border-width: 17px;
+        border-width: 40px;
         border-color: #ee3e0b90;
-        padding: 1em;
+        align-items: center;
+        justify-content: center;
 
         > .left {
             flex: 0 0 auto;
@@ -129,6 +128,7 @@ header#intro {
 
         > .right {
             min-width: 320px;
+            padding: 0.5em;
             flex: 1 1;
             display: flex;
             flex-direction: column;
@@ -138,31 +138,33 @@ header#intro {
             font-size: 0.6em;
             font-weight: 300;
             text-align: right;
-            padding-top: 2em;
             color: #555;
 
             a {
                 color: inherit;
                 text-decoration: none;
             }
+
+            .postit {
+                margin-top: 1em;
+            }
         }
 
         h1 {
-            margin-top: 0;
-            padding-top: 0;
+            margin: 0;
+            padding: 0;
             font-size: 2.5em;
             font-weight: 100;
         }
 
         a.logo {
-            height: 240px;
+            height: 200px;
             display: block;
             padding: 0 70px 0 20px;
         }
 
         img.logo {
             height: 100%;
-            perspective: 100px;
             animation: 5s infinite ease-in-out swing;
         }
     }
@@ -199,8 +201,8 @@ html:not(.init) {
 
 .mod {
     border: 1px solid black;
-    margin: 1em;
-    padding: 1em;
+    margin: 1em 0;
+    padding: 0.8em;
 
     &:not(.installed) {
         .installed-only {
@@ -231,13 +233,13 @@ html:not(.init) {
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
 
         .name {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            font-size: 2em;
+            font-size: 1.5em;
             padding-right: 0.2em;
         }
     }
@@ -247,8 +249,9 @@ html:not(.init) {
     }
 
     footer {
-        margin-top: 1em;
-        padding-top: 1em;
+        color: #444;
+        margin-top: 0.5em;
+        padding-top: 0.5em;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -322,11 +325,17 @@ html:not(.init) {
     .meta {
         padding: 0.1em 0.2em;
         font-weight: 300;
+        color: #444;
 
         &:not(:last-child)::after {
             font-weight: 200;
             opacity: 0.3;
             content: ' | ';
+        }
+
+        &.flex {
+            display: flex;
+            align-items: baseline;
         }
     }
 
@@ -385,8 +394,7 @@ html:not(.init) {
 
     .install-remove,
     .disconnected {
-        margin-left: 0.8em;
-        font-size: 0.6em;
+        margin-right: 0.5em;
         text-decoration: none;
 
         &.install-remove .tag {
@@ -425,7 +433,7 @@ html:not(.init) {
         display: flex;
         flex-wrap: wrap;
         border-top: 1px solid #0003;
-        padding-top: 1em;
+        padding-top: 0.5em;
 
         section.left {
             flex: 0 0 auto;
@@ -438,6 +446,8 @@ html:not(.init) {
 
         section.right {
             min-width: 300px;
+            max-height: 12em;
+            overflow: auto;
             flex: 1 1;
             display: flex;
             flex-direction: column;
@@ -445,13 +455,17 @@ html:not(.init) {
     }
 
     .mod-description {
+        color: #333;
         padding: 0.5rem;
-        font-size: 1.3em;
-        max-height: 10em;
-        overflow: auto;
+        font-size: 1em;
+
+        p {
+            margin: 0 0;
+        }
     }
 
     .release-info {
+        color: #333;
         border-top: 1px solid #0003;
         margin: 0.5rem 0.5rem 0;
         padding-top: 0.5em;
@@ -460,10 +474,6 @@ html:not(.init) {
         .notes {
             margin-left: 1em;
             padding: 0.5em;
-            white-space: pre-wrap;
-            max-height: 6rem;
-            overflow: auto;
-            /*font-family: monospace;*/ /*Use a monospace font when were done playing around with the funny style*/
         }
     }
 }
