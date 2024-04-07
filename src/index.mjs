@@ -192,7 +192,7 @@ async function updateModStatus() {
     }
     await net.probeLocalSauce();
     try {
-        installed = await net.basicRPC('getAvailableMods');
+        installed = await net.basicRPC('getAvailableModsV1');
     } catch(e) {
         installed = undefined;
     }
@@ -214,7 +214,7 @@ function updateInstalledMods() {
         return;
     }
     for (const x of installed) {
-        if (x.unpacked) {
+        if (!x.packed) {
             continue;
         }
         if (!x.enabled) {
