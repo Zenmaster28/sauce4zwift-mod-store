@@ -217,15 +217,11 @@ function updateInstalledMods() {
         if (!x.packed) {
             continue;
         }
-        if (!x.enabled) {
-            console.warn("Mod installed but disabled:", x.id);
-            continue;
-        }
         const el = document.querySelector(`.mod[data-id="${x.id}"]`);
         if (el) {
             if (x.restartRequired) {
                 el.classList.add('restart-required');
-            } else {
+            } else if (x.enabled) {
                 el.classList.add('installed');
             }
         }
