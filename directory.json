@@ -1,24 +1,6 @@
 [{
     "releases": [
         {
-            "url": "https://github.com/BasWeg/dosenhuhn_s4z_mods/archive/refs/tags/0.1.4.zip",
-            "version": "0.1.4",
-            "updated": 1712020320000,
-            "hash": "d32ef0674108a391736d661404490075fa3386a8a0cda0f1a40cd968982edc97",
-            "size": 485585
-        }
-    ],
-    "id": "9e03ab14-f6b7-4a63-8c84-02aef08647b4",
-    "name": "DosenHuhn MODs for S4Z",
-    "description": "A MOD collection for S4Z",
-    "homeURL": "https://github.com/BasWeg/dosenhuhn_s4z_mods",
-    "created": 1668902400000,
-    "authorName": "Bastian Wegener",
-    "authorAvatarURL": "https://avatars.githubusercontent.com/u/56368122",
-    "authorURL": "https://github.com/BasWeg"
-}, {
-    "releases": [
-        {
             "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/1985befe48b9d8b48454950f2c29cccb78ed5995.zip",
             "version": "0.0.1",
             "updated": 1712031240003,
@@ -37,59 +19,4 @@
     "authorName": "Justin Mayfield",
     "authorAvatarURL": "https://avatars.githubusercontent.com/u/139316",
     "authorURL": "https://github.com/mayfield"
-}, {
-    "releases": [
-        {
-            "url": "https://github.com/Opperhoofd/o101/releases/download/s4z-mods/o101_s4z_mods-latest.zip",
-            "version": "1.1.11",
-            "updated": 1712194440000,
-            "hash": "661c25edd7e0865de4ab8a26a0cf30c62a26cc3d55475b0876559c33a58bf365",
-            "size": 225212
-        }
-    ],
-    "id": "f68f2566-a7ce-4e3f-b7ba-6195286680c3",
-    "name": "O101 for S4Z",
-    "description": "Some Racing MODs\n\n * O101 - Nearby Race: Similar to Zwift's default Zwifters Nearby, with added features specifically designed for racing.\n * O101 - Groups Race: A groups overview. See current speed, pulling power, max rank in group.\n * 0101 - Livedata: Displays simple metrics such as speed, power, draft, heart rate, cadence, and grade.\n * O101 - Overview: Provides information about the event or course being ridden, including segment data and a leaderboard.\n * 0101 - Panel: Overlay a white, black, or blue panel on the default Zwift UI (additional elements can be added on top).\n * O101 - Chase Challenge: Check Zwift Insider website for more details.",
-    "logoURL": "https://raw.githubusercontent.com/Opperhoofd/o101/8415f30be645c543ed577ba5c01c79293b4e75d1/o101-logo.png",
-    "homeURL": "https://github.com/O101",
-    "created": 1682899200000,
-    "authorName": "Onno Aphinan",
-    "authorAvatarURL": "https://avatars.githubusercontent.com/u/10154932"
-}, {
-    "releases": [
-        {
-            "url": "https://github.com/gazhay/sauce4clubLadder/releases/download/ProofOfConcept/sauce4clubLadder-ProofOfConcept.zip",
-            "version": "0.0.4",
-            "updated": 1712197320000,
-            "hash": "4c67814ffa67f4f0372157c29886dc5741c143957e24a53d7b2d8174bae83cb1",
-            "size": 834596
-        }
-    ],
-    "id": "56b0da29-adfa-40d8-90f1-82401a04face",
-    "name": "Club Ladder Live",
-    "description": "Proof-of-concept live score",
-    "logoURL": "https://ladder.cycleracing.club/img/logo-t.png",
-    "homeURL": "https://ladder.cycleracing.club",
-    "created": 1690156800000,
-    "authorName": "Gareth Hay",
-    "authorURL": "https://github.com/gazhay",
-    "authorAvatarURL": "https://avatars.githubusercontent.com/u/871127"
-}, {
-    "releases": [
-        {
-            "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/releases/download/v1.2.3/Zenmaster-s4z-mods-123.zip",
-            "version": "1.2.3",
-            "updated": 1712273700000,
-            "hash": "d2436f0fdb7a139cf9a8feebb59c3d9a2cd277c1a3a741a4275ef3dd67d8103b",
-            "size": 306009
-        }
-    ],
-    "id": "7a0c236a-e428-4357-9a15-58864616b830",
-    "name": "Zenmaster MODs for S4Z",
-    "description": "Arend's Mod Collection for S4Z",
-    "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
-    "created": 1703289600000,
-    "authorName": "Arend teRaa",
-    "authorURL": "https://github.com/Zenmaster28",
-    "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862"
 }]
