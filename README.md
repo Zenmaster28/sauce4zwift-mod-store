@@ -16,3 +16,4 @@ If you want to be listed there check out the release tool for generating a compa
 
 Then fork this repo, edit `directory.json` accordingly and make a pull-request to have your
 Mod listed/updated.
+
