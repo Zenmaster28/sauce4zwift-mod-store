@@ -19,4 +19,24 @@
     "authorName": "Justin Mayfield",
     "authorAvatarURL": "https://avatars.githubusercontent.com/u/139316",
     "authorURL": "https://github.com/mayfield"
+},
+{
+    "releases": [
+        {
+            "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.3.zip",
+            "version": "1.5.3",
+            "updated": 1731808320000,
+            "hash": "361c6740497b2770283e89bf89570bf0d194d8550807dbec9be091d668456cb7",
+            "size": 541992
+        }
+    ],
+    "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
+    "name": "Zenmaster MODs for S4Z",
+    "description": "Arend's Mod Collection for S4Z",
+    "homeURL": "https://saucellc.io",
+    "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
+    "created": 1704067200000,
+    "authorName": "Arend teRaa",
+    "authorURL": "https://github.com/Zenmaster28",
+    "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
 }]
