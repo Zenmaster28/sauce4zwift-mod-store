@@ -31,9 +31,9 @@
         }
     ],
     "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
-    "name": "Zenmaster MODs for S4Z",
-    "description": "Arend's Mod Collection for S4Z",
-    "homeURL": "https://saucellc.io",
+    "name": "Zenmaster MODs",
+    "description": "Arend's Mod Collection",
+    "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
     "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
     "created": 1704067200000,
     "authorName": "Arend teRaa",
