@@ -23,13 +23,6 @@
 {
     "releases": [
         {
-            "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.3.zip",
-            "version": "1.5.3",
-            "updated": 1731808320000,
-            "hash": "361c6740497b2770283e89bf89570bf0d194d8550807dbec9be091d668456cb7",
-            "size": 541992
-        },
-        {
             "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.4.zip",
             "version": "1.5.4",
             "updated": 1731948420000,
