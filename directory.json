@@ -23,16 +23,17 @@
 {
     "releases": [
         {
-            "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.3.zip",
-            "version": "1.5.3",
-            "updated": 1731808320000,
-            "hash": "361c6740497b2770283e89bf89570bf0d194d8550807dbec9be091d668456cb7",
-            "size": 541992
+            "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.4.zip",
+            "version": "1.5.4",
+            "updated": 1731948420000,
+            "hash": "07e6b5b64f99f872138d3d2152992c349c662af744c926f03ab7d0e4c475e870",
+            "size": 543039
         }
     ],
     "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
+    "tags": ["routes", "segments"],
     "name": "Zenmaster MODs",
-    "description": "Arend's Mod Collection",
+    "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts",
     "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
     "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
     "created": 1704067200000,
