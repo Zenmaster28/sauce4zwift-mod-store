@@ -13,7 +13,12 @@ async function minWait(ms, promise) {
 
 
 function md2html(raw) {
-    return marked.parse(raw);
+    try {
+        return raw ? marked.parse(raw) : '';
+    } catch(e) {
+        console.error('markdown error:', e);
+        return '';
+    }
 }
 
 
@@ -118,6 +123,7 @@ async function main() {
     const q = new URLSearchParams(location.search);
     if (q.get('preview')) {
         directory.push(JSON.parse(q.get('preview')));
+        directory.at(-1).preview = true;
     }
     directory.push(...await net.fetchJSON('/directory.json'));
     document.documentElement.addEventListener('click', async ev => {
@@ -178,7 +184,7 @@ async function main() {
         }
     });
     await loadRankInfo(); // bg okay
-    directory.sort((a, b) => (ranks.get(b.id)?.installs || 0) - (ranks.get(a.id)?.installs || 0));
+    directory.sort((a, b) => a.preview ? -1 : b.preview ? 1 : (ranks.get(b.id)?.installs || 0) - (ranks.get(a.id)?.installs || 0));
     render();
     setTimeout(() => document.documentElement.classList.remove('init'), 2000);
     await updateModStatus();
