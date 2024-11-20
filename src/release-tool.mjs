@@ -4,9 +4,12 @@ import * as fflate from 'https://cdn.skypack.dev/fflate@0.8.2';
 
 let relUrlInput;
 let fileInput;
+let directory;
 const mod = {
     releases: [{}],
 };
+
+const qs = document.querySelector.bind(document);
 
 
 async function sha256(data) {
@@ -16,7 +19,7 @@ async function sha256(data) {
 
 
 function formToModObject() {
-    const form = document.querySelector('form');
+    const form = qs('form');
     const obj = mod;
     for (const input of form.querySelectorAll('input,textarea')) {
         let o = obj;
@@ -46,6 +49,7 @@ async function refreshFile() {
     try {
         const file = fileInput.files[0];
         if (!file) {
+            form
             return;
         }
         const data = await file.arrayBuffer();
@@ -65,16 +69,18 @@ async function refreshFile() {
         }
         const {warnings} = modsCore.validateMod({manifest});
         if (warnings.length) {
-            alert(warnings.join('\n'));
+            output.classList.add('error');
+            output.textContent = `Blocking Mod issues:\n` + warnings.join('\n');
+            return;
         }
-        document.querySelector(`input[name="created"]`).value = new Date(0).toISOString().slice(0, 10);
-        document.querySelector(`input[name="updated"]`).value = new Date().toISOString().slice(0, 16);
+        qs(`input[name="created"]`).value = new Date(0).toISOString().slice(0, 10);
+        qs(`input[name="updated"]`).value = new Date().toISOString().slice(0, 16);
         mod.releases[0].hash = hash;
         mod.releases[0].url = '<TBD>';
         mod.releases[0].size = data.byteLength;
         console.log(manifest);
         for (const [key, value] of Object.entries(manifest)) {
-            const input = document.querySelector(`[name="${key}"],[data-mod-key="${key}"]`);
+            const input = qs(`[name="${key}"],[data-mod-key="${key}"]`);
             if (!input) {
                 continue;
             }
@@ -98,81 +104,37 @@ async function refreshFile() {
     }
 }
 
-async function refreshUrl() {
-    editFields.classList.add('loading', 'disabled');
-    output.classList.remove('error');
-    output.innerHTML = '';
-    try {
-        const url = relUrlInput.value;
-        const resp = await fetch(url);
-        const data = await resp.arrayBuffer();
-        const {hash, manifest, size} = await net.basicRPC('validatePackedMod', relUrlInput.value);
-        document.querySelector(`input[name="created"]`).value = new Date(0).toISOString().slice(0, 10);
-        document.querySelector(`input[name="updated"]`).value = new Date().toISOString().slice(0, 16);
-        mod.releases[0].hash = hash;
-        mod.releases[0].url = relUrlInput.value;
-        mod.releases[0].size = size;
-        console.log(manifest);
-        for (const [key, value] of Object.entries(manifest)) {
-            const input = document.querySelector(`[name="${key}"],[data-mod-key="${key}"]`);
-            if (!input) {
-                continue;
-            }
-            if (input.type === 'datetime-local') {
-                input.value = new Date(value).toISOString().slice(0, -8);
-            } else if (input.type === 'date') {
-                input.value = new Date(value).toLocaleDateString('sv-SE');
-            } else {
-                input.value = value;
-            }
-        }
-        formToModObject();
-        renderOutput();
-        editFields.classList.remove('disabled');
-    } catch(e) {
-        console.error(e);
-        output.classList.add('error');
-        output.textContent = e.stack;
-        editFields.classList.remove('loading');
-    }
-}
-
 
 function renderOutput() {
     output.innerHTML = `
-        <k>Example <code>directory.json</code> entry...</k>
+        <k>Draft <code>directory.json</code> entry...</k>
         <pre class="json-box">${JSON.stringify(mod, null, 4)}</pre>
         <a target="mod-preview" href="/index.html?preview=${encodeURIComponent(JSON.stringify(mod))}">Preview Page</a>
     `;
 }
 
-async function main2() {
-    fileInput = document.querySelector('input[type="file"][name="zip"]');
+
+async function main() {
+    directory = await fetch('/directory.json').then(x => x.json());
+    qs('select[name="id-choices"]').innerHTML += directory.map(x =>
+        `<option value="${x.id}">${x.name}</option>`).join('\n');
+    qs('select[name="id-choices"]').addEventListener('input', ev => {
+        qs('input[name="id"]').value = ev.currentTarget.value;
+    });
+    fileInput = qs('input[type="file"][name="zip"]');
     fileInput.addEventListener('change', ev => {
         refreshFile();
     });
-    document.querySelector('form').addEventListener('input', ev => {
+    qs('#generate-uuid').addEventListener('click', ev => {
+        qs('select[name="id-choices"]').value = '';
+        qs('input[name="id"]').value = crypto.randomUUID();
         formToModObject();
         renderOutput();
     });
-    refreshFile();
-}
-
-
-async function main() {
-    relUrlInput = document.querySelector('input.release[name="url"]');
-    let to;
-    relUrlInput.addEventListener('input', ev => {
-        clearTimeout(to);
-        to = setTimeout(refreshUrl, 2000);
-    });
-    document.querySelector('form').addEventListener('input', ev => {
+    qs('form').addEventListener('input', ev => {
         formToModObject();
         renderOutput();
     });
-    relUrlInput.value = 'https://github.com/mayfield/s4z-wolf3d-mod/releases/download/v0.1.0/s4z-wolf3d-mod-main.1.zip';
-    refreshUrl();
 }
 
-
-main2();
+main();

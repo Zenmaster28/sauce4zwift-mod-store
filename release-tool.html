@@ -51,6 +51,17 @@
                 margin-top: 0.8em;
                 font-variant: all-small-caps;
                 line-height: 1;
+
+                button, select {
+                    font-size: 0.8em;
+                    border-radius: 0.3em;
+                    background-color: #eee;
+                    padding: 0.1em 2em;
+                }
+            }
+
+            input {
+                font-family: inherit;
             }
 
             input:invalid {
@@ -109,9 +120,11 @@
                 font-size: 0.9em;
 
                 &.error {
-                    border-color: red;
-                    border-width: 4px;
                     white-space: pre-wrap;
+                    background: #222;
+                    color: red;
+                    padding: 1em;
+                    border-radius: 0.28em;
                 }
 
                 .json-box {
@@ -140,16 +153,27 @@
     </head>
     <body>
         <section>
-            <form>
-                <b>Step 1: Enter the Mod Zip Cool URL (must not change):</b>
-                <label>Zip File [required]: <input type="file" name="zip" required accept=".zip"/></label>
+            <form id="fieldsForm">
+                <b>Step 1: Upload your Mods zip file:</b>
+                <label>Mod zip file: <input type="file" name="zip" required accept=".zip"/></label>
 
                 <hr/>
 
-                <div id="editFields" class="disabled">
-                    <b>Step 2: Edit fields:</b>
+                <div id="editFields" class="">
+                    <b>Step 2: Make any desired or required changes:</b>
+
+                    <label>ID: <button type="button" id="generate-uuid">Generate new ID</button> or Use existing: <select name="id-choices"><option value="">-</option></select></label>
+                    <input type="text" required name="id"
+                           pattern="^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$"
+                           placeholder="00000000-0000-4000-0000-000000000000"></input>
+                    <label>Name:</label>
+                    <input type="text" name="name" required readonly placeholder="Name"></input>
+                    <label>Description:</label>
+                    <textarea name="description" placeholder="Simple text description"></textarea>
+
                     <label>Release Notes:</label>
-                    <textarea class="release" name="notes" placeholder="Release notes..."></textarea>
+                    <textarea class="release" name="notes" placeholder="Optional notes about this specific release.
+e.g. &quot; * Fixed line chart in the Foo window.&quot;"></textarea>
 
                     <label>Version:</label>
                     <input readonly type="text" class="release" name="version" placeholder="v1.0.0"></input>
@@ -159,16 +183,7 @@
 
                     <br/>
 
-                    <label>ID:</label>
-                    <input type="text" required name="id"
-                           pattern="^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$"
-                           placeholder="00000000-0000-4000-0000-000000000000"></input>
-                    <label>Name:</label>
-                    <input type="text" name="name" required readonly placeholder="Name"></input>
-                    <label>Description:</label>
-                    <textarea name="description" placeholder="Simple text description"></textarea>
-
-                    <br/>
+                   <br/>
 
                     <label>Home URL:</label>
                     <input type="text" name="homeURL" data-mod-key="website_url" placeholder="https://acme.com"></input>
