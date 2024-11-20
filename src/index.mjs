@@ -5,6 +5,9 @@ const directory = [];
 const ranks = new Map();
 let installed;
 
+const upArrowP = fetch('images/up-arrow.svg').then(x => x.text());
+const downArrowP = fetch('images/down-arrow.svg').then(x => x.text());
+const heartP = fetch('images/pixel-heart.svg').then(x => x.text());
 
 async function minWait(ms, promise) {
     await new Promise(r => setTimeout(r, ms));
@@ -22,8 +25,24 @@ function md2html(raw) {
 }
 
 
-function render() {
-    document.querySelector('.directory').innerHTML = directory.map(x => {
+function setHTMLMaybe(el, html) {
+    if (el._prevHTML !== html) {
+        el._prevHTML = html;
+        el.innerHTML = html;
+    }
+}
+
+
+function setTextMaybe(el, text) {
+    if (el._prevText !== text) {
+        el._prevText = text;
+        el.textContent = text;
+    }
+}
+
+
+async function render() {
+    setHTMLMaybe(document.querySelector('.directory'), (await Promise.all(directory.map(async x => {
         const newestRel = x.releases.sort((a, b) => b.updated - a.updated)[0];
         return `
             <div class="mod" data-id="${x.id}">
@@ -46,12 +65,15 @@ function render() {
                         </div>
                     </div>
 
-                    <div class="meta" title="Community Ranking">
+                    <div class="meta flex" title="Community Ranking">
                         <div class="no-restart-required-only installed-only vote">
-                            <a data-vote="up" title="Up vote">🠹</a>
-                            <a data-vote="down" title="Down vote">🠻</a>
+                            <a data-vote="up" title="Give an up vote">${await upArrowP}</a>
+                            <a data-vote="down" title="Give a down vote">${await downArrowP}</a>
                         </div>
-                        <span class="rank-value">${ranks.get(x.id)?.rank ?? '-'}</span> ⭐
+                        <div class="rank-badge">
+                            <div class="rank-value">${ranks.get(x.id)?.rank ?? '0'}</div>
+                            <div class="rank-icon">${await heartP}</div>
+                        </div>
                     </div>
                     <div class="meta">${newestRel.version}</div>
                     ${newestRel.size ?
@@ -76,11 +98,11 @@ function render() {
                 <footer>
                     <div class="author">
                         ${x.authorAvatarURL ?
-                            `<a class="author-avatar" href="${x.authorURL || ''}"><img src="${x.authorAvatarURL}"/></a>` :
+                            `<a class="author-avatar" external target="_blank" href="${x.authorURL || ''}"><img src="${x.authorAvatarURL}"/></a>` :
                             ''}
                         <div>
                             <small>Author:</small><br/>
-                            <a class="author-name" href="${x.authorURL || ''}">${x.authorName}</a>
+                            <a class="author-name" external target="_blank" href="${x.authorURL || ''}">${x.authorName}</a>
                         </div>
                     </div>
                     <div class="tags">${(x.tags || []).map(t => `<div class="tag">${t}</div>`).join('')}</div>
@@ -93,7 +115,7 @@ function render() {
                 </footer>
             </div>
         `;
-    }).join('\n');
+    }))).join('\n'));
     updateInstalledMods();
 }
 
@@ -104,8 +126,8 @@ async function loadRankInfo() {
         ranks.set(x.id, {installs, rank});
         const modEl = document.querySelector(`.directory .mod[data-id="${x.id}"]`);
         if (modEl) {
-            modEl.querySelector('.installs-value').textContent = installs.toLocaleString();
-            modEl.querySelector('.rank-value').textContent = rank.toLocaleString();
+            setTextMaybe(modEl.querySelector('.installs-value'), installs.toLocaleString());
+            setTextMaybe(modEl.querySelector('.rank-value'), rank.toLocaleString());
         }
     }));
 }
@@ -180,12 +202,12 @@ async function main() {
             } finally {
                 btn.classList.remove('busy');
             }
-            render();
+            await render();
         }
     });
     await loadRankInfo(); // bg okay
     directory.sort((a, b) => a.preview ? -1 : b.preview ? 1 : (ranks.get(b.id)?.installs || 0) - (ranks.get(a.id)?.installs || 0));
-    render();
+    await render();
     setTimeout(() => document.documentElement.classList.remove('init'), 2000);
     await updateModStatus();
     setInterval(updateModStatus, 5000);

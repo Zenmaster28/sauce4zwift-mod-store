@@ -262,34 +262,75 @@ html:not(.init) {
     .vote {
         display: inline-flex;
         flex-direction: column;
-        vertical-align: middle;
+        margin-right: 0.6em;
 
         a {
-            font-size: 1.2em;
-            font-weight: 500;
+            display: flex;
+            line-height: 0;
             cursor: pointer;
-            line-height: 0.6;
-            transition: 200ms -webkit-text-stroke, 200ms filter;
-            &[data-vote="up"] {
-                color: green;
+            transition: 100ms filter;
+
+            svg {
+                height: 0.7em;
             }
+
+            &[data-vote="up"] {
+                fill: green;
+            }
+
             &[data-vote="down"] {
-                color: red;
+                fill: red;
             }
 
             &:hover {
-                -webkit-text-stroke: 1px #000;
-                filter: drop-shadow(0 0 4px #000a);
+                filter: drop-shadow(1px 1px 1px #0007);
             }
 
             &:active {
-                -webkit-text-stroke: 0px #000;
                 filter: brightness(0.5);
             }
 
             &.busy {
                 pointer-events: none;
                 opacity: 0.4;
+            }
+        }
+    }
+
+    .rank-badge {
+        position: relative;
+        margin-right: 0.4em;
+        aspect-ratio: 1 / 1;
+        height: 1.6em;
+
+        .rank-value,
+        .rank-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rank-value {
+            z-index: 1;
+            color: #fff;
+            font-weight: 900;
+            font-size: 0.88em;
+            margin-left: -1px;
+        }
+
+        .rank-icon {
+            svg {
+                --from: #a33;
+                --to: #d00;
+                stroke-width: 50px;
+                stroke: #000;
+                fill: var(--from);
+                animation: pulse-fill 1.4s infinite;
             }
         }
     }
@@ -335,7 +376,7 @@ html:not(.init) {
 
         &.flex {
             display: flex;
-            align-items: baseline;
+            align-items: center;
         }
     }
 
@@ -497,3 +538,26 @@ html:not(.init) {
         }
     }
 }
+
+
+@keyframes pulse-fill {
+    0% {
+        fill: var(--from);
+    }
+    55% {
+        fill: var(--from);
+    }
+    65% {
+        fill: var(--to);
+    }
+    75% {
+        fill: var(--from);
+    }
+    85% {
+        fill: var(--to);
+    }
+    100% {
+        fill: var(--from);
+    }
+}
+
