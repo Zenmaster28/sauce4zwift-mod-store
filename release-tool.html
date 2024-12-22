@@ -27,20 +27,30 @@
                 flex-wrap: wrap;
 
                 section {
-                    flex: 1 1 auto;
+                    flex: 1 1 50%;
                     min-width: fit-content;
                     padding: 1em;
+                    min-width: 500px;
                 }
             }
 
             section.output {
-                flex-grow: 2;
                 border-radius: 0.3em;
                 background: #833;
                 color: white;
 
                 a {
                     color: #1ddc71;
+                }
+
+                iframe#preview {
+                    width: 100%;
+                    height: 440px;
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    border-radius: 0.4em;
+                    box-shadow: 1px 1px 0 5px #000;
                 }
             }
 
@@ -64,12 +74,32 @@
                 font-family: inherit;
             }
 
+            input,
+            select,
+            textarea {
+                border-radius: 0.28em;
+                border: 1px solid #ccc;
+                padding: 0.2em;
+
+                &[readonly] {
+                    border: none;
+                    opacity: 0.7;
+                    margin: 0.5em 0;
+                }
+            }
+
+            textarea {
+                min-height: 8em;
+            }
+
             input:invalid {
                 border: 2px solid red;
             }
 
-            input[type="text"],textarea {
-                min-width: 60ch;
+            label > input[type="checkbox"] {
+                padding: 0;
+                margin: 0;
+                vertical-align: bottom;
             }
 
             form * {
@@ -89,10 +119,15 @@
                 font-variant: tabular-nums;
             }
 
-            #editFields {
+            .edit-fields {
                 display: flex;
                 flex-direction: column;
                 position: relative;
+                background: #f8f8f8;
+                padding: 1em;
+                margin-bottom: 1em;
+                border-radius: 0.28em;
+                width: 100%;
 
                 &.disabled {
                     opacity: 0.25;
@@ -128,13 +163,14 @@
                 }
 
                 .json-box {
+                    white-space: pre-wrap;
                     border-radius: 0.22em;
                     margin: 1em 0;
                     border: 1px solid #666;
                     background: #eee;
                     color: black;
                     padding: 3px;
-                    font-size: 0.9em;
+                    font-size: 0.82em;
                 }
             }
 
@@ -153,61 +189,71 @@
     </head>
     <body>
         <section>
-            <form id="fieldsForm">
-                <b>Step 1: Upload your Mods zip file:</b>
+            <form>
+                <b>Upload your Mods zip file:</b>
                 <label>Mod zip file: <input type="file" name="zip" required accept=".zip"/></label>
+                <label>Name: </label><span class="manifest-name">-</span>
+            </form>
 
-                <hr/>
+            <hr/>
 
-                <div id="editFields" class="">
-                    <b>Step 2: Make any desired or required changes:</b>
+            <form id="fields">
+                <div class="edit-fields disabled" data-stage="1">
+                    <b>Select source:</b>
 
-                    <label>ID: <button type="button" id="generate-uuid">Generate new ID</button> or Use existing: <select name="id-choices"><option value="">-</option></select></label>
-                    <input type="text" required name="id"
-                           pattern="^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$"
-                           placeholder="00000000-0000-4000-0000-000000000000"></input>
-                    <label>Name:</label>
-                    <input type="text" name="name" required readonly placeholder="Name"></input>
+                    <label>Directory entry:</label>
+                    <select data-entry-key="id" name="id-choices" writeonly>
+                        <option value="">&lt;Create New&gt;</option>
+                    </select>
+
+                    <label>Replace existing entry: <input type="checkbox" name="replace-release" checked/></label>
+                </div>
+
+                <div class="edit-fields disabled" data-stage="2">
+                    <b>Edit meta data:</b>
                     <label>Description:</label>
-                    <textarea name="description" placeholder="Simple text description"></textarea>
+                    <textarea data-entry-key="description" placeholder="Simple markdown description:
 
-                    <label>Release Notes:</label>
-                    <textarea class="release" name="notes" placeholder="Optional notes about this specific release.
-e.g. &quot; * Fixed line chart in the Foo window.&quot;"></textarea>
-
-                    <label>Version:</label>
-                    <input readonly type="text" class="release" name="version" placeholder="v1.0.0"></input>
-
-                    <label>Updated:</label>
-                    <input type="datetime-local" class="release" name="updated"></input>
-
-                    <br/>
-
-                   <br/>
+ * Feature 1
+ * Feature 2"></textarea>
 
                     <label>Home URL:</label>
-                    <input type="text" name="homeURL" data-mod-key="website_url" placeholder="https://acme.com"></input>
+                    <input type="url" data-entry-key="homeURL" data-mod-key="website_url" placeholder="https://acme.com"></input>
                     <label>Logo URL:</label>
-                    <input type="text" required name="logoURL" placeholder="https://acme.com/256x256.png"></input>
+                    <input type="url" required data-entry-key="logoURL" placeholder="https://acme.com/256x256.png"></input>
                     <label>Tags:</label>
-                    <input type="text" name="tags" placeholder="comma,separated,values"></input>
+                    <input type="text" data-entry-key="tags" placeholder="comma,separated,values"></input>
                     <label>Created:</label>
-                    <input required type="date" name="created"></input>
+                    <input required type="date" data-entry-key="created"></input>
+
                     <br/>
 
                     <label>Author Name:</label>
-                    <input required type="text" name="authorName"
+                    <input required type="text" data-entry-key="authorName"
                            data-mod-key="author" placeholder="Jim Smith"></input>
-                    <label>Author URL:</label>
-                    <input type="text" name="authorURL" placeholder="https://jim.smith.com/about.html"></input>
                     <label>Author Avatar URL:</label>
-                    <input type="text" name="authorAvatarURL" placeholder="https://jim.smith.com/selfie.jpg"></input>
+                    <input type="url" data-entry-key="authorAvatarURL" placeholder="https://jim.smith.com/selfie.jpg"></input>
+                    <label>Author Website:</label>
+                    <input type="url" data-entry-key="authorURL" placeholder="https://jim.smith.com/about.html"></input>
+
+                    <hr/>
+
+                    <label>Release Notes:</label>
+                    <textarea class="release" data-release-key="notes" placeholder="Optional notes about this specific release.
+e.g...
+
+ * Fixed line chart in the Foo window
+ * Added Bar window to do baz thing"></textarea>
+
+                    <label>Minimum supported Sauce version:</label>
+                    <input type="text" class="release" data-release-key="minVersion"></input>
                 </div>
             </form>
         </section>
         <section class="output">
             <div><b>Output:</b></div>
             <div id="output"></div>
+            <iframe id="preview" src="/index.html?preview"></iframe>
         </section>
     </body>
 </html>

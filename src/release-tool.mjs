@@ -5,11 +5,12 @@ import * as fflate from 'https://cdn.skypack.dev/fflate@0.8.2';
 let relUrlInput;
 let fileInput;
 let directory;
-const mod = {
-    releases: [{}],
-};
+let draftRelease;
+let draftEntry = {};
+let manifest;
 
 const qs = document.querySelector.bind(document);
+const qsAll = document.querySelectorAll.bind(document);
 
 
 async function sha256(data) {
@@ -18,14 +19,23 @@ async function sha256(data) {
 }
 
 
-function formToModObject() {
-    const form = qs('form');
-    const obj = mod;
-    for (const input of form.querySelectorAll('input,textarea')) {
+function formToEntry() {
+    const form = qs('form#fields');
+    const obj = draftEntry;
+    for (const input of form.querySelectorAll('input,textarea,select')) {
+        if (input.hasAttribute('writeonly')) {
+            continue;
+        }
         let o = obj;
-        const key = input.name;
+        let key;
         if (input.classList.contains('release')) {
-            o = obj.releases[0];
+            key = input.dataset.releaseKey;
+            o = obj.releases.at(-1);
+        } else {
+            key = input.dataset.entryKey;
+        }
+        if (key == null) {
+            continue;
         }
         let value = input.value === '' ? undefined : input.value;
         if (input.type === 'number') {
@@ -34,28 +44,88 @@ function formToModObject() {
             value = (new Date(value)).getTime() + ((new Date()).getTimezoneOffset() * 60000);
         } else if (input.type === 'datetime-local') {
             value = new Date(value).getTime();
-        } else if (input.name === 'tags') {
-            value = value ? value.split(',') : undefined;
+        } else if (key === 'tags') {
+            value = value ? value.split(',').map(x => x.trim()) : undefined;
+        } else if (input.type === 'checkbox') {
+            value = input.checked;
+        } else if (input.value === undefined) {
+            console.error("Missed form input:", input);
+            debugger;
         }
         o[key] = value;
+    }
+    draftEntry.releases.at(-1).updated = Date.now();
+}
+
+
+function entryToForm() {
+    const form = qs('form#fields');
+    for (const input of form.querySelectorAll('input,textarea,select')) {
+        let obj = draftEntry;
+        let key;
+        if (input.classList.contains('release')) {
+            key = input.dataset.releaseKey;
+            obj = obj.releases.at(-1);
+        } else {
+            key = input.dataset.entryKey;
+        }
+        if (key == null) {
+            continue;
+        }
+        const value = obj[key];
+        if (['number', 'text', 'url', 'email', 'textarea', 'select-one'].includes(input.type)) {
+            if (Array.isArray(value)) {
+                input.value = value.join(',');
+            } else {
+                input.value = value == null ? '' : value;
+            }
+        } else if (['date', 'datetime-local'].includes(input.type)) {
+            input.valueAsNumber = value;
+        } else if (input.type === 'checkbox') {
+            input.checked = !!value;
+        } else {
+            console.error("Missed form input:", input);
+            debugger;
+        }
     }
 }
 
 
+function setEntry(entry) {
+    if (entry) {
+        draftEntry = structuredClone(entry);
+        draftEntry.name = manifest.name;
+        qs('.edit-fields[data-stage="2"]').classList.remove('disabled');
+    } else {
+        draftEntry = {
+            name: manifest.name,
+            releases: []
+        };
+    }
+    if (!qs('input[name="replace-release"]').checked || !draftEntry.releases.length) {
+        draftEntry.releases.push({});
+    }
+    Object.assign(draftEntry.releases.at(-1), draftRelease, {updated: Date.now()});
+    entryToForm();
+}
+
+
 async function refreshFile() {
-    editFields.classList.add('loading', 'disabled');
+    for (const x of qsAll('.edit-fields')) {
+        x.classList.add('loading', 'disabled');
+    }
     output.classList.remove('error');
     output.innerHTML = '';
+    qs('form#fields').reset();
+    manifest = undefined;
     try {
         const file = fileInput.files[0];
         if (!file) {
-            form
             return;
         }
         const data = await file.arrayBuffer();
         const hash = await sha256(data);
         const zip = fflate.unzipSync(new Uint8Array(data), {filter: x => x.name.endsWith('/manifest.json')});
-        let manifest;
         for (const [fqFile, data] of Object.entries(zip)) {
             if (fqFile.split('/').length > 2) {
                 console.warn('Ignoring over nested manifest.json file', fqFile);
@@ -67,50 +137,50 @@ async function refreshFile() {
         if (!manifest) {
             throw new Error("manifest.json not found");
         }
+        console.info({manifest});
         const {warnings} = modsCore.validateMod({manifest});
+        if (manifest.name.match(/\bsauce\b/i)) {
+            warnings.push('Manifest name contains redundant reference to "sauce".\n' +
+                'The Mod name is only ever used within the context of Sauce for Zwift Mods.\n' +
+                'Consider using Sauce and/or Mod references in your README instead.');
+        }
+        if (manifest.name.match(/\bmods?\b/i)) {
+            warnings.push('Manifest name contains redundant reference to "mod".\n' +
+                'The Mod name is only ever used within the context of Sauce for Zwift Mods.\n' +
+                'Consider using Sauce and/or Mod references in your README.');
+        }
         if (warnings.length) {
             output.classList.add('error');
             output.textContent = `Blocking Mod issues:\n` + warnings.join('\n');
             return;
         }
-        qs(`input[name="created"]`).value = new Date(0).toISOString().slice(0, 10);
-        qs(`input[name="updated"]`).value = new Date().toISOString().slice(0, 16);
-        mod.releases[0].hash = hash;
-        mod.releases[0].url = '<TBD>';
-        mod.releases[0].size = data.byteLength;
-        console.log(manifest);
-        for (const [key, value] of Object.entries(manifest)) {
-            const input = qs(`[name="${key}"],[data-mod-key="${key}"]`);
-            if (!input) {
-                continue;
-            }
-            if (input.type === 'datetime-local') {
-                input.value = new Date(value).toISOString().slice(0, -8);
-            } else if (input.type === 'date') {
-                input.value = new Date(value).toLocaleDateString('sv-SE');
-            } else {
-                input.value = value;
-            }
-        }
-        formToModObject();
+        qs('.manifest-name').textContent = manifest.name;
+        draftRelease = {
+            version: manifest.version,
+            hash,
+            url: '<tbd>',
+            size: data.byteLength,
+        };
+        setEntry(directory.find(x => x.name === manifest.name));
         renderOutput();
-        editFields.classList.remove('disabled');
+        qs('.edit-fields[data-stage="1"]').classList.remove('disabled');
     } catch(e) {
         console.error(e);
         output.classList.add('error');
         output.textContent = e.stack;
     } finally {
-        editFields.classList.remove('loading');
+        qsAll('.edit-fields').forEach(x => x.classList.remove('loading'));
     }
 }
 
 
 function renderOutput() {
+    qs('iframe#preview').contentWindow.postMessage(JSON.stringify(draftEntry));
     output.innerHTML = `
         <k>Draft <code>directory.json</code> entry...</k>
-        <pre class="json-box">${JSON.stringify(mod, null, 4)}</pre>
-        <a target="mod-preview" href="/index.html?preview=${encodeURIComponent(JSON.stringify(mod))}">Preview Page</a>
+        <pre class="json-box"></pre>
     `;
+    output.querySelector('.json-box').textContent = JSON.stringify(draftEntry, null, 4);
 }
 
 
@@ -119,20 +189,39 @@ async function main() {
     qs('select[name="id-choices"]').innerHTML += directory.map(x =>
         `<option value="${x.id}">${x.name}</option>`).join('\n');
     qs('select[name="id-choices"]').addEventListener('input', ev => {
-        qs('input[name="id"]').value = ev.currentTarget.value;
+        let id = ev.currentTarget.value;
+        if (!id) {
+            setEntry(null);
+            draftEntry.id = crypto.randomUUID();
+        } else {
+            setEntry(directory.find(x => x.id === id));
+        }
+        entryToForm();
+    });
+    qs('input[name="replace-release"]').addEventListener('input', ev => {
+        const srcEntry = directory.find(x => x.id === draftEntry.id);
+        if (srcEntry) {
+            draftEntry.releases = structuredClone(srcEntry.releases);
+        } else {
+            draftEntry.releases.length = 0;
+        }
+        if (draftEntry.releases.filter(x => x.version === manifest.version).length) {
+            alert('Duplicate version detected.\nIncrement the version number in your manifest.');
+            ev.currentTarget.checked = true;
+        }
+        setEntry(draftEntry);
     });
     fileInput = qs('input[type="file"][name="zip"]');
     fileInput.addEventListener('change', ev => {
         refreshFile();
     });
-    qs('#generate-uuid').addEventListener('click', ev => {
-        qs('select[name="id-choices"]').value = '';
-        qs('input[name="id"]').value = crypto.randomUUID();
-        formToModObject();
-        renderOutput();
-    });
-    qs('form').addEventListener('input', ev => {
-        formToModObject();
+    qs('form#fields').addEventListener('input', ev => {
+        const stage = Number(ev.target.closest('[data-stage]')?.dataset.stage);
+        const nextFields = stage != null ? qs(`.edit-fields[data-stage="${stage + 1}"]`) : null;
+        if (nextFields) {
+            nextFields.classList.remove('disabled');
+        }
+        formToEntry();
         renderOutput();
     });
 }

@@ -1,7 +1,7 @@
 import * as net from './net.mjs';
 import {marked} from './marked.mjs';
 
-const directory = [];
+let directory;
 const ranks = new Map();
 let installed;
 
@@ -17,7 +17,7 @@ async function minWait(ms, promise) {
 
 function md2html(raw) {
     try {
-        return raw ? marked.parse(raw) : '';
+        return raw ? marked.parse(raw, {breaks: true}) : '';
     } catch(e) {
         console.error('markdown error:', e);
         return '';
@@ -86,11 +86,11 @@ async function render() {
                         <img class="mod-logo" src="${x.logoURL || 'https://mods.sauce.llc/images/missing-mod-logo.webp'}"/>
                     </section>
                     <section class="right">
-                        <div class="mod-description">${md2html(x.description)}</div>
+                        <div class="mod-description markdown">${md2html(x.description)}</div>
                         ${newestRel.notes ? `
                             <div class="release-info">
-                                <b>Release notes:</b><br/>
-                                <div class="notes">${newestRel.notes}</div>
+                                <header>RELEASE NOTES:</header>
+                                <div class="notes markdown">${md2html(newestRel.notes)}</div>
                             </div>
                         ` : ''}
                     </section>
@@ -143,11 +143,17 @@ async function main() {
         });
     } catch(e) {/*no-pragma*/}
     const q = new URLSearchParams(location.search);
-    if (q.get('preview')) {
-        directory.push(JSON.parse(q.get('preview')));
-        directory.at(-1).preview = true;
+    if (q.has('preview')) {
+        directory = [];
+        document.documentElement.classList.add('preview-mode');
+        addEventListener('message', ev => {
+            directory.length = 0;
+            directory.push(JSON.parse(ev.data));
+            render();
+        });
+    } else {
+        directory = await net.fetchJSON('/directory.json');
     }
-    directory.push(...await net.fetchJSON('/directory.json'));
     document.documentElement.addEventListener('click', async ev => {
         const modIdEl = ev.target.closest('.mod[data-id]');
         if (!modIdEl) {
