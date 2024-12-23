@@ -148,7 +148,10 @@ async function main() {
         document.documentElement.classList.add('preview-mode');
         addEventListener('message', ev => {
             directory.length = 0;
-            directory.push(JSON.parse(ev.data));
+            const entry = JSON.parse(ev.data);
+            if (entry && entry.releases && entry.name) {
+                directory.push(JSON.parse(ev.data));
+            }
             render();
         });
     } else {

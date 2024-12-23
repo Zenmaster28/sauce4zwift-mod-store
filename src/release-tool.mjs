@@ -8,9 +8,47 @@ let directory;
 let draftRelease;
 let draftEntry = {};
 let manifest;
+const implications = new Map();
 
-const qs = document.querySelector.bind(document);
-const qsAll = document.querySelectorAll.bind(document);
+const outputEl = qs('.output');
+const outputContentsEl = qs('.output .contents');
+const implicationsEl = qs('.output .implications');
+const fieldsFormEl = qs('form#fields');
+
+
+function qs(selector) {
+    return document.querySelector(selector);
+}
+
+
+function qsAll(selector) {
+    return document.querySelectorAll(selector);
+}
+
+
+function checkFieldsForm() {
+    const els = qsAll('#fields [data-entry-key]');
+    const invalid = [];
+    const onInvalid = ev => {
+        const errors = [];
+        for (const key in ev.target.validity) {
+            if (ev.target.validity[key] === true) {
+                errors.push(key);
+            }
+        }
+        invalid.push({
+            element: ev.target,
+            errors,
+        });
+    };
+    els.forEach(x => x.addEventListener('invalid', onInvalid));
+    try {
+        fieldsFormEl.checkValidity();
+    } finally {
+        els.forEach(x => x.removeEventListener('invalid', onInvalid));
+    }
+    return invalid;
+}
 
 
 async function sha256(data) {
@@ -19,10 +57,33 @@ async function sha256(data) {
 }
 
 
+function clearImplications() {
+    implications.clear();
+}
+
+
+function clearImplication(id) {
+    implications.delete(id);
+}
+
+
+function addWarning(message, id) {
+    id = id || JSON.stringify(['warning', message]);
+    implications.set(id, {type: 'warning', message});
+    return id;
+}
+
+
+function addError(message, id) {
+    id = id || JSON.stringify(['warning', message]);
+    implications.set(id, {type: 'error', message});
+    return id;
+}
+
+
 function formToEntry() {
-    const form = qs('form#fields');
     const obj = draftEntry;
-    for (const input of form.querySelectorAll('input,textarea,select')) {
+    for (const input of fieldsFormEl.querySelectorAll('input,textarea,select')) {
         if (input.hasAttribute('writeonly')) {
             continue;
         }
@@ -54,13 +115,24 @@ function formToEntry() {
         }
         o[key] = value;
     }
+    for (const x of implications.keys()) {
+        if (x.startsWith('form-invalid:')) {
+            implications.delete(x);
+        }
+    }
+    const invalid = checkFieldsForm();
+    if (invalid.length) {
+        for (const x of invalid) {
+            const key = x.element.dataset.entryKey;
+            addError(`${key}: ${x.errors.join(', ')}`, `form-invalid:${key}`);
+        }
+    }
     draftEntry.releases.at(-1).updated = Date.now();
 }
 
 
 function entryToForm() {
-    const form = qs('form#fields');
-    for (const input of form.querySelectorAll('input,textarea,select')) {
+    for (const input of fieldsFormEl.querySelectorAll('input,textarea,select')) {
         let obj = draftEntry;
         let key;
         if (input.classList.contains('release')) {
@@ -92,10 +164,19 @@ function entryToForm() {
 
 
 function setEntry(entry) {
+    clearImplication('dup-version');
     if (entry) {
         draftEntry = structuredClone(entry);
         draftEntry.name = manifest.name;
-        qs('form#fields').classList.remove('disabled');
+        const srcEntry = directory.find(x => x.id === entry.id);
+        if (srcEntry) {
+            if (srcEntry.releases.some(x => x.version === manifest.version)) {
+                addWarning('Duplicate version detected.\nIncrement the version number in your manifest.', 'dup-version');
+            }
+            draftEntry.releases = structuredClone(srcEntry.releases);
+        } else {
+            draftEntry.releases = [];
+        }
     } else {
         draftEntry = {
             name: manifest.name,
@@ -111,14 +192,13 @@ function setEntry(entry) {
 
 
 async function refreshFile() {
-    qs('form#fields').classList.add('disabled');
-    for (const x of qsAll('.edit-fields')) {
-        x.classList.add('loading');
-    }
-    output.classList.remove('error');
-    output.innerHTML = '';
-    qs('form#fields').reset();
+    fieldsFormEl.classList.add('disabled');
+    qsAll('.edit-fields').forEach(x => x.classList.add('loading'));
+    outputContentsEl.innerHTML = '';
+    fieldsFormEl.reset();
     manifest = undefined;
+    clearImplications();
+    outputEl.classList.add('pending');
     try {
         const file = fileInput.files[0];
         if (!file) {
@@ -140,20 +220,18 @@ async function refreshFile() {
         }
         console.info({manifest});
         const {warnings} = modsCore.validateMod({manifest});
+        for (const x of warnings) {
+            addWarning(x);
+        }
         if (manifest.name.match(/\bsauce\b/i)) {
-            warnings.push('Manifest name contains redundant reference to "sauce".\n' +
-                'The Mod name is only ever used within the context of Sauce for Zwift Mods.\n' +
+            addWarning('Manifest "name" contains the word "sauce".\n' +
+                'Usage of this property is only used within the context of Sauce for Zwift Mods.\n' +
                 'Consider using Sauce and/or Mod references in your README instead.');
         }
         if (manifest.name.match(/\bmods?\b/i)) {
-            warnings.push('Manifest name contains redundant reference to "mod".\n' +
-                'The Mod name is only ever used within the context of Sauce for Zwift Mods.\n' +
+            addWarning('Manifest "name" contains the word "mod".\n' +
+                'Usage of this property is only used within the context of Sauce for Zwift Mods.\n' +
                 'Consider using Sauce and/or Mod references in your README.');
-        }
-        if (warnings.length) {
-            output.classList.add('error');
-            output.textContent = `Blocking Mod issues:\n` + warnings.join('\n');
-            return;
         }
         qs('.manifest-name').textContent = manifest.name;
         draftRelease = {
@@ -162,36 +240,52 @@ async function refreshFile() {
             url: null,
             size: data.byteLength,
         };
-        const upload = await net.uploadReleaseAsset(file);
-        if (upload.hash !== hash) {
-            throw new Error("server hash is not same as local hash");
+        if (!implications.size) {
+            const upload = await net.uploadReleaseAsset(file);
+            if (upload.hash !== hash) {
+                throw new Error("server hash is not same as local hash");
+            }
+            console.info({upload});
+            draftRelease.url = upload.url;
         }
-        console.info({upload});
-        draftRelease.url = upload.url;
         setEntry(directory.find(x => x.name === manifest.name));
         renderOutput();
-        qs('form#fields').classList.remove('disabled');
+        fieldsFormEl.classList.remove('disabled');
     } catch(e) {
-        console.error(e, e.responseJson);
-        output.classList.add('error');
+        console.error('Package error:', e, e.responseJson);
         if (e.responseJson) {
-            output.textContent = JSON.stringify(e.responseJson, null, 2);
+            addError(JSON.stringify(e.responseJson, null, 2));
         } else {
-            output.textContent = e.stack;
+            addError(e.stack);
         }
     } finally {
         qsAll('.edit-fields').forEach(x => x.classList.remove('loading'));
+        outputEl.classList.remove('pending');
     }
 }
 
 
 function renderOutput() {
-    qs('iframe#preview').contentWindow.postMessage(JSON.stringify(draftEntry));
-    output.innerHTML = `
-        <k>Draft <code>directory.json</code> entry...</k>
-        <pre class="json-box"></pre>
-    `;
-    output.querySelector('.json-box').textContent = JSON.stringify(draftEntry, null, 4);
+    const impTypes = Array.from(implications.values()).map(x => x.type);
+    outputEl.classList.toggle('error', impTypes.indexOf('error') !== -1);
+    outputEl.classList.toggle('warning', impTypes.indexOf('warning') !== -1);
+    implicationsEl.innerHTML = '';
+    outputContentsEl.innerHTML = '';
+    if (implications.size) {
+        for (const x of implications.values()) {
+            const el = document.createElement('div');
+            el.classList.add('message', x.type);
+            el.textContent = x.message;
+            implicationsEl.append(el);
+        }
+    } else {
+        qs('iframe#preview').contentWindow.postMessage(JSON.stringify(draftEntry));
+        outputContentsEl.innerHTML = `
+            <k>Draft <code>directory.json</code> entry...</k>
+            <pre class="json-box"></pre>
+        `;
+        outputContentsEl.querySelector('.json-box').textContent = JSON.stringify(draftEntry, null, 4);
+    }
 }
 
 
@@ -210,16 +304,6 @@ async function main() {
         entryToForm();
     });
     qs('input[name="replace-release"]').addEventListener('input', ev => {
-        const srcEntry = directory.find(x => x.id === draftEntry.id);
-        if (srcEntry) {
-            draftEntry.releases = structuredClone(srcEntry.releases);
-        } else {
-            draftEntry.releases.length = 0;
-        }
-        if (draftEntry.releases.filter(x => x.version === manifest.version).length) {
-            alert('Duplicate version detected.\nIncrement the version number in your manifest.');
-            ev.currentTarget.checked = true;
-        }
         setEntry(draftEntry);
     });
     fileInput = qs('input[type="file"][name="zip"]');
@@ -228,10 +312,10 @@ async function main() {
         // file input is broken, you need to clear it to make it refresh consistently
         ev.currentTarget.value = null;
     });
-    qs('form#fields').addEventListener('input', ev => {
+    fieldsFormEl.addEventListener('input', ev => {
         formToEntry();
         renderOutput();
-        qs('form#fields').classList.remove('disabled');
+        fieldsFormEl.classList.remove('disabled');
     });
 }
 

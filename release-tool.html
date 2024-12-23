@@ -39,8 +39,78 @@
                 background: #833;
                 color: white;
 
-                a {
-                    color: #1ddc71;
+                &.pending {
+                    opacity: 0.2;
+                    pointer-events: none;
+
+                    .contents,
+                    .implications,
+                    #preview {
+                        display: none;
+                    }
+                }
+
+                &:not(.warning):not(.error) {
+                    .implications {
+                        display: none;
+                    }
+                }
+
+                &.warning {
+                    #preview {
+                        opacity: 0.2; 
+                        pointer-events: none;
+                    }
+                }
+
+                &.error {
+                    #preview {
+                        display: none;
+                    }
+                }
+
+                .implications {
+                    background: #6668;
+                    padding: 1em;
+                    border-radius: 0.28em;
+
+                    .message {
+                        font-size: 0.8em;
+                        white-space: pre-wrap;
+                        background: #333d;
+                        padding: 1.2rem 0.5em 0.5em 0.5em;
+                        border-radius: 0.28em;
+                        position: relative;
+
+                        &:not(:last-child) {
+                            margin-bottom: 0.5em;
+                        }
+
+                        &.warning,
+                        &.error {
+                            &::before {
+                                position: absolute;
+                                pointer-events: none;
+                                font-size: 1em;
+                                font-weight: 700;
+                                top: 0.15em;
+                                text-shadow: 1px 1px 2px #0008;
+                            }
+                        }
+
+                        &.error {
+                            &::before {
+                                content: 'ERROR';
+                                color: red;
+                            }
+                        }
+                        &.warning {
+                            &::before {
+                                content: 'WARNING';
+                                color: yellow;
+                            }
+                        }
+                    }
                 }
 
                 iframe#preview {
@@ -51,6 +121,10 @@
                     border: none;
                     border-radius: 0.4em;
                     box-shadow: 1px 1px 0 5px #000;
+                }
+
+                a {
+                    color: #1ddc71;
                 }
             }
 
@@ -92,8 +166,8 @@
                 min-height: 8em;
             }
 
-            input:invalid {
-                border: 2px solid red;
+            form:not(.disabled) :invalid {
+                outline: 2px solid #f22c;
             }
 
             label > input[type="checkbox"] {
@@ -150,20 +224,13 @@
                 }
             }
 
-            #output {
+            .output .contents {
                 margin: 1em 0;
                 font-size: 0.9em;
 
-                &.error {
-                    white-space: pre-wrap;
-                    background: #222;
-                    color: red;
-                    padding: 1em;
-                    border-radius: 0.28em;
-                }
-
                 .json-box {
                     white-space: pre-wrap;
+                    word-break: break-word;
                     border-radius: 0.22em;
                     margin: 1em 0;
                     border: 1px solid #666;
@@ -191,7 +258,7 @@
         <section>
             <form>
                 <b>Upload your Mods zip file:</b>
-                <label>Mod zip file: <input type="file" name="zip" required accept=".zip"/></label>
+                <label>Mod zip file: <input type="file" name="zip" accept=".zip"/></label>
                 <label>Name: </label><span class="manifest-name">-</span>
             </form>
 
@@ -212,8 +279,7 @@
                 <div class="edit-fields">
                     <b>Edit meta data:</b>
                     <label>Description:</label>
-                    <textarea data-entry-key="description" placeholder="Simple markdown description:
-
+                    <textarea data-entry-key="description" required placeholder="Simple markdown description:
  * Feature 1
  * Feature 2"></textarea>
 
@@ -239,9 +305,7 @@
                     <hr/>
 
                     <label>Release Notes:</label>
-                    <textarea class="release" data-release-key="notes" placeholder="Optional notes about this specific release.
-e.g...
-
+                    <textarea class="release" data-release-key="notes" placeholder="Optional notes about this specific release.  e.g...
  * Fixed line chart in the Foo window
  * Added Bar window to do baz thing"></textarea>
 
@@ -250,9 +314,9 @@ e.g...
                 </div>
             </form>
         </section>
-        <section class="output">
-            <div><b>Output:</b></div>
-            <div id="output"></div>
+        <section class="output pending">
+            <div class="implications"></div>
+            <div class="contents"></div>
             <iframe id="preview" src="/index.html?preview"></iframe>
         </section>
     </body>
