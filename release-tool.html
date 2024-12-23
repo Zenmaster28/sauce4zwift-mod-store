@@ -119,6 +119,11 @@
                 font-variant: tabular-nums;
             }
 
+            .disabled {
+                opacity: 0.25;
+                pointer-events: none;
+            }
+
             .edit-fields {
                 display: flex;
                 flex-direction: column;
@@ -128,11 +133,6 @@
                 margin-bottom: 1em;
                 border-radius: 0.28em;
                 width: 100%;
-
-                &.disabled {
-                    opacity: 0.25;
-                    pointer-events: none;
-                }
 
                 &.loading::after {
                     position: absolute;
@@ -197,8 +197,8 @@
 
             <hr/>
 
-            <form id="fields">
-                <div class="edit-fields disabled" data-stage="1">
+            <form id="fields" class="disabled">
+                <div class="edit-fields">
                     <b>Select source:</b>
 
                     <label>Directory entry:</label>
@@ -209,7 +209,7 @@
                     <label>Replace existing entry: <input type="checkbox" name="replace-release" checked/></label>
                 </div>
 
-                <div class="edit-fields disabled" data-stage="2">
+                <div class="edit-fields">
                     <b>Edit meta data:</b>
                     <label>Description:</label>
                     <textarea data-entry-key="description" placeholder="Simple markdown description:

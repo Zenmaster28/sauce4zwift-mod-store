@@ -95,7 +95,7 @@ function setEntry(entry) {
     if (entry) {
         draftEntry = structuredClone(entry);
         draftEntry.name = manifest.name;
-        qs('.edit-fields[data-stage="2"]').classList.remove('disabled');
+        qs('form#fields').classList.remove('disabled');
     } else {
         draftEntry = {
             name: manifest.name,
@@ -111,8 +111,9 @@ function setEntry(entry) {
 
 
 async function refreshFile() {
+    qs('form#fields').classList.add('disabled');
     for (const x of qsAll('.edit-fields')) {
-        x.classList.add('loading', 'disabled');
+        x.classList.add('loading');
     }
     output.classList.remove('error');
     output.innerHTML = '';
@@ -158,16 +159,26 @@ async function refreshFile() {
         draftRelease = {
             version: manifest.version,
             hash,
-            url: '<tbd>',
+            url: null,
             size: data.byteLength,
         };
+        const upload = await net.uploadReleaseAsset(file);
+        if (upload.hash !== hash) {
+            throw new Error("server hash is not same as local hash");
+        }
+        console.info({upload});
+        draftRelease.url = upload.url;
         setEntry(directory.find(x => x.name === manifest.name));
         renderOutput();
-        qs('.edit-fields[data-stage="1"]').classList.remove('disabled');
+        qs('form#fields').classList.remove('disabled');
     } catch(e) {
-        console.error(e);
+        console.error(e, e.responseJson);
         output.classList.add('error');
-        output.textContent = e.stack;
+        if (e.responseJson) {
+            output.textContent = JSON.stringify(e.responseJson, null, 2);
+        } else {
+            output.textContent = e.stack;
+        }
     } finally {
         qsAll('.edit-fields').forEach(x => x.classList.remove('loading'));
     }
@@ -212,17 +223,15 @@ async function main() {
         setEntry(draftEntry);
     });
     fileInput = qs('input[type="file"][name="zip"]');
-    fileInput.addEventListener('change', ev => {
-        refreshFile();
+    fileInput.addEventListener('change', ev => refreshFile());
+    fileInput.addEventListener('click', ev => {
+        // file input is broken, you need to clear it to make it refresh consistently
+        ev.currentTarget.value = null;
     });
     qs('form#fields').addEventListener('input', ev => {
-        const stage = Number(ev.target.closest('[data-stage]')?.dataset.stage);
-        const nextFields = stage != null ? qs(`.edit-fields[data-stage="${stage + 1}"]`) : null;
-        if (nextFields) {
-            nextFields.classList.remove('disabled');
-        }
         formToEntry();
         renderOutput();
+        qs('form#fields').classList.remove('disabled');
     });
 }
 

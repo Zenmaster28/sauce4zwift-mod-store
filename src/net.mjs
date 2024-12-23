@@ -1,5 +1,5 @@
 
-const modRankUrl = 'https://mod-rank.sauce.llc';
+const apiURL = 'https://mod-api.sauce.llc';
 let localSauceURL;
 let localSauceElectron;
 
@@ -15,8 +15,15 @@ export async function fetchJSON(url, options={}) {
     if (resp.ok) {
         return await resp.json();
     } else if (!options.silent) {
-        console.error('Fetch error:', resp.status, await resp.text());
-        throw new Error('Fetch Error: ' + resp.status);
+        const text = await resp.text();
+        let json;
+        try {
+            json = JSON.parse(text);
+        } catch(e) {}
+        const e = new Error(`Fetch Error [${resp.status}]`);
+        e.responseJson = json;
+        e.responseText = text;
+        throw e;
     }
 }
 
@@ -56,6 +63,7 @@ export async function probeLocalSauce() {
         return;
     }
     const urls = [
+        'http://::1:1080',
         'http://127.0.0.1:1080',
         'http://localhost:1080',
     ];
@@ -76,17 +84,17 @@ export async function probeLocalSauce() {
 
 
 export async function getInstalls(id) {
-    return (await fetchJSON(`https://mod-rank.sauce.llc/${id}-onlyinstalls.json`, {silent: true})) || 0;
+    return (await fetchJSON(`${apiURL}/${id}-onlyinstalls.json`, {silent: true})) || 0;
 }
 
 
 export async function getRank(id) {
-    return (await fetchJSON(`https://mod-rank.sauce.llc/${id}-onlyrank.json`, {silent: true})) || 0;
+    return (await fetchJSON(`${apiURL}/${id}-onlyrank.json`, {silent: true})) || 0;
 }
 
 
 export async function upVote(id) {
-    return await fetchJSON(`https://mod-rank.sauce.llc/edit/${id}/rank`, {
+    return await fetchJSON(`${apiURL}/edit/${id}/rank`, {
         method: 'POST',
         body: JSON.stringify(1),
         headers: {'content-type': 'application/json'}
@@ -95,9 +103,18 @@ export async function upVote(id) {
 
 
 export async function downVote(id) {
-    return await fetchJSON(`https://mod-rank.sauce.llc/edit/${id}/rank`, {
+    return await fetchJSON(`${apiURL}/edit/${id}/rank`, {
         method: 'POST',
         body: JSON.stringify(0),
         headers: {'content-type': 'application/json'}
+    });
+}
+
+
+export async function uploadReleaseAsset(body) {
+    return await fetchJSON(`${apiURL}/edit/release/asset`, {
+        method: 'PUT',
+        body,
+        headers: {'content-type': 'application/octet-stream'}
     });
 }
