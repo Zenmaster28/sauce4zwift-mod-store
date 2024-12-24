@@ -29,20 +29,24 @@
     {
         "releases": [
             {
-                "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.4.zip",
-                "version": "1.5.4",
-                "updated": 1731948420000,
-                "hash": "07e6b5b64f99f872138d3d2152992c349c662af744c926f03ab7d0e4c475e870",
-                "size": 543039
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/9a2f90652c4e458f4a4a57301a272a265619f4c0f35f2f81bde532e54e680fc5.zip",
+                "version": "1.6.1",
+                "updated": 1735054003000,
+                "hash": "9a2f90652c4e458f4a4a57301a272a265619f4c0f35f2f81bde532e54e680fc5",
+                "size": 561461,
+                "notes": "Points Leaderboard updates\nMinor fixes\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
-        "tags": ["routes", "segments"],
-        "name": "Zenmaster MODs",
-        "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts",
+        "tags": [
+            "routes",
+            "segments"
+        ],
+        "name": "Zenmaster",
+        "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts\n* Leaderboards for points races",
         "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
         "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
-        "created": 1704067200000,
+        "created": 1704081600000,
         "authorName": "Arend teRaa",
         "authorURL": "https://github.com/Zenmaster28",
         "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
