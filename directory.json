@@ -1,43 +1,50 @@
-[{
-    "releases": [
-        {
-            "url": "https://github.com/mayfield/s4z-wolf3d-mod/archive/1985befe48b9d8b48454950f2c29cccb78ed5995.zip",
-            "version": "0.0.1",
-            "updated": 1712031240003,
-            "hash": "c94a27101913ee34e4cf14e399986a21bb7e331acaabd57cf1deb965069fd6fa",
-            "minVersion": "1.2.0",
-            "size": 1073566
-        }
-    ],
-    "id": "168b965a-c458-49ad-adc7-ee7e8e378ea2",
-    "tags": ["funny", "wolf3d", "retro"],
-    "name": "Wolfenstein 3D Pain Face",
-    "description": "Show your level of pain with a Wolfenstein 3D inspired pain face.\n\n * Use W'bal, heart rate or power output for the pain source.\n * State of the art graphics (for 1992)\n * May induce feelings of nostalgia.\n * Mein Leben!!!",
-    "logoURL": "https://github.com/mayfield/s4z-wolf3d-mod/raw/main/images/head-logo-anim.webp",
-    "homeURL": "https://github.com/mayfield/s4z-wolf3d-mod",
-    "created": 1709769600000,
-    "authorName": "Justin Mayfield",
-    "authorAvatarURL": "https://avatars.githubusercontent.com/u/139316",
-    "authorURL": "https://github.com/mayfield"
-},
-{
-    "releases": [
-        {
-            "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.4.zip",
-            "version": "1.5.4",
-            "updated": 1731948420000,
-            "hash": "07e6b5b64f99f872138d3d2152992c349c662af744c926f03ab7d0e4c475e870",
-            "size": 543039
-        }
-    ],
-    "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
-    "tags": ["routes", "segments"],
-    "name": "Zenmaster MODs",
-    "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts",
-    "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
-    "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
-    "created": 1704067200000,
-    "authorName": "Arend teRaa",
-    "authorURL": "https://github.com/Zenmaster28",
-    "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
-}]
+[
+    {
+        "releases": [
+            {
+                "url": "https://mod-api.sauce.llc/assets/wolfenstein_3d_pain_face/669ab4dada72b9bba7dae908541fdb1c2bdbca3a18535bf9b8f20d5f2d33cdf2.zip",
+                "version": "0.0.2",
+                "updated": 1734998927549,
+                "hash": "669ab4dada72b9bba7dae908541fdb1c2bdbca3a18535bf9b8f20d5f2d33cdf2",
+                "minVersion": "1.2.0",
+                "size": 2478343,
+                "notes": "No real changes, just demo for release tool."
+            }
+        ],
+        "id": "168b965a-c458-49ad-adc7-ee7e8e378ea2",
+        "tags": [
+            "funny",
+            "wolf3d",
+            "retro"
+        ],
+        "name": "Wolfenstein 3D Pain Face",
+        "description": "Show your level of pain with a Wolfenstein 3D inspired pain face.\n\n * Use W'bal, heart rate or power output for the pain source.\n * State of the art graphics (for 1992)\n * May induce feelings of nostalgia.\n * Mein Leben!!!",
+        "logoURL": "https://github.com/mayfield/s4z-wolf3d-mod/raw/main/images/head-logo-anim.webp",
+        "homeURL": "https://github.com/mayfield/s4z-wolf3d-mod",
+        "created": 1709794800000,
+        "authorName": "Justin Mayfield",
+        "authorAvatarURL": "https://avatars.githubusercontent.com/u/139316",
+        "authorURL": "https://github.com/mayfield"
+    },
+    {
+        "releases": [
+            {
+                "url": "https://github.com/Zenmaster28/Zenmaster-s4z-mods/archive/refs/tags/v1.5.4.zip",
+                "version": "1.5.4",
+                "updated": 1731948420000,
+                "hash": "07e6b5b64f99f872138d3d2152992c349c662af744c926f03ab7d0e4c475e870",
+                "size": 543039
+            }
+        ],
+        "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
+        "tags": ["routes", "segments"],
+        "name": "Zenmaster MODs",
+        "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts",
+        "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
+        "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
+        "created": 1704067200000,
+        "authorName": "Arend teRaa",
+        "authorURL": "https://github.com/Zenmaster28",
+        "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
+    }
+]
