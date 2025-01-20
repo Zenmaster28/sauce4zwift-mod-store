@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/861c5c0725ed26cc4a353d5131c8b0e62fe619d8c804d0cba89fb2005ce5dc8f.zip",
-                "version": "1.6.2",
-                "updated": 1736970705233,
-                "hash": "861c5c0725ed26cc4a353d5131c8b0e62fe619d8c804d0cba89fb2005ce5dc8f",
-                "size": 559052,
-                "notes": "- removed \"experimental\" from the Points Leaderboard name\n- The points leaderboard and segment results settings pages will now show a sample of the scores based on the input you give it so you can validate that it behaves the way you expect before racing.  The sample will show along the right hand side of the window.\n- Score formats for the points leaderboard and segment results can now be in MATLAB colon notation (ie. 20:-1:1 is the same as 20..1 or 20:-2:1 would be the same as 20..1 with a step of -2)\n- the Route Preview window now has an option to choose an event and pen and it will automatically select the route and if applicable the number of laps or custom distance.\n- various minor tweaks and fixes\n"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/66af5b7a5ef06e1979742359b75f032d8048779381b1f04ad8646014cbc0ca74.zip",
+                "version": "1.6.3",
+                "updated": 1737379815030,
+                "hash": "66af5b7a5ef06e1979742359b75f032d8048779381b1f04ad8646014cbc0ca74",
+                "size": 565904,
+                "notes": "The only changes to this are the Points Leaderboard.\n- better handling of unexpected score format entries\n- added an analysis window so you can get a breakdown of how scores were assigned.  It's still a bit crude and I will likely do more work on it but it's functional for now.  You can get to the analysis window from the right click header on the points leaderboard window. From there you can choose any event that you have configured points for.  In racer view you can see how each racer scored on individual segments while in segment view it will show the results for each racer on a segment.  There is a small bug in the segment view where events that are FTS only may show a single 0 point result in FAL and vice versa but it won't affect the actual scoring.  See the attached video for a demo.\n- segment results are saved locally for 7 days (previously it was only 1 day) so you can look at the analysis for up to a week.\n\nIf you want to be able to get an accurate analysis of FTS and FAL points, it's important to keep the points leaderboard window running and you keep Zwift running and in an activity so that it can update scores that come in after you finish.  You can start a new activity to cooldown post race and it will keep gathering data from the event but if you join another event that will probably stop things.  FIN points are always retrieved live since they are available after the fact but segment results disappear from Zwift fairly quickly so the window needs to get them at the time."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
