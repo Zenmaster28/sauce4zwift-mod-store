@@ -1,13 +1,7 @@
-const json = require("@eslint/json").default;
+import json from 'eslint-plugin-json';
 
-module.exports = [{
-    plugins: {
-        json,
-    },
-}, {
+export default [{
     files: ["**/*.json"],
-    language: "json/json",
-    rules: {
-        "json/no-duplicate-keys": "error",
-    },
-}];
+        ...json.configs["recommended"]
+    }
+];
