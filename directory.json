@@ -50,23 +50,22 @@
         "authorName": "Arend teRaa",
         "authorURL": "https://github.com/Zenmaster28",
         "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
-    }
-    
+    },
     {
-    "name": "Costco Guys BOOM",
-    "releases": [
-        {
-            "version": "1.0.0",
-            "hash": "946c2ec257c9952345b4b54020a08b7b23d8c5706e83c82206be41f7a0cbc799",
-            "url": "https://mod-api.sauce.llc/assets/costco_guys_boom/946c2ec257c9952345b4b54020a08b7b23d8c5706e83c82206be41f7a0cbc799.zip",
-            "size": 2901616,
-            "updated": 1738097356409,
-            "notes": "primetime release\n* hobby project during recovery\n* have fun!"
-        }
-    ],
-    "description": "a Sauce Mod meme's included.\n* set a threshold\n* rocket past\n* get a fun/meme overlay",
-    "logoURL": "https://raw.githubusercontent.com/micahreeves/costco-guys-boom/fce5712134b0d1f2ed4604814b105942ca729224/BOOM.png",
-    "created": 1737784800000,
-    "authorName": "Zwift Guy"
-}
+        "name": "Costco Guys BOOM",
+        "releases": [
+            {
+                "version": "1.0.0",
+                "hash": "946c2ec257c9952345b4b54020a08b7b23d8c5706e83c82206be41f7a0cbc799",
+                "url": "https://mod-api.sauce.llc/assets/costco_guys_boom/946c2ec257c9952345b4b54020a08b7b23d8c5706e83c82206be41f7a0cbc799.zip",
+                "size": 2901616,
+                "updated": 1738097356409,
+                "notes": "primetime release\n* hobby project during recovery\n* have fun!"
+            }
+        ],
+        "description": "A Sauce Mod meme's included.\n* set a threshold\n* rocket past\n* get a fun/meme overlay",
+        "logoURL": "https://raw.githubusercontent.com/micahreeves/costco-guys-boom/fce5712134b0d1f2ed4604814b105942ca729224/BOOM.png",
+        "created": 1737784800000,
+        "authorName": "Zwift Guy"
+    }
 ]
