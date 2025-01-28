@@ -1,6 +1,6 @@
-import json from 'eslint-plugin-json';
+const json = require('eslint-plugin-json').default;
 
-export default [{
+module.exports = [{
     files: ["**/*.json"],
         ...json.configs["recommended"]
     }
