@@ -15,8 +15,6 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
-  schedule:
-    - cron: '44 14 * * 6'
 
 jobs:
   eslint:
@@ -40,7 +38,6 @@ jobs:
         env:
           SARIF_ESLINT_IGNORE_SUPPRESSED: "true"
         run: npx eslint .
-          --config .eslintrc.json
           --ext .js,.json
           --format @microsoft/eslint-formatter-sarif
           --output-file eslint-results.sarif
