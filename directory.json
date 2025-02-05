@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/66af5b7a5ef06e1979742359b75f032d8048779381b1f04ad8646014cbc0ca74.zip",
-                "version": "1.6.3",
-                "updated": 1737379815030,
-                "hash": "66af5b7a5ef06e1979742359b75f032d8048779381b1f04ad8646014cbc0ca74",
-                "size": 565904,
-                "notes": "The only changes to this are the Points Leaderboard.\n- better handling of unexpected score format entries\n- added an analysis window so you can get a breakdown of how scores were assigned.  It's still a bit crude and I will likely do more work on it but it's functional for now.  You can get to the analysis window from the right click header on the points leaderboard window. From there you can choose any event that you have configured points for.  In racer view you can see how each racer scored on individual segments while in segment view it will show the results for each racer on a segment.  There is a small bug in the segment view where events that are FTS only may show a single 0 point result in FAL and vice versa but it won't affect the actual scoring.  See the attached video for a demo.\n- segment results are saved locally for 7 days (previously it was only 1 day) so you can look at the analysis for up to a week.\n\nIf you want to be able to get an accurate analysis of FTS and FAL points, it's important to keep the points leaderboard window running and you keep Zwift running and in an activity so that it can update scores that come in after you finish.  You can start a new activity to cooldown post race and it will keep gathering data from the event but if you join another event that will probably stop things.  FIN points are always retrieved live since they are available after the fact but segment results disappear from Zwift fairly quickly so the window needs to get them at the time."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/3b438467fb6a2642929e5b07ae31c548b5f20f8c50b77604d6c44ab99e487a8e.zip",
+                "version": "1.6.4",
+                "updated": 1738784870999,
+                "hash": "3b438467fb6a2642929e5b07ae31c548b5f20f8c50b77604d6c44ab99e487a8e",
+                "size": 567917,
+                "notes": "version 1.64 is mostly improvements (I hope) to the segment results multilap window\n- when crossing the finish line of an event that also finishes at a segment, the segment results window will keep showing results from the event rather than switching out to the default world one\n- in events that are longer than an hour, segment results should work properly now.  Prior to this, after around an hour the segment results start aging out of the results from Zwift which messed up counting how many times racers had been through a segment.  Results are now stored locally so they should persist and work properly.  I didn't give this a lot of testing as the opportunity to watch events that go longer than an hour is limited and when I had to fix something, I often had to wait for another event (and then wait for the hour to go by).\n- the points leaderboard window no longer relies on having an active elevation profile window\n- fix for the points leaderboard when the number of racers matches the number of point values. ie. 10 racers and point scores of 10..1 would assign 0 to the 10th rider.\n- fixes for custom POI creation and improperly displaying powerups when a custom POI was next on the route"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
