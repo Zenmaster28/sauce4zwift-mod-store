@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/3b438467fb6a2642929e5b07ae31c548b5f20f8c50b77604d6c44ab99e487a8e.zip",
-                "version": "1.6.4",
-                "updated": 1738784870999,
-                "hash": "3b438467fb6a2642929e5b07ae31c548b5f20f8c50b77604d6c44ab99e487a8e",
-                "size": 567917,
-                "notes": "version 1.64 is mostly improvements (I hope) to the segment results multilap window\n- when crossing the finish line of an event that also finishes at a segment, the segment results window will keep showing results from the event rather than switching out to the default world one\n- in events that are longer than an hour, segment results should work properly now.  Prior to this, after around an hour the segment results start aging out of the results from Zwift which messed up counting how many times racers had been through a segment.  Results are now stored locally so they should persist and work properly.  I didn't give this a lot of testing as the opportunity to watch events that go longer than an hour is limited and when I had to fix something, I often had to wait for another event (and then wait for the hour to go by).\n- the points leaderboard window no longer relies on having an active elevation profile window\n- fix for the points leaderboard when the number of racers matches the number of point values. ie. 10 racers and point scores of 10..1 would assign 0 to the 10th rider.\n- fixes for custom POI creation and improperly displaying powerups when a custom POI was next on the route"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/bbdc974f51073e2afc6b2c2035eaad0b921754cb67b7ed56fd34b4417e105248.zip",
+                "version": "1.6.5",
+                "updated": 1739559238239,
+                "hash": "bbdc974f51073e2afc6b2c2035eaad0b921754cb67b7ed56fd34b4417e105248",
+                "size": 574632,
+                "notes": "version 1.6.5\n- Lap data window has an option to trigger a lap based on a power threshold. ie. if you are below the threshold and go above it, trigger a lap and vice versa.  Useful for on/off type of workouts.\n- Points Leaderboard has an option to monitor all categories in an event (only if all cats are doing the same route and number of laps).  Only the points for the your category are displayed but the others are recorded and available in the Analysis window.\n- Points Leaderboard will refresh quicker (within 5s) after going through a segment - requires an elevation profile window to be running.\n- Team badges in the segment results window are now right aligned and the size is configurable in the options\n- Names in both the segment results and points leaderboard are now clickable and will bring up the Sauce athlete window.\n- Fixed an issue with the segment results window that was causing very slow updates when there were a lot of names to display."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
