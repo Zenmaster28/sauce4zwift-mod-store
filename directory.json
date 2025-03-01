@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/bbdc974f51073e2afc6b2c2035eaad0b921754cb67b7ed56fd34b4417e105248.zip",
-                "version": "1.6.5",
-                "updated": 1739559238239,
-                "hash": "bbdc974f51073e2afc6b2c2035eaad0b921754cb67b7ed56fd34b4417e105248",
-                "size": 574632,
-                "notes": "version 1.6.5\n- Lap data window has an option to trigger a lap based on a power threshold. ie. if you are below the threshold and go above it, trigger a lap and vice versa.  Useful for on/off type of workouts.\n- Points Leaderboard has an option to monitor all categories in an event (only if all cats are doing the same route and number of laps).  Only the points for the your category are displayed but the others are recorded and available in the Analysis window.\n- Points Leaderboard will refresh quicker (within 5s) after going through a segment - requires an elevation profile window to be running.\n- Team badges in the segment results window are now right aligned and the size is configurable in the options\n- Names in both the segment results and points leaderboard are now clickable and will bring up the Sauce athlete window.\n- Fixed an issue with the segment results window that was causing very slow updates when there were a lot of names to display."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/35f835011d84f4bb58e9202d6ccea40a371f2b81abd39516bbf10fa7aa9565a4.zip",
+                "version": "1.6.6",
+                "updated": 1740777382722,
+                "hash": "35f835011d84f4bb58e9202d6ccea40a371f2b81abd39516bbf10fa7aa9565a4",
+                "size": 579568,
+                "notes": "version 1.6.6\n- adds the ability to save a points leaderboard score format for reuse on other events.  It also includes two pre-defined formats for ZRL and DRS.  Note that the ZRL format has a fin score of x..1 and I haven't implemented that x (meaning the number of racers) yet, hopefully I can get to it before finals in April.  Also note that if the DRS FIN score format is wrong, you can blame @Andrei H because it's a copy and paste from https://discord.com/channels/744994375469367316/1187497643946037259/1342448423672221736 \n- You can also import/export a score format to JSON for sharing with others.  I only do a very crude validation on the JSON when importing, I'll make this better in a future version (maybe).\n- the \"All categories\" option will only appear if all cats are doing the same route and number of laps"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
