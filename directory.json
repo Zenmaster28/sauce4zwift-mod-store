@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/35f835011d84f4bb58e9202d6ccea40a371f2b81abd39516bbf10fa7aa9565a4.zip",
-                "version": "1.6.6",
-                "updated": 1740777382722,
-                "hash": "35f835011d84f4bb58e9202d6ccea40a371f2b81abd39516bbf10fa7aa9565a4",
-                "size": 579568,
-                "notes": "version 1.6.6\n- adds the ability to save a points leaderboard score format for reuse on other events.  It also includes two pre-defined formats for ZRL and DRS.  Note that the ZRL format has a fin score of x..1 and I haven't implemented that x (meaning the number of racers) yet, hopefully I can get to it before finals in April.  Also note that if the DRS FIN score format is wrong, you can blame @Andrei H because it's a copy and paste from https://discord.com/channels/744994375469367316/1187497643946037259/1342448423672221736 \n- You can also import/export a score format to JSON for sharing with others.  I only do a very crude validation on the JSON when importing, I'll make this better in a future version (maybe).\n- the \"All categories\" option will only appear if all cats are doing the same route and number of laps"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/993598e835184ad55c37500ccf14727e4996487c19ac9ae0cd0db2982edf92b9.zip",
+                "version": "1.6.7",
+                "updated": 1741199391315,
+                "hash": "993598e835184ad55c37500ccf14727e4996487c19ac9ae0cd0db2982edf92b9",
+                "size": 581739,
+                "notes": "version 1.6.7\n- Points leaderboard and analysis now have an option for female only results\n- When zoomed in, the Y-Axis minimum setting will now apply to the current view rather than the entire route\n- added an option to control how much of the route is shown behind your pin when zoomed in\n- added an option to display distance markers along the X-axis.  You can control what you want the increments to be or if it's set to 0, it will auto-scale based on the length of the route or zoomed section\n- in the lap data window, clicking the \"Auto lap power\" field or pressing 'a' (if the window has focus) will toggle it on/off\n- added options for the max elevation line to show your current altitude and the route maximum altitude when zoomed in. It will display as altitude / view max / route max (if view max and route max are the same, it only shows it once)\n- general optimizations to remove unnecessary calculations when zoomed in\n\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
