@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/993598e835184ad55c37500ccf14727e4996487c19ac9ae0cd0db2982edf92b9.zip",
-                "version": "1.6.7",
-                "updated": 1741199391315,
-                "hash": "993598e835184ad55c37500ccf14727e4996487c19ac9ae0cd0db2982edf92b9",
-                "size": 581739,
-                "notes": "version 1.6.7\n- Points leaderboard and analysis now have an option for female only results\n- When zoomed in, the Y-Axis minimum setting will now apply to the current view rather than the entire route\n- added an option to control how much of the route is shown behind your pin when zoomed in\n- added an option to display distance markers along the X-axis.  You can control what you want the increments to be or if it's set to 0, it will auto-scale based on the length of the route or zoomed section\n- in the lap data window, clicking the \"Auto lap power\" field or pressing 'a' (if the window has focus) will toggle it on/off\n- added options for the max elevation line to show your current altitude and the route maximum altitude when zoomed in. It will display as altitude / view max / route max (if view max and route max are the same, it only shows it once)\n- general optimizations to remove unnecessary calculations when zoomed in\n\n"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/4d4f58a712af4eb1dddfa4ee57ec4be047a1375509a3e8914155e5394b447008.zip",
+                "version": "1.6.8",
+                "updated": 1741716542079,
+                "hash": "4d4f58a712af4eb1dddfa4ee57ec4be047a1375509a3e8914155e5394b447008",
+                "size": 584759,
+                "notes": "version 1.6.8\n- added a line spacing option to the points leaderboard and segment results windows to let you control the spacing between lines, allowing you to fit more entries in a window if desired.\n- added an option to the points leaderboard to show a preview of some sample data. This will let you adjust the font sizing, line spacing etc. before an event without having to wait for actual data in the event.\n- in the points leaderboard settings, you can control who will be marked as being on your team. There is a text box beside the option to highlight teammates and in there you have multiple options for who to include/exclude.  \n\t- Any words will do partial matches to a team tag.  In the screenshot, having \"sisu\" matches both \"sisu\" and \"sisu/rogue\", it would also match \"team sisu\" but would not match \"teamsisu\"\n\t- Any Zwift IDs will be added to your team (see 332952 in the screenshot)\n\t- Any Zwift IDs with a - in front of them will be excluded from your team, even if they match for a team tag (see -848974 in the screenshot which is excluded even though they match \"sisu\"\n\t- The upper right part of the settings window will show you who matches your team criteria.  You can click the \"Other entrants\" to see everyone registered for the event if you want to see team tags and Zwift IDs to include\n- added an option to show team score in the points leaderboard.  If enabled, the top line of the list will show the combined points totals for your team as shown in the screenshot.\n- fixed an issue that sometimes caused the elevation profile window to be blank when initially starting Sauce.  I hope this fixes the cases where others were seeing it, please let me know if not and if possible, press F12 on the window and go to the console tab to see what is going on there."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
@@ -46,7 +46,7 @@
         "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts\n* Leaderboards for points races",
         "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
         "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
-        "created": 1704081600000,
+        "created": 1704078000000,
         "authorName": "Arend teRaa",
         "authorURL": "https://github.com/Zenmaster28",
         "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
