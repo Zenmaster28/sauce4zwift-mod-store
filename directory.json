@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/757daccc4a2db6103279659166fb06453e258d35e891a38c5f9cb5b8602919f4.zip",
-                "version": "1.7.0",
-                "updated": 1745171991814,
-                "hash": "757daccc4a2db6103279659166fb06453e258d35e891a38c5f9cb5b8602919f4",
-                "size": 596499,
-                "notes": "version 1.7.0\n- adds an option to the points leaderboard for FTS per event scoring (aka ZRL style)\n- adds an option for a solid background colour for the points leaderboard\n- future proofing for when Zwift adds new pens to a world\n- if you enable the \"show gaps\" option for robopacers on the elevation profile, it will also show how many people (and lately, bots) are in the group.\n\nNote that the points leaderboard analysis page is only partially updated for the FTS per event settings.  The total points shown should be correct but if you expand a rider or switch to segment view, it will show points as if it was FTS per repeat. "
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/ad809d0b53fc64f985acca22b267c22a97406959d9bf226ae144423ce0a9147f.zip",
+                "version": "1.7.1",
+                "updated": 1746550357168,
+                "hash": "ad809d0b53fc64f985acca22b267c22a97406959d9bf226ae144423ce0a9147f",
+                "size": 604242,
+                "notes": "version 1.7.1\n- added the Portal Climbs to the route preview window (requires the latest Alpha version of Sauce)\n- on the lap data window, if auto lap is disabled via hotkey, the setting will persist if the window is reloaded\n- on the lap data window, the up/down arrows will adjust the auto lap power threshold by +/- 5w\n- fixed France routes that were incorrectly showing the Half Ventoux and Mostly Ventoux segments\n- fixed the Hell of the North leadin detection"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
@@ -48,7 +48,7 @@
         "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
         "created": 1704078000000,
         "authorName": "Arend teRaa",
-        "authorURL": "https://github.com/Zenmaster28",
+        "authorURL": "https://buymeacoffee.com/zenmaster28",
         "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
     },
     {
