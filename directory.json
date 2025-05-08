@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/ad809d0b53fc64f985acca22b267c22a97406959d9bf226ae144423ce0a9147f.zip",
-                "version": "1.7.1",
-                "updated": 1746550357168,
-                "hash": "ad809d0b53fc64f985acca22b267c22a97406959d9bf226ae144423ce0a9147f",
-                "size": 604242,
-                "notes": "version 1.7.1\n- added the Portal Climbs to the route preview window (requires the latest Alpha version of Sauce)\n- on the lap data window, if auto lap is disabled via hotkey, the setting will persist if the window is reloaded\n- on the lap data window, the up/down arrows will adjust the auto lap power threshold by +/- 5w\n- fixed France routes that were incorrectly showing the Half Ventoux and Mostly Ventoux segments\n- fixed the Hell of the North leadin detection"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/31895579242e662d2bc6713c85f901a12015df29fbdaae2dbf3dabc4bfdf8631.zip",
+                "version": "1.7.2",
+                "updated": 1746694452138,
+                "hash": "31895579242e662d2bc6713c85f901a12015df29fbdaae2dbf3dabc4bfdf8631",
+                "size": 604782,
+                "notes": "version 1.7.2\n- fixes an bug with the elevation profile in cases where an event with a custom distance that was shorter than the route's leadin would lead to an infinite loop."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
