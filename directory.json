@@ -29,12 +29,12 @@
     {
     "releases": [
         {
-            "url": "https://mod-api.sauce.llc/assets/zenmaster/5cde49fae7d22c5a4137c280855b94de7370c0ecd11283814bf0a1b3054c2c98.zip",
-            "version": "1.7.3",
-            "updated": 1749640601251,
-            "hash": "5cde49fae7d22c5a4137c280855b94de7370c0ecd11283814bf0a1b3054c2c98",
-            "size": 605361,
-            "notes": "version 1.7.3\n- fixes the elevation profile for portal climbs\n- fix for the points leaderboard when both \"female only results\" AND \"fts per event results\" are enabled\n- fix for the xAxis tickmarks if you turn off a route with a u-turn or manual intersection turn."
+            "url": "https://mod-api.sauce.llc/assets/zenmaster/f5614a6454f4b1a9a126c61bc31bfb78d019adfb1671345bb75faeea005d5109.zip",
+            "version": "1.7.4",
+            "updated": 1750249911181,
+            "hash": "f5614a6454f4b1a9a126c61bc31bfb78d019adfb1671345bb75faeea005d5109",
+            "size": 605133,
+            "notes": "version 1.7.4\n- fixes an issue with \"Zoom to next segment\" when there isn't a next segment.\n- fixes overlapping \"Ventoux KOM\" and \"Ventoux Half KOM\" segment names on the Ven-top route."
         }
     ],
     "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
