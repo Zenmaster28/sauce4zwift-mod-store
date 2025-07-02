@@ -29,12 +29,12 @@
     {
     "releases": [
         {
-            "url": "https://mod-api.sauce.llc/assets/zenmaster/f5614a6454f4b1a9a126c61bc31bfb78d019adfb1671345bb75faeea005d5109.zip",
-            "version": "1.7.4",
-            "updated": 1750249911181,
-            "hash": "f5614a6454f4b1a9a126c61bc31bfb78d019adfb1671345bb75faeea005d5109",
-            "size": 605133,
-            "notes": "version 1.7.4\n- fixes an issue with \"Zoom to next segment\" when there isn't a next segment.\n- fixes overlapping \"Ventoux KOM\" and \"Ventoux Half KOM\" segment names on the Ven-top route."
+            "url": "https://mod-api.sauce.llc/assets/zenmaster/f39c8a07e9f08f24eaece3ffa53664e57d82c2a7962f6ec455853bc319419db5.zip",
+            "version": "1.7.5",
+            "updated": 1751454285233,
+            "hash": "f39c8a07e9f08f24eaece3ffa53664e57d82c2a7962f6ec455853bc319419db5",
+            "size": 610556,
+            "notes": "version 1.7.5\n- adds an option to the route preview window to show distance along the x-axis\n- fixes duplicate detection of the Marina Sprint in France on some routes\n- adds the ability to customize which segments get scored in a specific points leaderboard window.  This will allow you to do something like having a score just for KOMs and another for sprints. In order to use this, you need to configure the event the same way as before.  Then after having done that, there is a new button on the points window (the check mark) that will bring up a window that just lists segments.  In there you can check/uncheck the ones you want just for that window.  You can also put in a custom title just for that window.\n\t- Known issue: if you have the option to rotate between the full scores and the last segment scores, if the last segment was a segment not being scored by that particular window, it will just show blank scores rather than going back to the last scored segment for that window.  I would need to make significant changes to how this is handled to fix it.  Maybe some day...\n\t- You can't exclude a segment from the main configuration page and then add it back in for the custom scoring\n\t- The score format (meaning the points for FTS, FAL etc) setup in the main config is used for all windows and can't be different per window.\n\t- The analysis window doesn't have any way to use the custom segments.  Maybe some day..."
         }
     ],
     "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
@@ -50,7 +50,7 @@
     "authorName": "Arend teRaa",
     "authorURL": "https://buymeacoffee.com/zenmaster28",
     "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
-},
+    },
     {
         "name": "Costco Guys BOOM",
         "releases": [
