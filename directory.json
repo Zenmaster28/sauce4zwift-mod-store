@@ -29,27 +29,27 @@
     {
     "releases": [
         {
-            "url": "https://mod-api.sauce.llc/assets/zenmaster/f39c8a07e9f08f24eaece3ffa53664e57d82c2a7962f6ec455853bc319419db5.zip",
-            "version": "1.7.5",
-            "updated": 1751454285233,
-            "hash": "f39c8a07e9f08f24eaece3ffa53664e57d82c2a7962f6ec455853bc319419db5",
-            "size": 610556,
-            "notes": "version 1.7.5\n- adds an option to the route preview window to show distance along the x-axis\n- fixes duplicate detection of the Marina Sprint in France on some routes\n- adds the ability to customize which segments get scored in a specific points leaderboard window.  This will allow you to do something like having a score just for KOMs and another for sprints. In order to use this, you need to configure the event the same way as before.  Then after having done that, there is a new button on the points window (the check mark) that will bring up a window that just lists segments.  In there you can check/uncheck the ones you want just for that window.  You can also put in a custom title just for that window.\n\t- Known issue: if you have the option to rotate between the full scores and the last segment scores, if the last segment was a segment not being scored by that particular window, it will just show blank scores rather than going back to the last scored segment for that window.  I would need to make significant changes to how this is handled to fix it.  Maybe some day...\n\t- You can't exclude a segment from the main configuration page and then add it back in for the custom scoring\n\t- The score format (meaning the points for FTS, FAL etc) setup in the main config is used for all windows and can't be different per window.\n\t- The analysis window doesn't have any way to use the custom segments.  Maybe some day..."
+            "url": "https://mod-api.sauce.llc/assets/zenmaster/416d29f777f89d5f01b709c43f853a8e249e27b61773d8228b84e0b736f5becf.zip",
+            "version": "1.7.6",
+            "updated": 1757790193736,
+            "hash": "416d29f777f89d5f01b709c43f853a8e249e27b61773d8228b84e0b736f5becf",
+            "size": 609691,
+            "notes": "version 1.7.6\n- enables profiles for recently added routes"
         }
-    ],
-    "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
-    "tags": [
-        "routes",
-        "segments"
-    ],
-    "name": "Zenmaster",
-    "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts\n* Leaderboards for points races",
-    "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
-    "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
-    "created": 1704078000000,
-    "authorName": "Arend teRaa",
-    "authorURL": "https://buymeacoffee.com/zenmaster28",
-    "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
+        ],
+        "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
+        "tags": [
+            "routes",
+            "segments"
+        ],
+        "name": "Zenmaster",
+        "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts\n* Leaderboards for points races",
+        "homeURL": "https://github.com/Zenmaster28/Zenmaster-s4z-mods",
+        "logoURL": "https://raw.githubusercontent.com/Zenmaster28/Zenmaster-s4z-mods/refs/tags/v1.5.3/Zenmaster-s4z-logo.png",
+        "created": 1704078000000,
+        "authorName": "Arend teRaa",
+        "authorURL": "https://buymeacoffee.com/zenmaster28",
+        "authorAvatarURL": "https://avatars.githubusercontent.com/u/6671862?v=4"
     },
     {
         "name": "Costco Guys BOOM",
