@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/e2f836eb02539991a945c2119d707e57073d49b43eb509b1e94f987cbd03df98.zip",
-                "version": "1.7.8",
-                "updated": 1758374805011,
-                "hash": "e2f836eb02539991a945c2119d707e57073d49b43eb509b1e94f987cbd03df98",
-                "size": 604778,
-                "notes": "version 1.7.8 restores the Points Leaderboard window that was accidentally removed in 1.7.7\n\n1.7.7 notes \n- changed the default FAL score format for ZRL from 20..1 to x..1\n- if a score format has a letter (any letter, upper or lowercase) at the start like the x..1 for ZRL above, the number of known racers will be used for the starting score.  ie. for x..1 if there are 27 known racers then the format will be 27,26,25,... down to 1.  On the sample preview window, the number of people signed up for the race will be used.  \n- the points analysis screen will properly score formats like x..1\n- the points analysis screen will properly score FTS per event (ie. ZRL)\n- the points analysis screen has a save icon along the top bar that will export a JSON file containing the breakdown of points by racer, by segment, as well as the raw segment results data\n- the points analysis options now let you change the font size and theme\n- fixes for a few edge cases\n"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/c21bbff71476d73aad1b5c59184f17e811f2e096749dc16b57394c0480ceaa86.zip",
+                "version": "1.7.9",
+                "updated": 1761656214582,
+                "hash": "c21bbff71476d73aad1b5c59184f17e811f2e096749dc16b57394c0480ceaa86",
+                "size": 610894,
+                "notes": "version 1.7.9\n- clicking on a segment name on the route elevation profile will open a window with segment details and a list of your times through it in the last 90 days\n- segment names on the route profile can be displayed top to bottom rather than the default bottom to top\n- the lap data window has a new option to auto-lap based on power ranges.  You can set a low and high threshold which gives 3 ranges (below low, between low and high and above high).  If power transitions from one range to another, a lap is triggered.\n- points leaderboard should score ties properly\n- points leaderboard has an option to make certain riders sticky so they are always visible.  You can set it for yourself, teammates or marked riders.  Sticky riders will show at the bottom of the window if they aren't visible in the list.\n- points leaderboard now has the ability to assign people to teams and show team scores.  This is still a work in progress.  I really wasn't sure how best to implement it and I'm not sold on what I've done but here you go.  To configure teams, there is a new button on the points leaderboard header.  In the window that opens up you can create/delete teams.  Assign/remove people to a team from an event signup list or by zwift id.\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
