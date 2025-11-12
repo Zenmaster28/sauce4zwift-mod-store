@@ -70,19 +70,19 @@
         "authorName": "Zwift Guy"
     },
     {
-    "name": "Arckuk",
-    "releases": [
-        {
-            "version": "1.1.0",
-            "hash": "938319b5ae4c0fbd48bc13ed118228382b68719eb506f31e125dd296f695398e",
-            "url": "https://mod-api.sauce.llc/assets/arckuk/938319b5ae4c0fbd48bc13ed118228382b68719eb506f31e125dd296f695398e.zip",
-            "size": 266001,
-            "updated": 1762979178161
-        }
-    ],
-    "description": "## Features\n\n### Event Title:\nShows the name of the event subgroup and brief details (course name, distance and elevation) of any event in which the current watched athlete is participating\n\n### Top Bar:\nA replacement for the default Zwift speed / distance / elevation / time bar that appears on the centre top of the Zwift window, with a more Sauce like look\n\n### Power Cadence HR:\nA replacement for the default Zwift Power, Cadence and HR box normally in the top left of the screen, can also show draft\n\n### Power Bars:\nA bar chart display of the current and best 1 s, 5 s, 15 s, 60 s, 5 min, 20 min and average power for the current user session. Can also optionally show heart rate\n\n### Power Graph:\nA graph of the current and best power as a function of time for the currently watched athlete - a continuously updated and evolving power curve\n\n### Input:\nShows parameters that reflect the rider's input to the Zwift system (power, cadence and heart rate) as well as draft and gradient\n\n### Output:\nShow parameters which are the output of the Zwift session: speed, distance, time, elevation, as well as distance or time remaining in an event\n\n### Active Power Up:\nShows the power up (Aero / Feather / Draft / Burrito etc) currently in use by the watched rider. Unfortunately there is no way to show the power up being held and available for the rider to use with information available to Sauce from Zwift.\n",
-    "logoURL": "https://github.com/arckuk/arckuk-sauce/blob/main/Arckuk%20Sauce.png?raw=true",
-    "created": 1762905600000,
-    "authorName": "Nick Keat"
-}
+        "name": "Arckuk",
+        "releases": [
+            {
+                "version": "1.1.0",
+                "hash": "938319b5ae4c0fbd48bc13ed118228382b68719eb506f31e125dd296f695398e",
+                "url": "https://mod-api.sauce.llc/assets/arckuk/938319b5ae4c0fbd48bc13ed118228382b68719eb506f31e125dd296f695398e.zip",
+                "size": 266001,
+                "updated": 1762979178161
+            }
+        ],
+        "description": "## Features\n\n### Event Title:\nShows the name of the event subgroup and brief details (course name, distance and elevation) of any event in which the current watched athlete is participating\n\n### Top Bar:\nA replacement for the default Zwift speed / distance / elevation / time bar that appears on the centre top of the Zwift window, with a more Sauce like look\n\n### Power Cadence HR:\nA replacement for the default Zwift Power, Cadence and HR box normally in the top left of the screen, can also show draft\n\n### Power Bars:\nA bar chart display of the current and best 1 s, 5 s, 15 s, 60 s, 5 min, 20 min and average power for the current user session. Can also optionally show heart rate\n\n### Power Graph:\nA graph of the current and best power as a function of time for the currently watched athlete - a continuously updated and evolving power curve\n\n### Input:\nShows parameters that reflect the rider's input to the Zwift system (power, cadence and heart rate) as well as draft and gradient\n\n### Output:\nShow parameters which are the output of the Zwift session: speed, distance, time, elevation, as well as distance or time remaining in an event\n\n### Active Power Up:\nShows the power up (Aero / Feather / Draft / Burrito etc) currently in use by the watched rider. Unfortunately there is no way to show the power up being held and available for the rider to use with information available to Sauce from Zwift.\n",
+        "logoURL": "https://github.com/arckuk/arckuk-sauce/blob/main/Arckuk%20Sauce.png?raw=true",
+        "created": 1762905600000,
+        "authorName": "Nick Keat"
+    }
 ]
