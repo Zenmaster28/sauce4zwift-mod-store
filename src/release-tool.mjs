@@ -66,7 +66,7 @@ async function checkFieldsForm() {
         }
         if (decoded) {
             const size = [img.naturalWidth, img.naturalHeight];
-            if (size[0] > 150 || size[1] > 150) {
+            if (size[0] > 1500 || size[1] > 1500) {
                 invalid.push({
                     field: logoURL,
                     message: `image too big: ${size[0]}x${size[1]} (max: 1500x1500)`
