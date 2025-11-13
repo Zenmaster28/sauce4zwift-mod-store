@@ -9,6 +9,7 @@ let draftRelease;
 let draftEntry = {};
 let manifest;
 const implications = new Map();
+const newEntryId = crypto.randomUUID();
 
 const outputEl = qs('.output');
 const outputContentsEl = qs('.output .contents');
@@ -47,7 +48,12 @@ function checkFieldsForm() {
     } finally {
         els.forEach(x => x.removeEventListener('invalid', onInvalid));
     }
-    return invalid;
+    if (invalid.length) {
+        for (const x of invalid) {
+            const key = x.element.dataset.entryKey;
+            addError(`${key}: ${x.errors.join(', ')}`, `form-invalid:${key}`);
+        }
+    }
 }
 
 
@@ -120,13 +126,7 @@ function formToEntry() {
             implications.delete(x);
         }
     }
-    const invalid = checkFieldsForm();
-    if (invalid.length) {
-        for (const x of invalid) {
-            const key = x.element.dataset.entryKey;
-            addError(`${key}: ${x.errors.join(', ')}`, `form-invalid:${key}`);
-        }
-    }
+    checkFieldsForm();
     draftEntry.releases.at(-1).updated = Date.now();
 }
 
@@ -160,6 +160,7 @@ function entryToForm() {
             debugger;
         }
     }
+    checkFieldsForm();
 }
 
 
@@ -179,6 +180,7 @@ function setEntry(entry) {
         }
     } else {
         draftEntry = {
+            id: newEntryId,
             name: manifest.name,
             releases: []
         };
@@ -272,32 +274,42 @@ function renderOutput() {
     implicationsEl.innerHTML = '';
     outputContentsEl.innerHTML = '';
     if (implications.size) {
+        let hasErrors;
         for (const x of implications.values()) {
             const el = document.createElement('div');
+            if (x.type === 'error') {
+                hasErrors = true;
+            }
             el.classList.add('message', x.type);
             el.textContent = x.message;
             implicationsEl.append(el);
         }
+        if (!hasErrors) {
+            qs('iframe#preview').contentWindow.postMessage(JSON.stringify(draftEntry));
+        }
+        outputContentsEl.innerHTML = `<k>Draft <code>directory.json</code> entry: ` +
+            `Unavailable until errors/warnings are fixed</k>`;
     } else {
         qs('iframe#preview').contentWindow.postMessage(JSON.stringify(draftEntry));
         outputContentsEl.innerHTML = `
             <k>Draft <code>directory.json</code> entry...</k>
             <pre class="json-box"></pre>
         `;
-        outputContentsEl.querySelector('.json-box').textContent = JSON.stringify(draftEntry, null, 4);
+        outputContentsEl.querySelector('.json-box').textContent = JSON.stringify(draftEntry, null, 4)
+            .replaceAll(/^/mg, '    ');
     }
 }
 
 
 async function main() {
     directory = await fetch('/directory.json').then(x => x.json());
-    qs('select[name="id-choices"]').innerHTML += directory.map(x =>
-        `<option value="${x.id}">${x.name}</option>`).join('\n');
+    const idChoices = qs('select[name="id-choices"]');
+    idChoices.querySelector('option[value=""]').value = newEntryId;
+    idChoices.innerHTML += directory.map(x => `<option value="${x.id}">${x.name}</option>`).join('\n');
     qs('select[name="id-choices"]').addEventListener('input', ev => {
         let id = ev.currentTarget.value;
         if (!id) {
             setEntry(null);
-            draftEntry.id = crypto.randomUUID();
         } else {
             setEntry(directory.find(x => x.id === id));
         }
