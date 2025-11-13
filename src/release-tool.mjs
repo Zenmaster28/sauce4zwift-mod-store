@@ -10,6 +10,7 @@ let draftEntry = {};
 let manifest;
 const implications = new Map();
 const newEntryId = crypto.randomUUID();
+const logoImagesCache = new Map();
 
 const outputEl = qs('.output');
 const outputContentsEl = qs('.output .contents');
@@ -26,8 +27,7 @@ function qsAll(selector) {
     return document.querySelectorAll(selector);
 }
 
-
-function checkFieldsForm() {
+async function checkFieldsForm() {
     const els = qsAll('#fields [data-entry-key]');
     const invalid = [];
     const onInvalid = ev => {
@@ -37,10 +37,8 @@ function checkFieldsForm() {
                 errors.push(key);
             }
         }
-        invalid.push({
-            element: ev.target,
-            errors,
-        });
+        if (errors.length === 0) debugger;
+        invalid.push({field: ev.target, message: errors.join(', ')});
     };
     els.forEach(x => x.addEventListener('invalid', onInvalid));
     try {
@@ -48,10 +46,60 @@ function checkFieldsForm() {
     } finally {
         els.forEach(x => x.removeEventListener('invalid', onInvalid));
     }
+    const logoURL = qs('input[data-entry-key="logoURL"]');
+    if (logoURL && logoURL.checkValidity()) {
+        const url = logoURL.value;
+        if (!logoImagesCache.has(url)) {
+            const img = new Image();
+            img.fetchPriority = 'high';
+            img.loading = 'eager';
+            img.src = url;
+            logoImagesCache.set(url, img);
+        }
+        const img = logoImagesCache.get(url);
+        let decoded;
+        try {
+            await img.decode();
+            decoded = true;
+        } catch(e) {
+            invalid.push({field: logoURL, message: `image load/decode: ${e.message}`});
+        }
+        if (decoded) {
+            const size = [img.naturalWidth, img.naturalHeight];
+            if (size[0] > 150 || size[1] > 150) {
+                invalid.push({
+                    field: logoURL,
+                    message: `image too big: ${size[0]}x${size[1]} (max: 1500x1500)`
+                });
+            }
+            if (size[0] < 384 || size[1] < 384) {
+                invalid.push({
+                    field: logoURL,
+                    message: `image too small: ${size[0]}x${size[1]} (min: 384x384)`
+                });
+            }
+            const ar = size[0] / size[1];
+            if (ar > 1.05 || ar < 0.95) {
+                invalid.push({
+                    field: logoURL,
+                    message: `image aspect ratio should be 1:1`
+                });
+            }
+        }
+    }
+    for (const x of implications.keys()) {
+        if (x.startsWith('form-invalid:')) {
+            implications.delete(x);
+        }
+    }
     if (invalid.length) {
-        for (const x of invalid) {
-            const key = x.element.dataset.entryKey;
-            addError(`${key}: ${x.errors.join(', ')}`, `form-invalid:${key}`);
+        for (const {field, message, level='error'} of invalid) {
+            const key = field.dataset.entryKey;
+            if (level === 'warning') {
+                addWarning(`${key}: ${message}`, `form-invalid:${key}`);
+            } else {
+                addError(`${key}: ${message}`, `form-invalid:${key}`);
+            }
         }
     }
 }
@@ -87,7 +135,14 @@ function addError(message, id) {
 }
 
 
+let _formToEntryQ = Promise.resolve();
 function formToEntry() {
+    const p = _formToEntryQ.then(_formToEntry);
+    _formToEntryQ = p.finally(() => null);
+    return p;
+}
+
+async function _formToEntry() {
     const obj = draftEntry;
     for (const input of fieldsFormEl.querySelectorAll('input,textarea,select')) {
         if (input.hasAttribute('writeonly')) {
@@ -121,17 +176,12 @@ function formToEntry() {
         }
         o[key] = value;
     }
-    for (const x of implications.keys()) {
-        if (x.startsWith('form-invalid:')) {
-            implications.delete(x);
-        }
-    }
-    checkFieldsForm();
+    await checkFieldsForm();
     draftEntry.releases.at(-1).updated = Date.now();
 }
 
 
-function entryToForm() {
+async function entryToForm() {
     for (const input of fieldsFormEl.querySelectorAll('input,textarea,select')) {
         let obj = draftEntry;
         let key;
@@ -160,11 +210,11 @@ function entryToForm() {
             debugger;
         }
     }
-    checkFieldsForm();
+    await checkFieldsForm();
 }
 
 
-function setEntry(entry) {
+async function setEntry(entry) {
     clearImplication('dup-version');
     if (entry) {
         draftEntry = structuredClone(entry);
@@ -189,11 +239,12 @@ function setEntry(entry) {
         draftEntry.releases.push({});
     }
     Object.assign(draftEntry.releases.at(-1), draftRelease, {updated: Date.now()});
-    entryToForm();
+    await entryToForm();
 }
 
 
 async function refreshFile() {
+    logoImagesCache.clear();
     fieldsFormEl.classList.add('disabled');
     qsAll('.edit-fields').forEach(x => x.classList.add('loading'));
     outputContentsEl.innerHTML = '';
@@ -250,7 +301,7 @@ async function refreshFile() {
             console.info({upload});
             draftRelease.url = upload.url;
         }
-        setEntry(directory.find(x => x.name === manifest.name));
+        await setEntry(directory.find(x => x.name === manifest.name));
         renderOutput();
         fieldsFormEl.classList.remove('disabled');
     } catch(e) {
@@ -306,17 +357,17 @@ async function main() {
     const idChoices = qs('select[name="id-choices"]');
     idChoices.querySelector('option[value=""]').value = newEntryId;
     idChoices.innerHTML += directory.map(x => `<option value="${x.id}">${x.name}</option>`).join('\n');
-    qs('select[name="id-choices"]').addEventListener('input', ev => {
+    qs('select[name="id-choices"]').addEventListener('input', async ev => {
         let id = ev.currentTarget.value;
         if (!id) {
-            setEntry(null);
+            await setEntry(null);
         } else {
-            setEntry(directory.find(x => x.id === id));
+            await setEntry(directory.find(x => x.id === id));
         }
-        entryToForm();
+        await entryToForm();
     });
-    qs('input[name="replace-release"]').addEventListener('input', ev => {
-        setEntry(draftEntry);
+    qs('input[name="replace-release"]').addEventListener('input', async ev => {
+        await setEntry(draftEntry);
     });
     fileInput = qs('input[type="file"][name="zip"]');
     fileInput.addEventListener('change', ev => refreshFile());
@@ -324,8 +375,8 @@ async function main() {
         // file input is broken, you need to clear it to make it refresh consistently
         ev.currentTarget.value = null;
     });
-    fieldsFormEl.addEventListener('input', ev => {
-        formToEntry();
+    fieldsFormEl.addEventListener('input', async ev => {
+        await formToEntry();
         renderOutput();
         fieldsFormEl.classList.remove('disabled');
     });
