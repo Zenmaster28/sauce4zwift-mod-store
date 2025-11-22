@@ -2,9 +2,11 @@ html.preview-mode {
     padding: 0 !important;
 
     body > header,
-    body > footer {
+    body > footer,
+    .not-preview {
         display: none;
     }
+
     body {
         margin: 0;
 
@@ -24,14 +26,10 @@ html.preview-mode {
 }
 
 .warn {
-    color: #844;
-    font-size: 0.8em;
-    padding: 0.2em 0;
+    font-size: 1.1em;
 }
 
 a {
-    color: blue;
-
     &[href=""] {
         pointer-events: none;
         color: inherit;
@@ -44,7 +42,7 @@ body > footer {
     margin-top: 2em;
     padding: 2em;
     font-weight: 300;
-    color: #444;
+    color: hsl(from var(--fg-color) h s calc(l + 27 * var(--fg-dir)));
     text-align: center;
 }
 
@@ -138,12 +136,27 @@ body > footer {
 header#intro {
     font-size: 1.5em;
 
+    .what {
+        font-size: 0.7em;
+        padding: 0.2em;
+
+        a {
+            text-decoration: none;
+            opacity: 0.8;
+
+            &:hover {
+                text-decoration: underline;
+                opacity: 1;
+            }
+        }
+    }
+
     nav {
         display: flex;
         flex-wrap: wrap;
         border-style: groove;
         border-width: 40px;
-        border-color: #ee3e0b90;
+        border-color: #cc2e0b;
         align-items: center;
         justify-content: center;
 
@@ -163,7 +176,7 @@ header#intro {
             font-size: 0.6em;
             font-weight: 300;
             text-align: right;
-            color: #555;
+            color: hsl(from var(--fg-color) h s calc(l + 33 * var(--fg-dir)));
 
             a {
                 color: inherit;
@@ -176,10 +189,10 @@ header#intro {
         }
 
         h1 {
-            margin: 0;
+            margin: 0 0;
             padding: 0;
             font-size: 2.5em;
-            font-weight: 100;
+            font-weight: normal;
         }
 
         a.logo {
@@ -216,6 +229,7 @@ html {
 .directory {
     display: flex;
     flex-direction: column;
+    padding: 0.5em;
 }
 
 .markdown {
@@ -237,10 +251,9 @@ html {
     }
 }
 
-
 .mod {
-    border: 1px solid black;
-    margin: 1em 0;
+    border: 1px solid var(--fg-color);
+    margin-bottom: 1.5em;
     padding: 0.8em;
 
     &:not(.installed) {
@@ -270,7 +283,6 @@ html {
     header {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
         align-items: center;
         margin-bottom: 0.5em;
 
@@ -288,20 +300,20 @@ html {
     }
 
     footer {
-        color: #444;
+        color: hsl(from var(--fg-color) h s calc(l + 27 * var(--fg-dir)));
         margin-top: 0.5em;
         padding-top: 0.5em;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        border-top: 1px solid #0003;
+        border-top: 1px solid hsl(from var(--fg-color) h s l / 0.2);
     }
 
     .vote {
         display: inline-flex;
         flex-direction: column;
-        margin-right: 0.6em;
+        margin-right: 0.6rem;
 
         a {
             display: flex;
@@ -338,9 +350,9 @@ html {
 
     .rank-badge {
         position: relative;
-        margin-right: 0.4em;
+        margin-right: 0.4rem;
         aspect-ratio: 1 / 1;
-        height: 1.6em;
+        height: 1.8em;
 
         .rank-value,
         .rank-icon {
@@ -359,7 +371,6 @@ html {
             color: #fff;
             font-weight: 900;
             font-size: 0.88em;
-            margin-left: -1px;
         }
 
         .rank-icon {
@@ -367,7 +378,7 @@ html {
                 --from: #a33;
                 --to: #d00;
                 stroke-width: 50px;
-                stroke: #000;
+                stroke: var(--fg-color);
                 fill: var(--from);
                 animation: pulse-fill 1.4s infinite;
             }
@@ -393,7 +404,7 @@ html {
         overflow: hidden;
         width: 3em;
         height: 3em;
-        margin-right: 0.5em;
+        margin-right: 0.5rem;
 
         img {
             object-fit: cover;
@@ -405,7 +416,7 @@ html {
     .meta {
         padding: 0.1em 0.2em;
         font-weight: 300;
-        color: #444;
+        color: hsl(from var(--fg-color) h s calc(l + 27 * var(--fg-dir)));
 
         &:not(:last-child)::after {
             font-weight: 200;
@@ -462,11 +473,11 @@ html {
                 background-image:
                     linear-gradient(to right,
                         transparent calc(100% * var(--progress) - 2px),
-                        black calc(100% * var(--progress)),
+                        #333 calc(100% * var(--progress)),
                         transparent calc(100% * var(--progress) + 2px)),
                     linear-gradient(to bottom,
                         transparent calc(100% * var(--progress) - 2px),
-                        black calc(100% * var(--progress)),
+                        #333 calc(100% * var(--progress)),
                         transparent calc(100% * var(--progress) + 2px));
             }
         }
@@ -474,12 +485,12 @@ html {
 
     .install-remove,
     .disconnected {
-        margin-right: 0.5em;
+        margin-right: 0.5rem;
         text-decoration: none;
 
         &.install-remove .tag {
-            border: 3px double black;
-            outline: 3px double black;
+            border: 3px double var(--fg-color);
+            outline: 3px double var(--fg-color);
             outline-offset: 2px;
             transition: 400ms outline;
 
@@ -512,7 +523,7 @@ html {
     main {
         display: flex;
         flex-wrap: wrap;
-        border-top: 1px solid #0003;
+        border-top: 1px solid hsl(from var(--fg-color) h s l / 0.2);
         padding-top: 0.5em;
 
         section.left {
@@ -526,7 +537,7 @@ html {
 
         section.right {
             min-width: 300px;
-            max-height: 12em;
+            max-height: 13em;
             overflow: auto;
             flex: 1 1;
             display: flex;
@@ -535,20 +546,20 @@ html {
     }
 
     .mod-description {
-        color: #333;
+        color: hsl(from var(--fg-color) h s calc(l + 20 * var(--fg-dir)));
         padding: 0.5rem;
         font-size: 1em;
     }
 
     .release-info {
-        color: #333;
-        border-top: 1px solid #0003;
+        color: hsl(from var(--fg-color) h s calc(l + 20 * var(--fg-dir)));
+        border-top: 1px solid hsl(from var(--fg-color) h s l / 0.2);
         margin: 0.5rem 0.5rem 0;
         padding-top: 0.5em;
         font-size: 0.9em;
 
         > header {
-            color: #777;
+            color: hsl(from var(--fg-color) h s calc(l + 47 * var(--fg-dir)));
             font-size: 0.8em;
             font-weight: bold;
         }
@@ -671,4 +682,3 @@ html {
         fill: var(--from);
     }
 }
-

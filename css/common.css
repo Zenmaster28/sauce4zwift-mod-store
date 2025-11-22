@@ -2,12 +2,38 @@
 /*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono');*/
 
 html {
+    --bg-color: white;
+    --bg-dir: -1;
+    --fg-color: black;
+    --fg-dir: 1;
+    --link-color: #0058dd;
+    --warn-color: #ab3300;
     font-family: VT323;
     font-size: 18px;
-    background-color: white;
-    color: black;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
     font-variant-ligatures: no-common-ligatures;
 }
+
+@media (prefers-color-scheme: dark) {
+    html {
+        --bg-color: #111;
+        --bg-dir: 1;
+        --fg-color: #eee;
+        --fg-dir: -1;
+        --link-color: #3088ff;
+        --warn-color: #cb5330;
+    }
+}
+
+.warn {
+    color: var(--warn-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
 
 @media only screen and (min-width: 768px) {
     html {
