@@ -52,21 +52,21 @@ async function render() {
                     <div class="filler"></div>
 
                     <div class="meta flex">
-                        <a class="install-remove has-connection-only" href="javascript:void(0);">
-                            <div class="tag no-restart-required-only not-installed-only install">install</div>
-                            <div class="tag no-restart-required-only installed-only remove">remove</div>
-                            <div class="tag restart-required-only restart">restart required</div>
+                        <a class="install-remove if-has-connection" href="javascript:void(0);">
+                            <div class="tag if-no-restart-required if-not-installed install">install</div>
+                            <div class="tag if-no-restart-required if-installed remove">remove</div>
+                            <div class="tag if-restart-required restart">restart required</div>
                         </a>
-                        <div class="init-only disconnected">
+                        <div class="if-init disconnected">
                             <div class="tag">Looking for Sauce...</div>
                         </div>
-                        <div class="no-init-only no-connection-only disconnected">
+                        <div class="if-not-init if-no-connection disconnected">
                             <div class="tag">disconnected</div>
                         </div>
                     </div>
 
                     <div class="meta flex" title="Community Ranking">
-                        <div class="no-restart-required-only installed-only vote">
+                        <div class="if-no-restart-required if-installed vote">
                             <a data-vote="up" title="Give an up vote">${await upArrowP}</a>
                             <a data-vote="down" title="Give a down vote">${await downArrowP}</a>
                         </div>
@@ -134,6 +134,9 @@ async function loadRankInfo() {
 
 
 async function main() {
+    if (window.electron?.context) {
+        document.documentElement.classList.add('electron');
+    }
     try {
         CSS.registerProperty({
             name: "--progress",

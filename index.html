@@ -23,10 +23,10 @@
                 <a class="left logo" href="index.html"><img class="logo" src="images/logo_vert_mods.webp"/></a>
                 <div class="right">
                     <h1>Sauce for Zwift™ Mods!</h1>
-                    <div class="what"><a title="What is Sauce for Zwift™?"
-                              href="https://www.sauce.llc/products/sauce4zwift/">What is this for?</a></div>
+                    <div class="what if-not-electron"><a title="What is Sauce for Zwift™?"
+                         href="https://www.sauce.llc/products/sauce4zwift/">What is this for?</a></div>
                     <div class="footnote">
-                        <small class="postit no-init-only no-connection-only">
+                        <small class="postit if-not-init if-no-connection"
                             Open this page on a computer running Sauce for Zwift, or by
                             using the link inside Sauce -> Settings -> Mods -> Official Mod Store</small>
                     </div>
@@ -45,7 +45,9 @@
         </main>
 
         <footer>
-            <a href="release-tool.html">Dev Release Tool</a> |
+            <span class="if-not-electron">
+                <a class="if-not-electron" href="release-tool.html">Dev Release Tool</a> |
+            </span>
             <a external target="_blank" href="https://github.com/SauceLLC/sauce4zwift-mod-store">GitHub</a> |
             Copyright 1993 |
             GloboCorp, Inc

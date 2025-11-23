@@ -215,13 +215,18 @@ body > main {
 html {
     position: relative;
 
-    &:not(.has-connection) .has-connection-only,
-    &.has-connection .no-connection-only {
+    &:not(.has-connection) .if-has-connection,
+    &.has-connection .if-no-connection {
         display: none;
     }
 
-    &.init .no-init-only,
-    &:not(.init) .init-only {
+    &.init .if-not-init,
+    &:not(.init) .if-init {
+        display: none;
+    }
+
+    &.electron .if-not-electron,
+    &:not(.electron) .if-electron {
         display: none;
     }
 }
@@ -257,25 +262,25 @@ html {
     padding: 0.8em;
 
     &:not(.installed) {
-        .installed-only {
+        .if-installed {
             display: none;
         }
     }
 
     &.installed {
-        .not-installed-only {
+        .if-not-installed {
             display: none;
         }
     }
 
     &:not(.restart-required) {
-        .restart-required-only {
+        .if-restart-required {
             display: none;
         }
     }
 
     &.restart-required {
-        .no-restart-required-only {
+        .if-no-restart-required {
             display: none;
         }
     }
