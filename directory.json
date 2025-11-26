@@ -86,17 +86,17 @@
         "created": 1762905600000,
         "authorName": "Nick Keat"
     },
-       {
+         {
         "id": "e0ec65b6-4202-423a-840c-8c2d7ff4bb3c",
         "name": "Zwift Rider/TTT Profile Card",
         "releases": [
             {
                 "version": "7.2",
-                "hash": "7bd92f38a6fefaa3bc38cc0af7896f69f637a35a746e718a4dcc0a98b6c4dbe6",
-                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/7bd92f38a6fefaa3bc38cc0af7896f69f637a35a746e718a4dcc0a98b6c4dbe6.zip",
-                "size": 271050,
-                "updated": 1764079787533,
-                "notes": "Release 7.2\n\n- Dark theme sync across all windows\n- Roster fetch for Club Ladder 5v5\n- Club Ladder Team colors applied to rider cards\n- Better fuzzy logic for club/team name matching"
+                "hash": "5272ac77dc1e3f270e64b773105b49e4770f46e698fccb69b851086491e1b9b2",
+                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/5272ac77dc1e3f270e64b773105b49e4770f46e698fccb69b851086491e1b9b2.zip",
+                "size": 271228,
+                "updated": 1764170195736,
+                "notes": "Release 7.2 \n- Dark theme toggle all windows\n- Roster fetch for Club Ladder 5v5\n- Club Ladder Team colors applied to rider cards\n- Better fuzzy logic for club/team name matching"
             }
         ],
         "description": "A comprehensive profile card MOD for Sauce for Zwift that displays real-time cycling metrics, nearby riders, and team coordination views.",
