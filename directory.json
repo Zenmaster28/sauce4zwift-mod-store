@@ -103,5 +103,32 @@
         "logoURL": "https://github.com/micahreeves/classic/blob/9e4f33ef31baf9c6bda3facc05c83cc8bef8a092/pictures/Screenshot_2025-11-11_at_7.53.png?raw=true",
         "created": 1762840800000,
         "authorName": "ZwiftGuy"
+    },
+    {
+        "id": "275e7d9b-8cf3-43b3-b5c3-e86eb1a12fd9",
+        "name": "O101 for S4Z",
+        "releases": [
+            {
+                "version": "1.0.1",
+                "hash": "6958c49145dc852064097f22d7a9a868f5f14fb242713922b3edad2043e19a13",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/6958c49145dc852064097f22d7a9a868f5f14fb242713922b3edad2043e19a13.zip",
+                "size": 500795,
+                "updated": 1764279932408,
+                "notes": "v1.0.1\nFirst release for mod store",
+                "minVersion": "2.1.0"
+            }
+        ],
+        "description": "O101 racing mods, made by Onno Aphinan\n- Nearby Race v2\n- Groups Race\n- Ladder Race\n- Overview\n- Livedata\n- Progress Bar\n- Fan Viewer",
+        "logoURL": "https://raw.githubusercontent.com/Opperhoofd/o101_s4z_mods/6ff33595b4c280fcf015f1b757382062ebf35eda/assets/images/O101.webp",
+        "tags": [
+            "zwift",
+            "sauce",
+            "mod",
+            "O101",
+            "Onno",
+            "Aphinan"
+        ],
+        "created": 217897200000,
+        "authorName": "Onno Aphinan"
     }
 ]
