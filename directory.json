@@ -115,7 +115,7 @@
                 "size": 500795,
                 "updated": 1764279932408,
                 "notes": "v1.0.1\nFirst release for mod store",
-                "minVersion": "2.1.0"
+                "minVersion": "2.0.1"
             }
         ],
         "description": "O101 racing mods, made by Onno Aphinan\n- Nearby Race v2\n- Groups Race\n- Ladder Race\n- Overview\n- Livedata\n- Progress Bar\n- Fan Viewer",
