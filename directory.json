@@ -129,6 +129,25 @@
         ],
         "created": 217897200000,
         "authorName": "Onno Aphinan"
+    },
+    {
+        "id": "2cd480d8-038f-41c2-a50e-2b88015fbb92",
+        "name": "DosenHuhn for S4Z",
+        "releases": [
+            {
+                "version": "0.2.3",
+                "hash": "1cb1b318fa2daac3a5fdb416d70a4dbffa8726e0503c23a4ef3a6c5a2f121530",
+                "url": "https://mod-api.sauce.llc/assets/dosenhuhn_for_s4z/1cb1b318fa2daac3a5fdb416d70a4dbffa8726e0503c23a4ef3a6c5a2f121530.zip",
+                "size": 2029330,
+                "updated": 1764418272420,
+                "notes": "grid: adapted to new getWebWindowManifests\nwbal_update: adapted to zwiftracing api changed endpoint"
+            }
+        ],
+        "description": "## DosenHuhn Mod Collection\n### wprime and cp update\n\nThis window will fetch the wprime and cp data for either \n- teamid of all registered club riders from zwiftracing.app (zwiftracing api key required)\n- from intervals.icu\n- local json file with following structure:\n\n### groups\nThe groups mod shows the team badge from the watched rider and teammates left of the bubbles. In zoomed view the metrics shown are configurable up to 2 values per line. Wbal included.\n\n### nearby\nThe nearby mod added in settings the option to show teammates only.\n  \n### averages\nThis windows shows the some collected average values like power and hr.\n\n### states\nShows actual state values like gradient, pwr, hr, speed and wbal. The pwr field swaps to w/kg at a gradient > 3.5\n  \n### powerdist\nOnly a horizontal stacked bar chart showing the power distribution within the coggan zones (or selected zones)\n  \n### powercolor\nA empty window just changing its backround color related to actual power zone\n  \n### gradient\nThis window shows the actual gradient. (The gradient is calculated if rider moved at least 5m)\n\n### grid \nThis window supports a grid view of multiple other sauce widgets. Browser only\n",
+        "homeURL": "https://github.com/BasWeg/dosenhuhn_s4z_mods",
+        "logoURL": "https://raw.githubusercontent.com/BasWeg/dosenhuhn_s4z_mods/refs/heads/main/assets/images/dosenhuhn_s4z_mods.webp",
+        "created": 1764370800000,
+        "authorName": "Bastian Wegener",
+        "authorURL": "https://buymeacoffee.com/bastianwegener"
     }
-
 ]
