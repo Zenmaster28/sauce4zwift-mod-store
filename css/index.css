@@ -1,3 +1,18 @@
+html {
+    display: flex;
+    justify-content: center;
+    scrollbar-gutter: stable;
+
+    body {
+        max-width: 1280px;
+        flex: 1 1 100%;
+    }
+}
+
+* {
+    scrollbar-width: thin;
+}
+
 html.preview-mode {
     padding: 0 !important;
 
@@ -191,14 +206,15 @@ header#intro {
         h1 {
             margin: 0 0;
             padding: 0;
-            font-size: 2.5em;
+            font-size: 3.5rem;
+            letter-spacing: -0.03em;
             font-weight: normal;
         }
 
         a.logo {
-            height: 200px;
+            height: 150px;
             display: block;
-            padding: 0 70px 0 20px;
+            padding: 0 20px 0 20px;
         }
 
         img.logo {
