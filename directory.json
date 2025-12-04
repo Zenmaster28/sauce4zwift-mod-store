@@ -91,12 +91,12 @@
         "name": "Zwift Rider/TTT Profile Card",
         "releases": [
             {
-                "version": "7.2",
-                "hash": "5272ac77dc1e3f270e64b773105b49e4770f46e698fccb69b851086491e1b9b2",
-                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/5272ac77dc1e3f270e64b773105b49e4770f46e698fccb69b851086491e1b9b2.zip",
-                "size": 271228,
-                "updated": 1764280959258,
-                "notes": "RELEASE 7.2 \n- Dark theme toggle all windows\n- Roster fetch for Club Ladder 5v5\n- Club Ladder Team colors applied to rider cards\n- New 1:1 LOGO\n"
+                "version": "7.2.1",
+                "hash": "891b33f50ab29a72e5883258a9a37620dae03d06bb9a1267b7e762f596fff3d8",
+                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/891b33f50ab29a72e5883258a9a37620dae03d06bb9a1267b7e762f596fff3d8.zip",
+                "size": 289984,
+                "updated": 1764849655474,
+                "notes": "RELEASE 7.2.1\n- URL/Local hoto custom header\n- Power zones bar\n- Fixed per-rider color TTT-view\n- REMOVED pack-view \n"
             }
         ],
         "description": "A comprehensive profile card MOD for Sauce for Zwift that displays real-time cycling metrics, nearby riders, and team coordination views.",
