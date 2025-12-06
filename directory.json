@@ -109,16 +109,16 @@
         "name": "O101 Racing Mods",
         "releases": [
             {
-                "version": "1.0.1",
-                "hash": "6958c49145dc852064097f22d7a9a868f5f14fb242713922b3edad2043e19a13",
-                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/6958c49145dc852064097f22d7a9a868f5f14fb242713922b3edad2043e19a13.zip",
-                "size": 500795,
-                "updated": 1764279932408,
-                "notes": "v1.0.1\nFirst release for mod store",
+                "version": "1.1.0",
+                "hash": "f985df976f456b1b26cd634c8978c5c5f9d317f1af9640a05e3809f0d50668be",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/f985df976f456b1b26cd634c8978c5c5f9d317f1af9640a05e3809f0d50668be.zip",
+                "size": 506635,
+                "updated": 1765057189569,
+                "notes": "v1.1.0\nLadder, group speed indicator improved, option to disable auto finish riders.\nNearby Race v2, add/remove overrides as marked riders.\nNew Companion App alike mod (fan viewer redesigned)",
                 "minVersion": "2.0.1"
             }
         ],
-        "description": "O101 racing mods, made by Onno Aphinan. These mod windows can help you to race better, improve your race craft.\n\n**Nearby Race v2**\nShows position, category, team badge, active power up, gap, speed, draft, hr, power with color. Marked riders, robopacers, also show them sticky or only. TTT options and FRR mode.\n\n**Groups Race**\nShows gap to you, group size, power with color, visual speed indicator, max position. Also some filtering possible to give you the best overview. Horizontal and vertical mode.\n\n**Ladder Race**\nIt is nearby and groups combined. It also shows actual points, pre-race stats and finish information. Auto and manual configuration, gets data from ladder site.\n\n**Overview**\nShows route/race/event information. Static and actual race information like power ups, distance, time,elevation, progress, lap info. Route segments overview, actual segment information with ETA. A Zwift like leaderboard.\n\n**Livedata**\nShows actual information like speed, power, draft, cadence, hr, gradient. \n\n**Progress Bar**\nWith percentage, name, distance, finish, lap name options.\n\n**Fan Viewer**\nEasily navigate the riders in a race. Jump to leader/lantern rouge, fist/last of group and change camera. Also easily switch to marked riders.",
+        "description": "O101 racing mods, made by Onno Aphinan. These mod windows can help you to race better, improve your race craft.\n\n**Nearby Race v2**\nShows position, category, team badge, active power up, gap, speed, draft, hr, power with color. Marked riders, robopacers, also show them sticky or only. TTT options and FRR mode.\n\n**Groups Race**\nShows gap to you, group size, power with color, visual speed indicator, max position. Also some filtering possible to give you the best overview. Horizontal and vertical mode.\n\n**Ladder Race**\nIt is nearby and groups combined. It also shows actual points, pre-race stats and finish information. Auto and manual configuration, gets data from ladder site.\n\n**Overview**\nShows route/race/event information. Static and actual race information like power ups, distance, time,elevation, progress, lap info. Route segments overview, actual segment information with ETA. A Zwift like leaderboard.\n\n**Livedata**\nShows actual information like speed, power, draft, cadence, hr, gradient. \n\n**Progress Bar**\nWith percentage, name, distance, finish, lap name options.\n\n**Fan Viewer**\nA bit of a fan view companion app. Easily navigate the riders in a race. Jump to leader/lantern rouge, fist/last of group and change camera. Also easily switch to marked riders. A map with profile as background.",
         "logoURL": "https://raw.githubusercontent.com/Opperhoofd/o101_s4z_mods/6ff33595b4c280fcf015f1b757382062ebf35eda/assets/images/O101.webp",
         "tags": [
             "racing",
@@ -127,7 +127,7 @@
             "overlay",
             "ladder"
         ],
-        "created": 217897200000,
+        "created": 217724400000,
         "authorName": "Onno Aphinan"
     },
     {
