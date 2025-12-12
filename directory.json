@@ -109,12 +109,12 @@
         "name": "O101 Racing Mods",
         "releases": [
             {
-                "version": "1.1.1",
-                "hash": "a24f4af413829addd24190ae033923043f18015f77e46d9edecb6c4b9d0e5c6c",
-                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/a24f4af413829addd24190ae033923043f18015f77e46d9edecb6c4b9d0e5c6c.zip",
-                "size": 506834,
-                "updated": 1765302269969,
-                "notes": "v1.1.1\nLadder, group speed indicator improved, option to disable auto finish riders.\nNearby Race v2, add/remove overrides as marked riders.\nNew Companion App alike mod (fan viewer redesigned), with fix",
+                "version": "1.1.2",
+                "hash": "d242b5527dcd3c078a33d2282cc7e78134b2efe9945f27108956dfbb00486151",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/d242b5527dcd3c078a33d2282cc7e78134b2efe9945f27108956dfbb00486151.zip",
+                "size": 506799,
+                "updated": 1765501138561,
+                "notes": "v1.1.2\nLadder, fix, group speed indicator improved, option to disable auto finish riders.\nNearby Race v2, add/remove overrides as marked riders.\nNew Companion App alike mod (fan viewer redesigned), with fix",
                 "minVersion": "2.0.1"
             }
         ],
@@ -127,10 +127,9 @@
             "overlay",
             "ladder"
         ],
-        "created": 217551600000,
+        "created": 217465200000,
         "authorName": "Onno Aphinan"
-    }
-,
+    },
     {
         "id": "2cd480d8-038f-41c2-a50e-2b88015fbb92",
         "name": "DosenHuhn for S4Z",
