@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/37364ba54205d3bc099594fa485ec3d0fd45840797d5ddf55af758f967f5525c.zip",
-                "version": "1.8.0",
-                "updated": 1762275655958,
-                "hash": "37364ba54205d3bc099594fa485ec3d0fd45840797d5ddf55af758f967f5525c",
-                "size": 615615,
-                "notes": "fixes some issues with the segment and points leaderboards when using recent Sauce alpha builds.  Update to Sauce Alpha 7 or higher recommended."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/0a6c5ec886735c22717c1b15b7acc7b80750d826ab7e2cdf63908fa755925923.zip",
+                "version": "1.8.1",
+                "updated": 1765724876049,
+                "hash": "0a6c5ec886735c22717c1b15b7acc7b80750d826ab7e2cdf63908fa755925923",
+                "size": 640108,
+                "notes": "version 1.8.1 has only 1 change.  It's something no one has asked for (that I recall) and started purely as an idea popping in my head and me wondering if it was possible.  I've spent way too much time on it and I don't expect it will be used much but here it is!\n\n- two new windows called \"Custom Route Builder\" and \"Custom Route Chauffeur\".\n- The builder lets you create your own route, the Chauffeur will make all the manual turns for you to follow the route.  Game connection needs to be enabled and connected for it to work.\n- Build a route by selecting a spawn point and then clicking on roads.  It will attempt to find the shortest route between points.  When you are done it will publish the route to your Sauce user data and tell you which route to start with so you are at the right spawn point.\n- If you have a route profile window open, it will display the custom route.\n- There is no option to save routes for later or export them to share.  I may add that later."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
