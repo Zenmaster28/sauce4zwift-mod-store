@@ -2,6 +2,7 @@ import * as net from './net.mjs';
 import {marked} from './marked.mjs';
 
 let directory;
+const installs = new Map();
 const ranks = new Map();
 let installed;
 
@@ -83,7 +84,7 @@ async function render() {
                 </header>
                 <main>
                     <section class="left">
-                        <img class="mod-logo" src="${x.logoURL || 'https://mods.sauce.llc/images/missing-mod-logo.webp'}"/>
+                        <img class="mod-logo" src="${x.logoURL || '/images/missing-mod-logo.webp'}"/>
                     </section>
                     <section class="right">
                         <div class="mod-description markdown">${md2html(x.description)}</div>
@@ -110,7 +111,7 @@ async function render() {
                         `<div class="meta"><a external target="_blank" href="${x.homeURL}">Website</a></div>` :
                         ''
                     }
-                    <div class="meta"><span class="installs-value">${ranks.get(x.id)?.installs ?? '-'}</span> installs</div>
+                    <div class="meta"><span class="installs-value">${installs.get(x.id) ?? '-'}</span> installs</div>
                     <div class="meta">Created: ${new Date(x.created).toLocaleDateString()}</div>
                 </footer>
             </div>
@@ -122,12 +123,23 @@ async function render() {
 
 async function loadRankInfo() {
     await Promise.all(directory.map(async x => {
-        const [installs, rank] = await Promise.all([net.getInstalls(x.id), net.getRank(x.id)]);
-        ranks.set(x.id, {installs, rank});
+        const value = await net.getRank(x.id);
+        ranks.set(x.id, value);
         const modEl = document.querySelector(`.directory .mod[data-id="${x.id}"]`);
         if (modEl) {
-            setTextMaybe(modEl.querySelector('.installs-value'), installs.toLocaleString());
-            setTextMaybe(modEl.querySelector('.rank-value'), rank.toLocaleString());
+            setTextMaybe(modEl.querySelector('.rank-value'), value.toLocaleString());
+        }
+    }));
+}
+
+
+async function loadInstallInfo() {
+    await Promise.all(directory.map(async x => {
+        const count = await net.getInstalls(x.id);
+        installs.set(x.id, count);
+        const modEl = document.querySelector(`.directory .mod[data-id="${x.id}"]`);
+        if (modEl) {
+            setTextMaybe(modEl.querySelector('.installs-value'), count.toLocaleString());
         }
     }));
 }
@@ -160,6 +172,7 @@ async function main() {
     } else {
         directory = await net.fetchJSON('/directory.json');
     }
+    preloadImages();
     document.documentElement.addEventListener('click', async ev => {
         const modIdEl = ev.target.closest('.mod[data-id]');
         if (!modIdEl) {
@@ -210,19 +223,39 @@ async function main() {
                 } else if (btn.dataset.vote === 'down') {
                     rank = await net.downVote(modId);
                 }
-                ranks.get(modId).rank = rank;
+                ranks.set(modId, rank);
             } finally {
                 btn.classList.remove('busy');
             }
             await render();
         }
     });
-    await loadRankInfo(); // bg okay
-    directory.sort((a, b) => a.preview ? -1 : b.preview ? 1 : (ranks.get(b.id)?.installs || 0) - (ranks.get(a.id)?.installs || 0));
+    await loadInstallInfo();
+    directory.sort((a, b) => a.preview ? -1 : b.preview ? 1 : (installs.get(b.id) || 0) - (installs.get(a.id) || 0));
     await render();
+    loadRankInfo();  // bg okay
     setTimeout(() => document.documentElement.classList.remove('init'), 2000);
     await updateModStatus();
     setInterval(updateModStatus, 5000);
+}
+
+
+function preloadImages() {
+    const urls = [];
+    for (const x of directory) {
+        for (const key of ['logoURL', 'authorAvatarURL']) {
+            if (x[key]) {
+                urls.push(x[key]);
+            }
+        }
+    }
+    document.head.append(...urls.map(x => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = x;
+        link.as = 'image';
+        return link;
+    }));
 }
 
 
