@@ -232,6 +232,7 @@ async function setEntry(entry) {
         draftEntry = {
             id: newEntryId,
             name: manifest.name,
+            created: Date.now(),
             releases: []
         };
     }
