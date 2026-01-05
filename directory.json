@@ -151,5 +151,34 @@
         "created": 1764370800000,
         "authorName": "Bastian Wegener",
         "authorURL": "https://buymeacoffee.com/bastianwegener"
+    },
+     {
+        "id": "ad2b2d66-4a79-45d5-a7f3-434a448fee25",
+        "name": "DEGRE",
+        "created": 1767603168118,
+        "releases": [
+            {
+                "version": "3.4.0",
+                "hash": "a8cd733070c455253b236f991b054d34e9cd169c609c5115d418326e84b388fb",
+                "url": "https://mod-api.sauce.llc/assets/degre/a8cd733070c455253b236f991b054d34e9cd169c609c5115d418326e84b388fb.zip",
+                "size": 571748,
+                "updated": 1767603399482,
+                "notes": "Initial public release"
+            }
+        ],
+        "description": "Professional widget collection for competitive Zwift racing and streaming.\n\n* **Power Bar** - Dynamic power zone visualization\n* **Attack Radar** - Detects attacks with audio alerts and attacker stats\n* **Finish Well** - Final km countdown with bell and checkered flag\n* **Player** - Music player with NowPlay integration\n* **Ticker** - Customizable scrolling text overlay",
+        "homeURL": "https://github.com/lucadegre/degre-mods",
+        "logoURL": "https://raw.githubusercontent.com/lucadegre/degre-mods/main/assets/logo.webp",
+        "tags": [
+            "racing",
+            "widgets",
+            "hud",
+            "streaming",
+            "powerbar",
+            "music"
+        ],
+        "authorName": "Luca DEGRE",
+        "authorAvatarURL": "https://avatars.githubusercontent.com/u/252923405?s=400&u=0f94e246ecb8a8fbd85d49d8c95ce28f066ad79c&v=4",
+        "authorURL": "https://lucadegre.it"
     }
 ]
