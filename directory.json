@@ -152,18 +152,18 @@
         "authorName": "Bastian Wegener",
         "authorURL": "https://buymeacoffee.com/bastianwegener"
     },
-      {
+          {
         "id": "ad2b2d66-4a79-45d5-a7f3-434a448fee25",
         "name": "DEGRE",
         "created": 1767603168118,
         "releases": [
             {
-                "version": "3.5.6",
-                "hash": "cd34cf6fffaab53ba2140606b275f8dfd71301ed9cd9cb44f8fede38b3867692",
-                "url": "https://mod-api.sauce.llc/assets/degre/cd34cf6fffaab53ba2140606b275f8dfd71301ed9cd9cb44f8fede38b3867692.zip",
-                "size": 574430,
-                "updated": 1767768509392,
-                "notes": "Sprint Mode for Attack Radar, position badges, privacy improvements, minor fixes"
+                "version": "3.5.13",
+                "hash": "4662877ed4447b837470dd86dcdee0caa81c55198aca4edb95772b0ba7da3486",
+                "url": "https://mod-api.sauce.llc/assets/degre/4662877ed4447b837470dd86dcdee0caa81c55198aca4edb95772b0ba7da3486.zip",
+                "size": 574438,
+                "updated": 1767799668273,
+                "notes": "Sprint Mode, position badges, privacy improvements, bug fixes"
             }
         ],
         "description": "Professional widget collection for competitive Zwift racing and streaming.\n\n* **Power Bar** - Dynamic power zone visualization\n* **Attack Radar** - Detects attacks with audio alerts and attacker stats\n* **Finish Well** - Final km countdown with bell and checkered flag\n* **Player** - Music player with NowPlay integration\n* **Ticker** - Customizable scrolling text overlay",
