@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/36978432cca8490a684d2cf555274fae7ce25137a890f06a2cc2e58356cc3a9d.zip",
-                "version": "1.8.2",
-                "updated": 1768329790173,
-                "hash": "36978432cca8490a684d2cf555274fae7ce25137a890f06a2cc2e58356cc3a9d",
-                "size": 665838,
-                "notes": "version 1.8.2\n- custom route creator is much faster and will (hopefully) avoid getting stuck in dead ends or refusing to take certain intersections.  \n\t- it also has options for the maximum number of hops and distance to travel between points.  Lower numbers will be faster but you'll need more waypoints and it may miss some options.  I find the defaults to be a good mix.\n\t- it will also give you options for each waypoint.  Hover your mouse over the options to highlight the alternatives, click on it to make it your choice.  The default will always be the shortest path.\n\n- The elevation profile pins page has new options for:\n\t- Color pins by category.  Only applicable in events where all cats are visible, it will be ignored otherwise.  When in use, all other color options will be ignored.\n\t- Set the color of team member pins separately from your own\n\t- added a text box beside team members that lets you define custom team members so their team name doesn't have to match yours.  You can add Zwift IDs or any text that you want to match, including partial team names.\n\t- Highlight and set a color for people you follow.\n\t- in cases where multiple colors can apply, the precedence is \"Color pins by category\" => \"You\" => \"Team member\" => \"marked\" => \"following\".\n\t- added some new pin design options to choose."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/011b81ac412949cbfc9e9a94adfedca8ec63874076a1765aa882ed297f2f92b5.zip",
+                "version": "1.8.3",
+                "updated": 1768681171422,
+                "hash": "011b81ac412949cbfc9e9a94adfedca8ec63874076a1765aa882ed297f2f92b5",
+                "size": 667588,
+                "notes": "version 1.8.3\n- fixes for the custom route builder and the Chauffeur\n- adds the ability to save and retrieve custom routes\n- fixes duplicate pins on the elevation profile when using groups view\n- fixes an issue with the elevation profile freezing when making a manual turn off of a route\n- when the elevation profile is in groups view and the option to color pins by category is enabled, a pie chart of category distribution will be shown in the pin circle"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
