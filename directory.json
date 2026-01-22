@@ -179,6 +179,33 @@
         ],
         "authorName": "Luca DEGRE",
         "authorAvatarURL": "https://avatars.githubusercontent.com/u/252923405?s=400&u=0f94e246ecb8a8fbd85d49d8c95ce28f066ad79c&v=4",
-        "authorURL": "https://lucadegre.it"
+        "authorURL": "https://lucadegre.it",
+    },
+    {
+        "id": "5040e2a0-e147-4478-b1a4-54c7306a8e15",
+        "name": "SendIt",
+        "created": 1769048747873,
+        "releases": [
+            {
+                "version": "0.0.1",
+                "hash": "c2f3f60789a5939fefbfca08d3b65cc3c1cd7c8b5f6559563859a638f34db94f",
+                "url": "https://mod-api.sauce.llc/assets/sendit/c2f3f60789a5939fefbfca08d3b65cc3c1cd7c8b5f6559563859a638f34db94f.zip",
+                "size": 378286,
+                "updated": 1769049467433,
+                "notes": "# Release Notes - Version 0.0.1 (First Public Release)\n**Date:** 2026-01-21  \n**Status:** Stablish / Public Initial Release\n\n### New in this Release\n* **Everything**\n\n---\n\n### Issues / Enhancements in the queue\n* Dummy data setting to help you size the window\n* Toggle between watts and w/kg throughout\n* Better font size scaling\n* Fix column spacing and add ability to add / remove columns\n* Overall TTT efficiency metrics / scores\n* Freeze data after each teammate completes the event\n* Enhanced pull definitions (similar to Tord's TTT mod)"
+            }
+        ],
+        "description": "# TTT Power Dynamics\n\nA mod to manage Team Time Trial rotations and track teammate performance.\n\n### Features\n* **Teammate Detection and Sorting:** Detects who your teammates are and sorts them by pull order (usually correctly).\n* **Workload Tracking:** Monitors time spent pulling vs. sitting, including average wattage for each teammate.\n* **Gap Status:** At-a-glance color coding shows if teammates are currently in the pack, ahead, or falling behind.\n\n### Available Settings\n* **Teammate Lock-in:** Adjust how many seconds it takes for a rider to be \"confirmed\" as a teammate.\n* **Pull Detection Mode:** Choose between \"First Position\" (physical leader) or \"Draft Mode\" (detects anyone in the wind).\n* **Minimum Pull Watts:** Set a wattage floor to ensure coasting at the front isn't counted as a pull.\n* **User Position:** Force your own stats to the top or bottom of the list for easy reference.\n\n### Usage\nThe mod automatically tracks all riders in your vicinity. Once a rider is \"locked-in\" as a teammate, their stats will persist even if they drop out of your immediate drafting range.",
+        "homeURL": "https://github.com/gtdean11/sendit",
+        "logoURL": "https://avatars.githubusercontent.com/u/28357842?v=4",
+        "tags": [
+            "TTT",
+            "Team Time Trial",
+            "overlay",
+            "streaming",
+            "DS"
+        ],
+        "authorName": "Dean Nordhielm"
     }
+
 ]
