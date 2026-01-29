@@ -196,7 +196,6 @@
             }
         ],
         "description": "# TTT Power Dynamics\n\nA mod to manage Team Time Trial rotations and track teammate performance.\n\n### Features\n* **Teammate Detection and Sorting:** Detects who your teammates are and sorts them by pull order (usually correctly).\n* **Workload Tracking:** Monitors time spent pulling vs. sitting, including average wattage for each teammate.\n* **Gap Status:** At-a-glance color coding shows if teammates are currently in the pack, ahead, or falling behind.\n\n### Available Settings\n* **Teammate Lock-in:** Adjust how many seconds it takes for a rider to be \"confirmed\" as a teammate.\n* **Pull Detection Mode:** Choose between \"First Position\" (physical leader) or \"Draft Mode\" (detects anyone in the wind).\n* **Minimum Pull Watts:** Set a wattage floor to ensure coasting at the front isn't counted as a pull.\n* **User Position:** Force your own stats to the top or bottom of the list for easy reference.\n\n### Usage\nThe mod automatically tracks all riders in your vicinity. Once a rider is \"locked-in\" as a teammate, their stats will persist even if they drop out of your immediate drafting range.",
-        "homeURL": "https://github.com/gtdean11/sendit",
         "logoURL": "https://avatars.githubusercontent.com/u/28357842?v=4",
         "tags": [
             "TTT",
