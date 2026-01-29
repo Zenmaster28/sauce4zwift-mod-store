@@ -182,16 +182,16 @@
         "authorURL": "https://lucadegre.it"
     },
     {
-        "id": "5040e2a0-e147-4478-b1a4-54c7306a8e15",
+        "id": "4a4ae80f-5088-4dc2-845e-d6cdf9463856",
         "name": "SendIt",
-        "created": 1769048747873,
+        "created": 1769644971606,
         "releases": [
             {
-                "version": "0.0.1",
-                "hash": "c2f3f60789a5939fefbfca08d3b65cc3c1cd7c8b5f6559563859a638f34db94f",
-                "url": "https://mod-api.sauce.llc/assets/sendit/c2f3f60789a5939fefbfca08d3b65cc3c1cd7c8b5f6559563859a638f34db94f.zip",
-                "size": 378286,
-                "updated": 1769049467433,
+                "version": "0.0.2",
+                "hash": "75377d12e64964155f714b32f3de2ca5936da6d9f2bf44ecce2b1f8fc156f473",
+                "url": "https://mod-api.sauce.llc/assets/sendit/75377d12e64964155f714b32f3de2ca5936da6d9f2bf44ecce2b1f8fc156f473.zip",
+                "size": 11698,
+                "updated": 1769645027530,
                 "notes": "# Release Notes - Version 0.0.1 (First Public Release)\n**Date:** 2026-01-21  \n**Status:** Stablish / Public Initial Release\n\n### New in this Release\n* **Everything**\n\n---\n\n### Issues / Enhancements in the queue\n* Dummy data setting to help you size the window\n* Toggle between watts and w/kg throughout\n* Better font size scaling\n* Fix column spacing and add ability to add / remove columns\n* Overall TTT efficiency metrics / scores\n* Freeze data after each teammate completes the event\n* Enhanced pull definitions (similar to Tord's TTT mod)"
             }
         ],
