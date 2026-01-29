@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/011b81ac412949cbfc9e9a94adfedca8ec63874076a1765aa882ed297f2f92b5.zip",
-                "version": "1.8.3",
-                "updated": 1768681171422,
-                "hash": "011b81ac412949cbfc9e9a94adfedca8ec63874076a1765aa882ed297f2f92b5",
-                "size": 667588,
-                "notes": "version 1.8.3\n- fixes for the custom route builder and the Chauffeur\n- adds the ability to save and retrieve custom routes\n- fixes duplicate pins on the elevation profile when using groups view\n- fixes an issue with the elevation profile freezing when making a manual turn off of a route\n- when the elevation profile is in groups view and the option to color pins by category is enabled, a pie chart of category distribution will be shown in the pin circle"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/a642be9a9c7cfc3a608ad96663ce84dedcc77c578453bd9611cb227f2e181bad.zip",
+                "version": "1.8.4",
+                "updated": 1769365649317,
+                "hash": "a642be9a9c7cfc3a608ad96663ce84dedcc77c578453bd9611cb227f2e181bad",
+                "size": 670134,
+                "notes": "version 1.8.4\n- improved visibility for your pin when using groups view and color pins by category\n- adds an option to emphasize specific riders and always show a label for them with options for gap distance and time.  To use this, enter zwift ids separated by commas.  You can also give them a nickname to display rather than their Zwift name by putting a space after the zwift id and then the nickname.  For example: '123456 Arend, 654321 Tadej, 987654, 234567' will show the nickname Arend and Tadej for the first two while the other two will show their Zwift name.\n- some display adjustments to the custom route creator to make it easier to see which route to start Zwift with\n- adds an option to save a custom route to a .json file for backup/sharing.  Option to open a .json file as well\n- fixes various issues with Sauce 2.10-alpha.12\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
