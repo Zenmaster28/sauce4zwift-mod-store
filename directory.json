@@ -92,12 +92,12 @@
         "name": "Zwift Rider/TTT Profile Card",
         "releases": [
             {
-                "version": "7.4",
-                "hash": "ce1dcece33f05ba45349a0794fa97f209be3108889507f77a179907c43c5cce7",
-                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/ce1dcece33f05ba45349a0794fa97f209be3108889507f77a179907c43c5cce7.zip",
-                "size": 392010,
-                "updated": 1768269743559,
-                "notes": "RELEASE 7.4\n- mini card Zwift chat\n- new wind tunnel inspired draft visual with rider gap\n- mini elevation card beta\n- IF factor added to mini cards\n- IF factor FTP override setting in main zwift profile card\n- static draft metric for mini cards"
+                "version": "7.6",
+                "hash": "dd09293a8ecfc32042faa1b0a97c2bb5e82ecb3476dbca537bcee05bd809a291",
+                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/dd09293a8ecfc32042faa1b0a97c2bb5e82ecb3476dbca537bcee05bd809a291.zip",
+                "size": 406111,
+                "updated": 1770084359588,
+                "notes": "RELEASE 7.6\n- removable header/banner\n- more transparency options\n- ttt-view cards are now rounded rectangles\n- watt metric color matched to power zones"
             }
         ],
         "description": "A comprehensive profile card MOD for Sauce for Zwift that displays real-time cycling metrics, nearby riders, and team coordination views.",
