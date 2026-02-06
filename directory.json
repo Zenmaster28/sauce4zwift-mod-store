@@ -74,12 +74,12 @@
         "id": "c80047ff-b4be-4c93-abd8-5659096500a9",
         "releases": [
             {
-                "version": "1.2.1",
-                "hash": "a0f92c340b5797d35a9e2ab480465e2ac1dc912244a44a7253eea1a7db576f96",
-                "url": "https://mod-api.sauce.llc/assets/arckuk/a0f92c340b5797d35a9e2ab480465e2ac1dc912244a44a7253eea1a7db576f96.zip",
-                "size": 226437,
-                "updated": 1768318214413,
-                "notes": "Tweaks from user feedback - selectable y-axis max in powercurve and non-zero x-axis min in histogram"
+                "version": "1.2.2",
+                "hash": "500ba848abb20cde177e3036b2a450c4d0cd43e815552567b1d2d269bf2ecc3c",
+                "url": "https://mod-api.sauce.llc/assets/arckuk/500ba848abb20cde177e3036b2a450c4d0cd43e815552567b1d2d269bf2ecc3c.zip",
+                "size": 226655,
+                "updated": 1770400223633,
+                "notes": "Minor fixes - histogram now handles event start from freeride: it continues in the pen, then re-initialises on event clock start. Also changed min-x axis value logic so that this is now the minimum value that can be displayed, rather than a minimum value that is always displayed"
             }
         ],
         "description": "## Features\n\n### Event Title:\nShows the name of the event subgroup and brief details (course name, distance and elevation) of any event in which the current watched athlete is participating\n\n### Top Bar:\nA replacement for the default Zwift speed / distance / elevation / time bar that appears on the centre top of the Zwift window, with a more Sauce like look\n\n### Power Cadence HR:\nA replacement for the default Zwift Power, Cadence and HR box normally in the top left of the screen, can also show draft\n\n### Power Bars:\nA bar chart display of the current and best 1 s, 5 s, 15 s, 60 s, 5 min, 20 min and average power for the current user session. Can also optionally show heart rate\n\n### Power Graph:\nA graph of the current and best power as a function of time for the currently watched athlete - a continuously updated and evolving power curve\n\n### Input:\nShows parameters that reflect the rider's input to the Zwift system (power, cadence and heart rate) as well as draft and gradient\n\n### Output:\nShow parameters which are the output of the Zwift session: speed, distance, time, elevation, as well as distance or time remaining in an event\n\n### Active Power Up:\nShows the power up (Aero / Feather / Draft / Burrito etc) currently in use by the watched rider. Unfortunately there is no way to show the power up being held and available for the rider to use with information available to Sauce from Zwift.\n",
