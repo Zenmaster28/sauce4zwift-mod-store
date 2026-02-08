@@ -29,18 +29,19 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/a642be9a9c7cfc3a608ad96663ce84dedcc77c578453bd9611cb227f2e181bad.zip",
-                "version": "1.8.4",
-                "updated": 1769365649317,
-                "hash": "a642be9a9c7cfc3a608ad96663ce84dedcc77c578453bd9611cb227f2e181bad",
-                "size": 670134,
-                "notes": "version 1.8.4\n- improved visibility for your pin when using groups view and color pins by category\n- adds an option to emphasize specific riders and always show a label for them with options for gap distance and time.  To use this, enter zwift ids separated by commas.  You can also give them a nickname to display rather than their Zwift name by putting a space after the zwift id and then the nickname.  For example: '123456 Arend, 654321 Tadej, 987654, 234567' will show the nickname Arend and Tadej for the first two while the other two will show their Zwift name.\n- some display adjustments to the custom route creator to make it easier to see which route to start Zwift with\n- adds an option to save a custom route to a .json file for backup/sharing.  Option to open a .json file as well\n- fixes various issues with Sauce 2.10-alpha.12\n"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/d51e99a4e99111da4b499e9416a3cd7c00bf5ca364c93adf5997d03569810e0c.zip",
+                "version": "1.8.5",
+                "updated": 1770573911667,
+                "hash": "d51e99a4e99111da4b499e9416a3cd7c00bf5ca364c93adf5997d03569810e0c",
+                "size": 666898,
+                "notes": "version 1.8.5 contains only changes to the Custom Route Builder and Chauffeur\n- fixed routing around the roundabout entering Neokyo\n- reversed the order of the waypoint list and put the options for the most recent path at the top\n- hovering your mouse over the waypoints in the list will highlight that section\n- added cue sheets to both the Builder and Chauffeur.  The builder lets you toggle between the waypoint list or the cue sheet.  The Chauffeur has it as an option to turn on or off, if displayed it will cross off the turns as you go past them\n- added a pause navigation button to the Chauffeur.  If you get off route somehow and need to manually navigate back, pause navigation and then unpause once you are back on the route.  Otherwise you may end up fighting with it at turns\n- added a button to open the repository of verified routes that can be downloaded.  There are only two at the moment, if you have ones you want added, send them to me.\n- added a menu option in the builder that lets you navigate from the current point on the route to a segment.  Much easier than trying to guess where a segment is on the map."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
         "tags": [
             "routes",
-            "segments"
+            "segments",
+            "route builder"
         ],
         "name": "Zenmaster",
         "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts\n* Leaderboards for points races",
