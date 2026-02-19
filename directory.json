@@ -188,12 +188,12 @@
         "created": 1769644971606,
         "releases": [
             {
-                "version": "0.0.3",
-                "hash": "f85551990a42e19ad082b2c0d65067b48fed365c375c37162fcea7e506188f83",
-                "url": "https://mod-api.sauce.llc/assets/sendit/f85551990a42e19ad082b2c0d65067b48fed365c375c37162fcea7e506188f83.zip",
-                "size": 15689,
-                "updated": 1770395990403,
-                "notes": "### New in this Release\n* **Auto-Lock Trigger:** Option to automatically lock the teammate list once a specific distance threshold (km) is reached.\n* **Ability to add / remove / customize columns:** Added dropdowns to choose what data to show (Time & Watts, Time Only, or Watts Only) for Pulling and Sitting stats.\n* **Better font size scaling:** The entire interface now scales up proportionally when columns are hidden and or the window is expanded / shrunk.\n\n\n---\n\n### Fixed / Resolved\n* **Riders off the front:** Riders off the front used to be counted as if they were behind if they were not in a group, but not any more.\n* **Font Proportions:** Fixed fonts and alignment so numbers line up better\n* **Column Spacing:** Fixed excess column spacing\n\n### Issues / Enhancements in the queue\n* Toggle between watts and w/kg throughout\n* Freeze data after each teammate completes the event\n* Setting to populate with dummy data to help you size the window\n* Overall and rider-specific TTT efficiency metrics / scores\n* Enhanced pull definitions (similar to Tord's TTT mod)\n"
+                "version": "0.0.4",
+                "hash": "c801320ee72c6f214a142b17a9427fc58bf5a7364d588329e5bf8806d97d8782",
+                "url": "https://mod-api.sauce.llc/assets/sendit/c801320ee72c6f214a142b17a9427fc58bf5a7364d588329e5bf8806d97d8782.zip",
+                "size": 16867,
+                "updated": 1771531704987,
+                "notes": "### New in this Release\n* **Post-Event Freeze:** Added an option to automatically freeze teammate data once they have completed the event.\n\n---\n\n### Fixed / Resolved\n* **Ghost Disconnections:** Fixed a bug where riders appeared to be disconnected immediately after the post-event freeze was triggered.\n\n### Issues / Enhancements in the queue\n* Toggle between watts and w/kg throughout\n* Setting to populate with dummy data to help you size the window\n* Overall and rider-specific TTT efficiency metrics / scores\n* Enhanced pull definitions (similar to Tord's TTT mod)\n"
             }
         ],
         "description": "# TTT Power Dynamics\n\nA mod to manage Team Time Trial rotations and track teammate performance.\n\n### Features\n* **Teammate Detection and Sorting:** Detects who your teammates are and sorts them by pull order (usually correctly).\n* **Workload Tracking:** Monitors time spent pulling vs. sitting, including average wattage for each teammate.\n* **Gap Status:** At-a-glance color coding shows if teammates are currently in the pack, ahead, or falling behind.\n\n### Available Settings\n* **Teammate Lock-in:** Adjust how many seconds it takes for a rider to be \"confirmed\" as a teammate.\n* **Pull Detection Mode:** Choose between \"First Position\" (physical leader) or \"Draft Mode\" (detects anyone in the wind).\n* **Minimum Pull Watts:** Set a wattage floor to ensure coasting at the front isn't counted as a pull.\n* **User Position:** Force your own stats to the top or bottom of the list for easy reference.\n\n### Usage\nThe mod automatically tracks all riders in your vicinity. Once a rider is \"locked-in\" as a teammate, their stats will persist even if they drop out of your immediate drafting range.",
