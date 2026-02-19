@@ -192,7 +192,7 @@
                 "hash": "c801320ee72c6f214a142b17a9427fc58bf5a7364d588329e5bf8806d97d8782",
                 "url": "https://mod-api.sauce.llc/assets/sendit/c801320ee72c6f214a142b17a9427fc58bf5a7364d588329e5bf8806d97d8782.zip",
                 "size": 16867,
-                "updated": 1771531704987,
+                "updated": 1771537064237,
                 "notes": "### New in this Release\n* **Post-Event Freeze:** Added an option to automatically freeze teammate data once they have completed the event.\n\n---\n\n### Fixed / Resolved\n* **Ghost Disconnections:** Fixed a bug where riders appeared to be disconnected immediately after the post-event freeze was triggered.\n\n### Issues / Enhancements in the queue\n* Toggle between watts and w/kg throughout\n* Setting to populate with dummy data to help you size the window\n* Overall and rider-specific TTT efficiency metrics / scores\n* Enhanced pull definitions (similar to Tord's TTT mod)\n"
             }
         ],
