@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/d51e99a4e99111da4b499e9416a3cd7c00bf5ca364c93adf5997d03569810e0c.zip",
-                "version": "1.8.5",
-                "updated": 1770573911667,
-                "hash": "d51e99a4e99111da4b499e9416a3cd7c00bf5ca364c93adf5997d03569810e0c",
-                "size": 666898,
-                "notes": "version 1.8.5 contains only changes to the Custom Route Builder and Chauffeur\n- fixed routing around the roundabout entering Neokyo\n- reversed the order of the waypoint list and put the options for the most recent path at the top\n- hovering your mouse over the waypoints in the list will highlight that section\n- added cue sheets to both the Builder and Chauffeur.  The builder lets you toggle between the waypoint list or the cue sheet.  The Chauffeur has it as an option to turn on or off, if displayed it will cross off the turns as you go past them\n- added a pause navigation button to the Chauffeur.  If you get off route somehow and need to manually navigate back, pause navigation and then unpause once you are back on the route.  Otherwise you may end up fighting with it at turns\n- added a button to open the repository of verified routes that can be downloaded.  There are only two at the moment, if you have ones you want added, send them to me.\n- added a menu option in the builder that lets you navigate from the current point on the route to a segment.  Much easier than trying to guess where a segment is on the map."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/35aceeb37ef1a37c52582b982467d312d8c3f01eb06b642ee0dc57953e4c8037.zip",
+                "version": "1.8.6",
+                "updated": 1772388281946,
+                "hash": "35aceeb37ef1a37c52582b982467d312d8c3f01eb06b642ee0dc57953e4c8037",
+                "size": 669593,
+                "notes": "version 1.8.6\nfixes flashing segment result and O101 overview windows when using multiple Elevation profile windows.\nadds the ability to import Dirt Racing Series team assignments for points races.\n\nThe DRS import is a last minute thing and it's a bit crude but seems to work.  To use it, you need to open a Points Leaderboard window, then right click and click the button in the top right to open the teams window.  In that window select the DRS event from the list if it's coming up soon or enter the eventId in the text box.  If the selected event is a DRS event (it looks for the tag #dirtracingseries) then a banner along the top will indicate its a DRS event.  Click anywhere in that banner to open the import options.  There are instructions there but basically click the Open JSON button which will open a new window, highlight all the data there and copy to the clipboard.  Then go back to the other window and paste it into the empty textbox.  Then select which pen to import and click save.  If there are racers with multiple teams assigned to them, it will warn you about it but you'll have to manually adjust if it makes the wrong assignment."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
