@@ -111,12 +111,12 @@
         "name": "O101 Racing Mods",
         "releases": [
             {
-                "version": "1.1.5",
-                "hash": "9bc1447a8c8b49adf558e62b2db60d85068e032e061fab4c857cb27533ac607f",
-                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/9bc1447a8c8b49adf558e62b2db60d85068e032e061fab4c857cb27533ac607f.zip",
-                "size": 516232,
-                "updated": 1767182128533,
-                "notes": "v1.1.5\nLadder, statistics improvement, manual config fixes\nLivedata, refactored\nFan viewer, add auto ride on bombs\nNote: for ladder mod, destroy and recreate solves most problems",
+                "version": "1.1.6",
+                "hash": "84f95263d757329f5b12619dcad90ea28948b933dbc8825925c84a8017bea3db",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/84f95263d757329f5b12619dcad90ea28948b933dbc8825925c84a8017bea3db.zip",
+                "size": 1119067,
+                "updated": 1773242138046,
+                "notes": "v1.1.6\nHorizontal groups update\nLivedata, added fields\nOverview, override name\nNote: for ladder mod, destroy and recreate solves most problems",
                 "minVersion": "2.0.1"
             }
         ],
