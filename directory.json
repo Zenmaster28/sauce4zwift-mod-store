@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/35aceeb37ef1a37c52582b982467d312d8c3f01eb06b642ee0dc57953e4c8037.zip",
-                "version": "1.8.6",
-                "updated": 1772388281946,
-                "hash": "35aceeb37ef1a37c52582b982467d312d8c3f01eb06b642ee0dc57953e4c8037",
-                "size": 669593,
-                "notes": "version 1.8.6\nfixes flashing segment result and O101 overview windows when using multiple Elevation profile windows.\nadds the ability to import Dirt Racing Series team assignments for points races.\n\nThe DRS import is a last minute thing and it's a bit crude but seems to work.  To use it, you need to open a Points Leaderboard window, then right click and click the button in the top right to open the teams window.  In that window select the DRS event from the list if it's coming up soon or enter the eventId in the text box.  If the selected event is a DRS event (it looks for the tag #dirtracingseries) then a banner along the top will indicate its a DRS event.  Click anywhere in that banner to open the import options.  There are instructions there but basically click the Open JSON button which will open a new window, highlight all the data there and copy to the clipboard.  Then go back to the other window and paste it into the empty textbox.  Then select which pen to import and click save.  If there are racers with multiple teams assigned to them, it will warn you about it but you'll have to manually adjust if it makes the wrong assignment."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/60c6979625f13c84ab3605a4d8a93c28746a3045add3ef37e796d9dbf7fff5d3.zip",
+                "version": "1.8.7",
+                "updated": 1773496455349,
+                "hash": "60c6979625f13c84ab3605a4d8a93c28746a3045add3ef37e796d9dbf7fff5d3",
+                "size": 757031,
+                "notes": "version 1.8.7\n- points leaderboard now has options to limit the number of racers on a team that score team points (ala DRS) as well as an option to only show team scores / hide individual scores\n- points analysis has an option to show team scores and the display is slightly less ugly\n- exporting the points results to json will include the team data as well as rider ZRS and category (when available)\n- increased configurability to override the points leaderboard config for a specific window.  It is now possible to setup an event to monitor all cats and have a window for each cat displaying the results.\n- fixed an issue with the elevation profile when running in groups mode and the largest group size is 1\n- added a new window \"Virtual goal pacer\".  This is the like Strava live segments on your outdoor head unit.  You can set it up to compare your progress against a previous effort (yours or someone else's).  It will tell you if you are ahead/behind, the elapsed and goal time, and distance remaining / total.  It requires the use of the Sauce for Strava browser extension to download the previous effort which is then uploaded to the window.  The effort can be a full route, a segment or any random stretch of road that you want - as long as you can find it in a Strava ride from Zwift, you can use it.  There are full instructions for it's use in the help window.  I've used it for the last 3 weeks of TTT for my wife's team comparing their progress against the course CR and it has been within 2-3 seconds each time."
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
