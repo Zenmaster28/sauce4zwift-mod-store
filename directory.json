@@ -188,12 +188,12 @@
         "created": 1769644971606,
         "releases": [
             {
-                "version": "0.0.6",
-                "hash": "074787503f35b908c039b167ed3b66c57b1ab3ceb91af90bfedd5605b0b1b10f",
-                "url": "https://mod-api.sauce.llc/assets/sendit/074787503f35b908c039b167ed3b66c57b1ab3ceb91af90bfedd5605b0b1b10f.zip",
-                "size": 21484,
-                "updated": 1774227432454,
-                "notes": "### New in this Release\n* **Hide Team Efficiency in Header:** Added a setting to hide the Live% and Tot% from the Teammate column header.\n* **Stat Freeze Before Finish:** Stats now freeze 100m before the finish line instead of at the line itself.\n\n---\n\n### Issues / Enhancements in the queue\n* Create a way to toggle TTT dynamics to a post-race state (e.g., from transparent to solid background, adding more data)\n* Enhanced pull definitions (similar to Tord's TTT mod)\n* Improvements to group TTT efficiency metrics"
+                "version": "0.0.7",
+                "hash": "86cfbfeddc2f7bab45200adade6a53d13b752bdd1aec7d8d53f343a18bc4090a",
+                "url": "https://mod-api.sauce.llc/assets/sendit/86cfbfeddc2f7bab45200adade6a53d13b752bdd1aec7d8d53f343a18bc4090a.zip",
+                "size": 21311,
+                "updated": 1774520222264,
+                "notes": "### New in this Release\n* **Fixed Bug:** Fixed a bug where stats would freeze almost immediately.\n\n---\n\n### Issues / Enhancements in the queue\n* Create a way to toggle TTT dynamics to a post-race state (e.g., from transparent to solid background, adding more data)\n* Enhanced pull definitions (similar to Tord's TTT mod)\n* Improvements to group TTT efficiency metrics"
             }
         ],
         "description": "# TTT Power Dynamics\n\nA mod to manage Team Time Trial rotations and track teammate performance.\n\n### Features\n* **Teammate Detection and Sorting:** Detects who your teammates are and sorts them by pull order (usually correctly).\n* **Workload Tracking:** Monitors time spent pulling vs. sitting, including average wattage for each teammate.\n* **Gap Status:** At-a-glance color coding shows if teammates are currently in the pack, ahead, or falling behind.\n\n### Available Settings\n* **Teammate Lock-in:** Adjust how many seconds it takes for a rider to be \"confirmed\" as a teammate.\n* **Pull Detection Mode:** Choose between \"First Position\" (physical leader) or \"Draft Mode\" (detects anyone in the wind).\n* **Minimum Pull Watts:** Set a wattage floor to ensure coasting at the front isn't counted as a pull.\n* **User Position:** Force your own stats to the top or bottom of the list for easy reference.\n\n### Usage\nThe mod automatically tracks all riders in your vicinity. Once a rider is \"locked-in\" as a teammate, their stats will persist even if they drop out of your immediate drafting range.",
