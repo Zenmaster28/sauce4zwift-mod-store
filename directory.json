@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/60c6979625f13c84ab3605a4d8a93c28746a3045add3ef37e796d9dbf7fff5d3.zip",
-                "version": "1.8.7",
-                "updated": 1773496455349,
-                "hash": "60c6979625f13c84ab3605a4d8a93c28746a3045add3ef37e796d9dbf7fff5d3",
-                "size": 757031,
-                "notes": "version 1.8.7\n- points leaderboard now has options to limit the number of racers on a team that score team points (ala DRS) as well as an option to only show team scores / hide individual scores\n- points analysis has an option to show team scores and the display is slightly less ugly\n- exporting the points results to json will include the team data as well as rider ZRS and category (when available)\n- increased configurability to override the points leaderboard config for a specific window.  It is now possible to setup an event to monitor all cats and have a window for each cat displaying the results.\n- fixed an issue with the elevation profile when running in groups mode and the largest group size is 1\n- added a new window \"Virtual goal pacer\".  This is the like Strava live segments on your outdoor head unit.  You can set it up to compare your progress against a previous effort (yours or someone else's).  It will tell you if you are ahead/behind, the elapsed and goal time, and distance remaining / total.  It requires the use of the Sauce for Strava browser extension to download the previous effort which is then uploaded to the window.  The effort can be a full route, a segment or any random stretch of road that you want - as long as you can find it in a Strava ride from Zwift, you can use it.  There are full instructions for it's use in the help window.  I've used it for the last 3 weeks of TTT for my wife's team comparing their progress against the course CR and it has been within 2-3 seconds each time."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/3304cbe3733a5e3e360d2e0395e56867e3c5e0a97a185be9441c200ce6066026.zip",
+                "version": "1.8.8",
+                "updated": 1775318208803,
+                "hash": "3304cbe3733a5e3e360d2e0395e56867e3c5e0a97a185be9441c200ce6066026",
+                "size": 758153,
+                "notes": "version 1.8.8\n- minor bug fixes and tweaks for the custom route creator and chauffeur"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
