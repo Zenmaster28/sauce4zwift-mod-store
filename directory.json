@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/35aceeb37ef1a37c52582b982467d312d8c3f01eb06b642ee0dc57953e4c8037.zip",
-                "version": "1.8.6",
-                "updated": 1772388281946,
-                "hash": "35aceeb37ef1a37c52582b982467d312d8c3f01eb06b642ee0dc57953e4c8037",
-                "size": 669593,
-                "notes": "version 1.8.6\nfixes flashing segment result and O101 overview windows when using multiple Elevation profile windows.\nadds the ability to import Dirt Racing Series team assignments for points races.\n\nThe DRS import is a last minute thing and it's a bit crude but seems to work.  To use it, you need to open a Points Leaderboard window, then right click and click the button in the top right to open the teams window.  In that window select the DRS event from the list if it's coming up soon or enter the eventId in the text box.  If the selected event is a DRS event (it looks for the tag #dirtracingseries) then a banner along the top will indicate its a DRS event.  Click anywhere in that banner to open the import options.  There are instructions there but basically click the Open JSON button which will open a new window, highlight all the data there and copy to the clipboard.  Then go back to the other window and paste it into the empty textbox.  Then select which pen to import and click save.  If there are racers with multiple teams assigned to them, it will warn you about it but you'll have to manually adjust if it makes the wrong assignment."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/3304cbe3733a5e3e360d2e0395e56867e3c5e0a97a185be9441c200ce6066026.zip",
+                "version": "1.8.8",
+                "updated": 1775318208803,
+                "hash": "3304cbe3733a5e3e360d2e0395e56867e3c5e0a97a185be9441c200ce6066026",
+                "size": 758153,
+                "notes": "version 1.8.8\n- minor bug fixes and tweaks for the custom route creator and chauffeur"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
@@ -188,12 +188,12 @@
         "created": 1769644971606,
         "releases": [
             {
-                "version": "0.0.4",
-                "hash": "c801320ee72c6f214a142b17a9427fc58bf5a7364d588329e5bf8806d97d8782",
-                "url": "https://mod-api.sauce.llc/assets/sendit/c801320ee72c6f214a142b17a9427fc58bf5a7364d588329e5bf8806d97d8782.zip",
-                "size": 16867,
-                "updated": 1771537064237,
-                "notes": "### New in this Release\n* **Post-Event Freeze:** Added an option to automatically freeze teammate data once they have completed the event.\n\n---\n\n### Fixed / Resolved\n* **Ghost Disconnections:** Fixed a bug where riders appeared to be disconnected immediately after the post-event freeze was triggered.\n\n### Issues / Enhancements in the queue\n* Toggle between watts and w/kg throughout\n* Setting to populate with dummy data to help you size the window\n* Overall and rider-specific TTT efficiency metrics / scores\n* Enhanced pull definitions (similar to Tord's TTT mod)\n"
+                "version": "0.0.7",
+                "hash": "86cfbfeddc2f7bab45200adade6a53d13b752bdd1aec7d8d53f343a18bc4090a",
+                "url": "https://mod-api.sauce.llc/assets/sendit/86cfbfeddc2f7bab45200adade6a53d13b752bdd1aec7d8d53f343a18bc4090a.zip",
+                "size": 21311,
+                "updated": 1774520222264,
+                "notes": "### New in this Release\n* **Fixed Bug:** Fixed a bug where stats would freeze almost immediately.\n\n---\n\n### Issues / Enhancements in the queue\n* Create a way to toggle TTT dynamics to a post-race state (e.g., from transparent to solid background, adding more data)\n* Enhanced pull definitions (similar to Tord's TTT mod)\n* Improvements to group TTT efficiency metrics"
             }
         ],
         "description": "# TTT Power Dynamics\n\nA mod to manage Team Time Trial rotations and track teammate performance.\n\n### Features\n* **Teammate Detection and Sorting:** Detects who your teammates are and sorts them by pull order (usually correctly).\n* **Workload Tracking:** Monitors time spent pulling vs. sitting, including average wattage for each teammate.\n* **Gap Status:** At-a-glance color coding shows if teammates are currently in the pack, ahead, or falling behind.\n\n### Available Settings\n* **Teammate Lock-in:** Adjust how many seconds it takes for a rider to be \"confirmed\" as a teammate.\n* **Pull Detection Mode:** Choose between \"First Position\" (physical leader) or \"Draft Mode\" (detects anyone in the wind).\n* **Minimum Pull Watts:** Set a wattage floor to ensure coasting at the front isn't counted as a pull.\n* **User Position:** Force your own stats to the top or bottom of the list for easy reference.\n\n### Usage\nThe mod automatically tracks all riders in your vicinity. Once a rider is \"locked-in\" as a teammate, their stats will persist even if they drop out of your immediate drafting range.",
