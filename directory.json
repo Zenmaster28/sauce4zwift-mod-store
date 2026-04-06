@@ -111,12 +111,12 @@
         "name": "O101 Racing Mods",
         "releases": [
             {
-                "version": "1.1.6",
-                "hash": "84f95263d757329f5b12619dcad90ea28948b933dbc8825925c84a8017bea3db",
-                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/84f95263d757329f5b12619dcad90ea28948b933dbc8825925c84a8017bea3db.zip",
-                "size": 1119067,
-                "updated": 1773242138046,
-                "notes": "v1.1.6\nHorizontal groups update\nLivedata, added fields\nOverview, override name\nNote: for ladder mod, destroy and recreate solves most problems",
+                "version": "1.1.7",
+                "hash": "d1fcfaae2c576aaa121d917af7e171a2f02039784b3e0613aa2559ec0312db2f",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/d1fcfaae2c576aaa121d917af7e171a2f02039784b3e0613aa2559ec0312db2f.zip",
+                "size": 510037,
+                "updated": 1775502133804,
+                "notes": "v1.1.7\nNew O101 Drops Farmer\nNote: for ladder mod, destroy and recreate solves most problems",
                 "minVersion": "2.0.1"
             }
         ],
