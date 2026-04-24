@@ -93,12 +93,12 @@
         "name": "Zwift Rider/TTT Profile Card",
         "releases": [
             {
-                "version": "7.7",
-                "hash": "5008460e18cef1ac04025d5fb3c32dadfc0a971d8c0eb4fa9dfb552353f0b89e",
-                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/5008460e18cef1ac04025d5fb3c32dadfc0a971d8c0eb4fa9dfb552353f0b89e.zip",
-                "size": 402718,
-                "updated": 1771782997291,
-                "notes": "RELEASE 7.7\n- horizontal metric cards\n- live stream race chat\n- a couple fun design metric cards"
+                "version": "7.8",
+                "hash": "544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c",
+                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c.zip",
+                "size": 439226,
+                "updated": 1776986240897,
+                "notes": "RELEASE 7.8\n- auto-lock team after 15/30/45/60s for TTT view \n- two team TTT view save/support\n- TTT team colors automatically \n- Carousel view for limited screen space, will rotate through TTT view"
             }
         ],
         "description": "A comprehensive profile card MOD for Sauce for Zwift that displays real-time cycling metrics, nearby riders, and team coordination views.",
