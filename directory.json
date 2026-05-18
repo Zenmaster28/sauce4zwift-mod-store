@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/d9218ba48153abc2af33e3ff65276e49ceff759c06ff6becd2cfe2424d07a94e.zip",
-                "version": "1.9.0",
-                "updated": 1777314394129,
-                "hash": "d9218ba48153abc2af33e3ff65276e49ceff759c06ff6becd2cfe2424d07a94e",
-                "size": 762024,
-                "notes": "version 1.9.0\n- minor display fixes for points leaderboard"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1.zip",
+                "version": "1.9.1",
+                "updated": 1779112535971,
+                "hash": "fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1",
+                "size": 762337,
+                "notes": "version 1.9.1 is a couple of fixes for the points leaderboard\n- addition check to detect a DRS event to allow importing teams\n- better detection of old stale custom configs that were causing the window to show old event results\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
