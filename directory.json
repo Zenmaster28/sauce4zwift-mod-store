@@ -159,12 +159,12 @@
         "created": 1767603168118,
         "releases": [
             {
-                "version": "3.5.13",
-                "hash": "4662877ed4447b837470dd86dcdee0caa81c55198aca4edb95772b0ba7da3486",
-                "url": "https://mod-api.sauce.llc/assets/degre/4662877ed4447b837470dd86dcdee0caa81c55198aca4edb95772b0ba7da3486.zip",
-                "size": 574438,
-                "updated": 1767799668273,
-                "notes": "Sprint Mode, position badges, privacy improvements, bug fixes"
+                "version": "3.5.14",
+                "hash": "2904caca145685d3e1d6d9baea9c64c91e43c43d4e838773ba7131b45043b97b",
+                "url": "https://mod-api.sauce.llc/assets/degre/2904caca145685d3e1d6d9baea9c64c91e43c43d4e838773ba7131b45043b97b.zip",
+                "size": 618036,
+                "updated": 1781148349084,
+                "notes": "Attack Radar: 'Always' option now also works in free rides and lap/time based events. Finish Well: checkered flag auto-hides after 10s, fixed applause replay loop."
             }
         ],
         "description": "Professional widget collection for competitive Zwift racing and streaming.\n\n* **Power Bar** - Dynamic power zone visualization\n* **Attack Radar** - Detects attacks with audio alerts and attacker stats\n* **Finish Well** - Final km countdown with bell and checkered flag\n* **Player** - Music player with NowPlay integration\n* **Ticker** - Customizable scrolling text overlay",
