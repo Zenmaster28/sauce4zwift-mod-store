@@ -29,18 +29,19 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/0a6c5ec886735c22717c1b15b7acc7b80750d826ab7e2cdf63908fa755925923.zip",
-                "version": "1.8.1",
-                "updated": 1765724876049,
-                "hash": "0a6c5ec886735c22717c1b15b7acc7b80750d826ab7e2cdf63908fa755925923",
-                "size": 640108,
-                "notes": "version 1.8.1 has only 1 change.  It's something no one has asked for (that I recall) and started purely as an idea popping in my head and me wondering if it was possible.  I've spent way too much time on it and I don't expect it will be used much but here it is!\n\n- two new windows called \"Custom Route Builder\" and \"Custom Route Chauffeur\".\n- The builder lets you create your own route, the Chauffeur will make all the manual turns for you to follow the route.  Game connection needs to be enabled and connected for it to work.\n- Build a route by selecting a spawn point and then clicking on roads.  It will attempt to find the shortest route between points.  When you are done it will publish the route to your Sauce user data and tell you which route to start with so you are at the right spawn point.\n- If you have a route profile window open, it will display the custom route.\n- There is no option to save routes for later or export them to share.  I may add that later."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1.zip",
+                "version": "1.9.1",
+                "updated": 1779112535971,
+                "hash": "fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1",
+                "size": 762337,
+                "notes": "version 1.9.1 is a couple of fixes for the points leaderboard\n- addition check to detect a DRS event to allow importing teams\n- better detection of old stale custom configs that were causing the window to show old event results\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
         "tags": [
             "routes",
-            "segments"
+            "segments",
+            "route builder"
         ],
         "name": "Zenmaster",
         "description": "Arend's Mod Collection\n\n* Fully customizable route elevation profiles\n* See the active powerups in your group when the HUD is off\n* Segment leaderboards\n* Preview route and segment profiles\n* Pace partner routes and current locations\n* Lap data windows for workouts\n* Leaderboards for points races",
@@ -74,12 +75,12 @@
         "id": "c80047ff-b4be-4c93-abd8-5659096500a9",
         "releases": [
             {
-                "version": "1.2.0",
-                "hash": "33d809d234590280efda273a5af519f066602abfe86005858d052cc73a6327f2",
-                "url": "https://mod-api.sauce.llc/assets/arckuk/33d809d234590280efda273a5af519f066602abfe86005858d052cc73a6327f2.zip",
-                "size": 288475,
-                "updated": 1765905582656,
-                "notes": "Added histogram feature for display of power, cadence or heart rate histograms\nImproved powerbars font sizing and added graph padding for better display in small windows"
+                "version": "1.2.2",
+                "hash": "500ba848abb20cde177e3036b2a450c4d0cd43e815552567b1d2d269bf2ecc3c",
+                "url": "https://mod-api.sauce.llc/assets/arckuk/500ba848abb20cde177e3036b2a450c4d0cd43e815552567b1d2d269bf2ecc3c.zip",
+                "size": 226655,
+                "updated": 1770400223633,
+                "notes": "Minor fixes - histogram now handles event start from freeride: it continues in the pen, then re-initialises on event clock start. Also changed min-x axis value logic so that this is now the minimum value that can be displayed, rather than a minimum value that is always displayed"
             }
         ],
         "description": "## Features\n\n### Event Title:\nShows the name of the event subgroup and brief details (course name, distance and elevation) of any event in which the current watched athlete is participating\n\n### Top Bar:\nA replacement for the default Zwift speed / distance / elevation / time bar that appears on the centre top of the Zwift window, with a more Sauce like look\n\n### Power Cadence HR:\nA replacement for the default Zwift Power, Cadence and HR box normally in the top left of the screen, can also show draft\n\n### Power Bars:\nA bar chart display of the current and best 1 s, 5 s, 15 s, 60 s, 5 min, 20 min and average power for the current user session. Can also optionally show heart rate\n\n### Power Graph:\nA graph of the current and best power as a function of time for the currently watched athlete - a continuously updated and evolving power curve\n\n### Input:\nShows parameters that reflect the rider's input to the Zwift system (power, cadence and heart rate) as well as draft and gradient\n\n### Output:\nShow parameters which are the output of the Zwift session: speed, distance, time, elevation, as well as distance or time remaining in an event\n\n### Active Power Up:\nShows the power up (Aero / Feather / Draft / Burrito etc) currently in use by the watched rider. Unfortunately there is no way to show the power up being held and available for the rider to use with information available to Sauce from Zwift.\n",
@@ -92,12 +93,12 @@
         "name": "Zwift Rider/TTT Profile Card",
         "releases": [
             {
-                "version": "7.3",
-                "hash": "24ec0cb31139b7b9481ba12ac07eab2cded1440ad10a6457997557f581e07d98",
-                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/24ec0cb31139b7b9481ba12ac07eab2cded1440ad10a6457997557f581e07d98.zip",
-                "size": 304700,
-                "updated": 1766373394167,
-                "notes": "RELEASE 7.3\n- Searchable List w/ following riders at top\n- Power zones line chart, 30s, 1min, 5min, 10min options \n- Give RIDE-ONS in titlebar\n- Horizontal profile cards\n- TTT view shake effect cards \n"
+                "version": "7.8",
+                "hash": "544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c",
+                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c.zip",
+                "size": 439226,
+                "updated": 1776986240897,
+                "notes": "RELEASE 7.8\n- auto-lock team after 15/30/45/60s for TTT view \n- two team TTT view save/support\n- TTT team colors automatically \n- Carousel view for limited screen space, will rotate through TTT view"
             }
         ],
         "description": "A comprehensive profile card MOD for Sauce for Zwift that displays real-time cycling metrics, nearby riders, and team coordination views.",
@@ -110,12 +111,12 @@
         "name": "O101 Racing Mods",
         "releases": [
             {
-                "version": "1.1.5",
-                "hash": "9bc1447a8c8b49adf558e62b2db60d85068e032e061fab4c857cb27533ac607f",
-                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/9bc1447a8c8b49adf558e62b2db60d85068e032e061fab4c857cb27533ac607f.zip",
-                "size": 516232,
-                "updated": 1767182128533,
-                "notes": "v1.1.5\nLadder, statistics improvement, manual config fixes\nLivedata, refactored\nFan viewer, add auto ride on bombs\nNote: for ladder mod, destroy and recreate solves most problems",
+                "version": "1.1.8.5",
+                "hash": "43ad4d829f403f5d6940b6098580ce6b7cb971dc87c0f656075973e1c7410afd",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/43ad4d829f403f5d6940b6098580ce6b7cb971dc87c0f656075973e1c7410afd.zip",
+                "size": 510976,
+                "updated": 1777572370785,
+                "notes": "v1.1.8.5\nFRR category fix\nNote: for ladder mod, destroy and recreate solves most problems",
                 "minVersion": "2.0.1"
             }
         ],
@@ -180,5 +181,30 @@
         "authorName": "Luca DEGRE",
         "authorAvatarURL": "https://avatars.githubusercontent.com/u/252923405?s=400&u=0f94e246ecb8a8fbd85d49d8c95ce28f066ad79c&v=4",
         "authorURL": "https://lucadegre.it"
+    },
+    {
+        "id": "4a4ae80f-5088-4dc2-845e-d6cdf9463856",
+        "name": "SendIt",
+        "created": 1769644971606,
+        "releases": [
+            {
+                "version": "0.0.7",
+                "hash": "86cfbfeddc2f7bab45200adade6a53d13b752bdd1aec7d8d53f343a18bc4090a",
+                "url": "https://mod-api.sauce.llc/assets/sendit/86cfbfeddc2f7bab45200adade6a53d13b752bdd1aec7d8d53f343a18bc4090a.zip",
+                "size": 21311,
+                "updated": 1774520222264,
+                "notes": "### New in this Release\n* **Fixed Bug:** Fixed a bug where stats would freeze almost immediately.\n\n---\n\n### Issues / Enhancements in the queue\n* Create a way to toggle TTT dynamics to a post-race state (e.g., from transparent to solid background, adding more data)\n* Enhanced pull definitions (similar to Tord's TTT mod)\n* Improvements to group TTT efficiency metrics"
+            }
+        ],
+        "description": "# TTT Power Dynamics\n\nA mod to manage Team Time Trial rotations and track teammate performance.\n\n### Features\n* **Teammate Detection and Sorting:** Detects who your teammates are and sorts them by pull order (usually correctly).\n* **Workload Tracking:** Monitors time spent pulling vs. sitting, including average wattage for each teammate.\n* **Gap Status:** At-a-glance color coding shows if teammates are currently in the pack, ahead, or falling behind.\n\n### Available Settings\n* **Teammate Lock-in:** Adjust how many seconds it takes for a rider to be \"confirmed\" as a teammate.\n* **Pull Detection Mode:** Choose between \"First Position\" (physical leader) or \"Draft Mode\" (detects anyone in the wind).\n* **Minimum Pull Watts:** Set a wattage floor to ensure coasting at the front isn't counted as a pull.\n* **User Position:** Force your own stats to the top or bottom of the list for easy reference.\n\n### Usage\nThe mod automatically tracks all riders in your vicinity. Once a rider is \"locked-in\" as a teammate, their stats will persist even if they drop out of your immediate drafting range.",
+        "logoURL": "https://avatars.githubusercontent.com/u/28357842?v=4",
+        "tags": [
+            "TTT",
+            "Team Time Trial",
+            "overlay",
+            "streaming",
+            "DS"
+        ],
+        "authorName": "Dean Nordhielm"
     }
 ]
