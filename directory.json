@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/60c6979625f13c84ab3605a4d8a93c28746a3045add3ef37e796d9dbf7fff5d3.zip",
-                "version": "1.8.7",
-                "updated": 1773496455349,
-                "hash": "60c6979625f13c84ab3605a4d8a93c28746a3045add3ef37e796d9dbf7fff5d3",
-                "size": 757031,
-                "notes": "version 1.8.7\n- points leaderboard now has options to limit the number of racers on a team that score team points (ala DRS) as well as an option to only show team scores / hide individual scores\n- points analysis has an option to show team scores and the display is slightly less ugly\n- exporting the points results to json will include the team data as well as rider ZRS and category (when available)\n- increased configurability to override the points leaderboard config for a specific window.  It is now possible to setup an event to monitor all cats and have a window for each cat displaying the results.\n- fixed an issue with the elevation profile when running in groups mode and the largest group size is 1\n- added a new window \"Virtual goal pacer\".  This is the like Strava live segments on your outdoor head unit.  You can set it up to compare your progress against a previous effort (yours or someone else's).  It will tell you if you are ahead/behind, the elapsed and goal time, and distance remaining / total.  It requires the use of the Sauce for Strava browser extension to download the previous effort which is then uploaded to the window.  The effort can be a full route, a segment or any random stretch of road that you want - as long as you can find it in a Strava ride from Zwift, you can use it.  There are full instructions for it's use in the help window.  I've used it for the last 3 weeks of TTT for my wife's team comparing their progress against the course CR and it has been within 2-3 seconds each time."
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1.zip",
+                "version": "1.9.1",
+                "updated": 1779112535971,
+                "hash": "fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1",
+                "size": 762337,
+                "notes": "version 1.9.1 is a couple of fixes for the points leaderboard\n- addition check to detect a DRS event to allow importing teams\n- better detection of old stale custom configs that were causing the window to show old event results\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
@@ -93,12 +93,12 @@
         "name": "Zwift Rider/TTT Profile Card",
         "releases": [
             {
-                "version": "7.7",
-                "hash": "5008460e18cef1ac04025d5fb3c32dadfc0a971d8c0eb4fa9dfb552353f0b89e",
-                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/5008460e18cef1ac04025d5fb3c32dadfc0a971d8c0eb4fa9dfb552353f0b89e.zip",
-                "size": 402718,
-                "updated": 1771782997291,
-                "notes": "RELEASE 7.7\n- horizontal metric cards\n- live stream race chat\n- a couple fun design metric cards"
+                "version": "7.8",
+                "hash": "544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c",
+                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c.zip",
+                "size": 439226,
+                "updated": 1776986240897,
+                "notes": "RELEASE 7.8\n- auto-lock team after 15/30/45/60s for TTT view \n- two team TTT view save/support\n- TTT team colors automatically \n- Carousel view for limited screen space, will rotate through TTT view"
             }
         ],
         "description": "A comprehensive profile card MOD for Sauce for Zwift that displays real-time cycling metrics, nearby riders, and team coordination views.",
@@ -111,12 +111,12 @@
         "name": "O101 Racing Mods",
         "releases": [
             {
-                "version": "1.1.6",
-                "hash": "84f95263d757329f5b12619dcad90ea28948b933dbc8825925c84a8017bea3db",
-                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/84f95263d757329f5b12619dcad90ea28948b933dbc8825925c84a8017bea3db.zip",
-                "size": 1119067,
-                "updated": 1773242138046,
-                "notes": "v1.1.6\nHorizontal groups update\nLivedata, added fields\nOverview, override name\nNote: for ladder mod, destroy and recreate solves most problems",
+                "version": "1.1.8.5",
+                "hash": "43ad4d829f403f5d6940b6098580ce6b7cb971dc87c0f656075973e1c7410afd",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/43ad4d829f403f5d6940b6098580ce6b7cb971dc87c0f656075973e1c7410afd.zip",
+                "size": 510976,
+                "updated": 1777572370785,
+                "notes": "v1.1.8.5\nFRR category fix\nNote: for ladder mod, destroy and recreate solves most problems",
                 "minVersion": "2.0.1"
             }
         ],
@@ -159,12 +159,12 @@
         "created": 1767603168118,
         "releases": [
             {
-                "version": "3.5.13",
-                "hash": "4662877ed4447b837470dd86dcdee0caa81c55198aca4edb95772b0ba7da3486",
-                "url": "https://mod-api.sauce.llc/assets/degre/4662877ed4447b837470dd86dcdee0caa81c55198aca4edb95772b0ba7da3486.zip",
-                "size": 574438,
-                "updated": 1767799668273,
-                "notes": "Sprint Mode, position badges, privacy improvements, bug fixes"
+                "version": "3.5.14",
+                "hash": "2904caca145685d3e1d6d9baea9c64c91e43c43d4e838773ba7131b45043b97b",
+                "url": "https://mod-api.sauce.llc/assets/degre/2904caca145685d3e1d6d9baea9c64c91e43c43d4e838773ba7131b45043b97b.zip",
+                "size": 618036,
+                "updated": 1781148349084,
+                "notes": "Attack Radar: 'Always' option now also works in free rides and lap/time based events. Finish Well: checkered flag auto-hides after 10s, fixed applause replay loop."
             }
         ],
         "description": "Professional widget collection for competitive Zwift racing and streaming.\n\n* **Power Bar** - Dynamic power zone visualization\n* **Attack Radar** - Detects attacks with audio alerts and attacker stats\n* **Finish Well** - Final km countdown with bell and checkered flag\n* **Player** - Music player with NowPlay integration\n* **Ticker** - Customizable scrolling text overlay",
