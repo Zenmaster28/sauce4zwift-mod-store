@@ -111,12 +111,12 @@
         "name": "O101 Racing Mods",
         "releases": [
             {
-                "version": "1.1.8.5",
-                "hash": "43ad4d829f403f5d6940b6098580ce6b7cb971dc87c0f656075973e1c7410afd",
-                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/43ad4d829f403f5d6940b6098580ce6b7cb971dc87c0f656075973e1c7410afd.zip",
-                "size": 510976,
-                "updated": 1777572370785,
-                "notes": "v1.1.8.5\nFRR category fix\nNote: for ladder mod, destroy and recreate solves most problems",
+                "version": "1.1.9",
+                "hash": "168fe5e878bc886ef6888f98d2c824bd63da8b81e3601beee6265c29539613fe",
+                "url": "https://mod-api.sauce.llc/assets/o101_for_s4z/168fe5e878bc886ef6888f98d2c824bd63da8b81e3601beee6265c29539613fe.zip",
+                "size": 1056359,
+                "updated": 1783891396812,
+                "notes": "v1.1.9\nBig fan viewer update\nNote: for ladder mod, destroy and recreate solves most problems",
                 "minVersion": "2.0.1"
             }
         ],
