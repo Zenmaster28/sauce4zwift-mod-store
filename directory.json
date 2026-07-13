@@ -93,15 +93,15 @@
         "name": "Zwift Rider/TTT Profile Card",
         "releases": [
             {
-                "version": "7.8",
-                "hash": "544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c",
-                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/544df9552a40180a4925592bb8989d6fe9439c6cec1613b810c07a32d7045c7c.zip",
-                "size": 439226,
-                "updated": 1776986240897,
-                "notes": "RELEASE 7.8\n- auto-lock team after 15/30/45/60s for TTT view \n- two team TTT view save/support\n- TTT team colors automatically \n- Carousel view for limited screen space, will rotate through TTT view"
+                "version": "7.9",
+                "hash": "0d8777e92565f3d24d082d9e5a32c05cb0017b1904ca9eb6cb9fba9a8ca339b8",
+                "url": "https://mod-api.sauce.llc/assets/zwift_rider_ttt_profile_card/0d8777e92565f3d24d082d9e5a32c05cb0017b1904ca9eb6cb9fba9a8ca339b8.zip",
+                "size": 472425,
+                "updated": 1783903555421,
+                "notes": "**ZwiftGuy Profile Card — v7.9 Release Notes**\n\n- **ZG Live Map** — a team command-center dock of mini-profile cards over a live map, with solid or glassmorphic card styles, size slider, bottom/left/right docking, and single or double rows.\n- Custom per-rider orb colors with reset-to-default, plus separate auto team-color toggles for cards and orbs, floating team badges, Zwift-like map tilt, and \"Mini-Card Riders Only\" filtering.\n- Load Saved TTT Team directly into the map roster, with a team-finding engine that sorts teammates, clubmates, and followed riders to the top.\n- Race commentary announcer with offline text-to-speech that works on Mac, Windows, and Linux.\n"
             }
         ],
-        "description": "A comprehensive profile card MOD for Sauce for Zwift that displays real-time cycling metrics, nearby riders, and team coordination views.",
+        "description": "**ZwiftGuy Profile Card** (v7.9) — a Sauce4Zwift overlay suite with a live mini-profile card, TTT Team View, ZG Chat, race commentary with an offline TTS announcer, and a ZG Live Map featuring a team command-center dock of custom-colored rider cards and orbs.",
         "logoURL": "https://github.com/micahreeves/classic/blob/SauceModLogo/pictures/gitHubLogoV.7.2.webp?raw=true",
         "created": 1762840800000,
         "authorName": "ZwiftGuy"
