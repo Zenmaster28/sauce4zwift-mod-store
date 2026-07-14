@@ -29,12 +29,12 @@
     {
         "releases": [
             {
-                "url": "https://mod-api.sauce.llc/assets/zenmaster/fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1.zip",
-                "version": "1.9.1",
-                "updated": 1779112535971,
-                "hash": "fc4018142af0984a058705ffe9ad39186e63362d769982c75f415117ce411fa1",
-                "size": 762337,
-                "notes": "version 1.9.1 is a couple of fixes for the points leaderboard\n- addition check to detect a DRS event to allow importing teams\n- better detection of old stale custom configs that were causing the window to show old event results\n"
+                "url": "https://mod-api.sauce.llc/assets/zenmaster/0e1ae02138495994a72ebce311450554c263cd67e4452e2dd9d3066addd86169.zip",
+                "version": "1.9.2",
+                "updated": 1784048556479,
+                "hash": "0e1ae02138495994a72ebce311450554c263cd67e4452e2dd9d3066addd86169",
+                "size": 762495,
+                "notes": "version 1.9.2 is a minor fix for segment detection in Paris, specifically the back to back Montmartre KOMs in Monmartre Mixer\n"
             }
         ],
         "id": "96f4039e-cfb4-44bf-895e-c6cab7b68311",
