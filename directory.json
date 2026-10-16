@@ -160,24 +160,26 @@
         "created": 1767603168118,
         "releases": [
             {
-                "version": "3.6.0",
-                "hash": "26617bec083c1c2aa8a046e949f0ed3d2a6ee8558a17e7d393e7286d43ecfcfd",
-                "url": "https://mod-api.sauce.llc/assets/degre/26617bec083c1c2aa8a046e949f0ed3d2a6ee8558a17e7d393e7286d43ecfcfd.zip",
-                "size": 630731,
-                "updated": 1791269069015,
-                "notes": "New widget: DEGRE Radio, the NowPlay web radio inside Sauce, in sync with the website and Discord: stations, thumbs up/down, song requests, autoplay on widget open or event start. Attack Radar: riders under 60 kg now show their exact weight instead of a size label."
+                "version": "3.7.0",
+                "hash": "1cfc30d2e5f1d856580a00338a98592035ce3a28c69fc2788a3f1e5f4a825514",
+                "url": "https://mod-api.sauce.llc/assets/degre/1cfc30d2e5f1d856580a00338a98592035ce3a28c69fc2788a3f1e5f4a825514.zip",
+                "size": 650226,
+                "updated": 1792164814419,
+                "notes": "New widget: DEGRE Chat Translate, the Zwift chat (read only) with every message translated into your language, using the free Google translator or your own Gemini key, with optional read-aloud of the translations and adjustable text size. Radio: new bar that fits any window shape and keeps the text readable, one button to switch the radio on/off (mouse wheel for volume), tap the station name to change station."
             }
         ],
-        "description": "Professional widget collection for competitive Zwift racing and streaming.\n\n* **Power Bar** - Dynamic power zone visualization\n* **Attack Radar** - Detects attacks with audio alerts and attacker stats\n* **Finish Well** - Final km countdown with bell and checkered flag\n* **Player** - Music player with NowPlay integration\n* **Radio** - NowPlay web radio in sync with the website: stations, votes, song requests\n* **Ticker** - Customizable scrolling text overlay",
+        "description": "Professional widget collection for competitive Zwift racing and streaming.\n\n* **Power Bar** - Dynamic power zone visualization\n* **Attack Radar** - Detects attacks with audio alerts and attacker stats\n* **Finish Well** - Final km countdown with bell and checkered flag\n* **Player** - Music player with NowPlay integration\n* **Radio** - NowPlay web radio in sync with the website: stations, votes, song requests\n* **Chat Translate** - Zwift chat translated into your language, optionally read aloud\n* **Ticker** - Customizable scrolling text overlay",
         "homeURL": "https://github.com/lucadegre/degre-mods",
         "logoURL": "https://raw.githubusercontent.com/lucadegre/degre-mods/main/assets/logo.webp",
         "tags": [
+            "chat",
             "hud",
             "music",
             "powerbar",
             "racing",
             "radio",
             "streaming",
+            "translation",
             "widgets"
         ],
         "authorName": "Luca DEGRE",
